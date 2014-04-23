@@ -6,9 +6,11 @@ CACHE MANIFEST
 
 CACHE:
 index.php
-js/less-1.7.0.min.js
-js/raphael-min.js
-js/spinningwheel.js
+js/calculs.js
+js/interface-mobile.js
+js/libs/less.js
+js/libs/raphael.js
+js/libs/spinningwheel.js
 images/startup.png
 images/sw-alpha.png
 stylesheets/stylesheet.less
