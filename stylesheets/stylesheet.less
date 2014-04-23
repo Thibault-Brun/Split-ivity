@@ -1,0 +1,131 @@
+@couleur-principale : RGBA(217, 125, 2, 1);
+
+@couleur-simple : RGBA(175, 1, 4, 1); // Rouge
+
+@couleur-detail : RGBA(6, 114, 133, 1); // Bleu
+
+@font-size : 150%;
+
+@font-face {
+  font-family: 'Pacifico';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Pacifico Regular'), local('Pacifico-Regular'), url(../fonts/pacifico.woff) format('woff');
+}
+
+.font-splitivity{font-family: 'Pacifico', 'cursive';}
+	
+.font-clean{font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;}
+
+html { -webkit-text-size-adjust: 100%; }
+
+body{
+margin: 0;
+	
+	header{
+	background-color : @couleur-principale;
+	text-align: center;
+	box-sizing: border-box;
+	border: none;
+	padding-top: 5px;
+		h1{
+		color : white;
+		.font-splitivity;
+		font-weight: lighter;
+		margin: 0;
+		margin-bottom: 5px;
+		
+	}
+	.tabs{
+			.font-clean;
+			ul{
+				margin: 0;
+				padding: 0;
+				width: 100%;
+				box-sizing: border-box;
+				li{
+					display: inline-block;
+					padding: 10px;
+					margin: 0px;
+					width: 35%;
+					text-align: center;
+					box-sizing: border-box;
+					color:white;
+					background-color : @couleur-detail;
+					font-size: @font-size;
+					&:first-child{
+						background-color : @couleur-simple;
+					}
+					&.active{
+					width: 65%;
+					}
+				}
+			}
+		}
+}
+	
+	#simple{
+	margin: 0;
+		
+	
+		.total{
+		width: 100%;
+		box-sizing: border-box;
+		text-align: center;
+		.font-clean;
+		font-size: @font-size;
+		padding: 15px;
+			input{
+				padding: 5px;
+				margin-right: 5px;
+				border: none;
+				font-size: 1em;
+				text-align: center;
+				width: 100px;
+				&:focus{
+					border: 1px solid @couleur-principale;
+					box-shadow: 0px 0px 5px @couleur-principale;
+					outline: none;
+				}
+				&:hover{
+					box-shadow: 0px 0px 2px @couleur-principale;
+				}
+			}
+		}
+	
+		.resultat{
+			position:absolute; 
+			top:60%;
+			.font-clean;
+			text-align: center;
+			width: 100%;
+			box-sizing: border-box;
+			font-size: @font-size;
+		}
+	
+		.personnes{
+		position: absolute;
+			bottom: 0px;
+			width: 100%;
+			padding: 15px;
+			box-sizing: border-box;
+			.font-clean;
+			text-align: center;
+			font-size: @font-size;
+		}
+		
+		#picker{
+			text-align: center;
+			width: 100%;
+			background-color: white;
+		}
+	}
+	
+	.colored{
+		color: @couleur-principale;
+	}
+	
+	.red{
+		color : @couleur-simple;
+	}
+}
