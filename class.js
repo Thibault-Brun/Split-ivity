@@ -52,16 +52,15 @@ function ActiviteDetail (arg1) {
     Activite.call(this, arg1);
     this.listPersonne = [];
     this.listFrais = [];
-    this.listConsommation = new Array();
-    this.ajouterFrais = function (frais1, prix, qte) {
-        this.listFrais.push([frais1, prix, qte]);
+    this.listConsommation = []
+    this.ajouterFrais = function (frais, prix, qte) {
+        this.listFrais.push(new Frais(frais, prix, qte));
     };
-    this.ajouterPersonne = function(pers1) {
-        this.listPersonne.push(pers1);
-        this.listConsommation[pers1] = null;
+    this.ajouterPersonne = function(pers) {
+        this.listPersonne.push(new Personne(pers));
     };
-    this.affecterPersonne = function(pers2, frais2) {
-        this.listConsommation[frais2] = pers2;
+    this.affecterPersonne = function(pers, frais) {
+        this.listConsommation[frais] = pers;
     };
     this.stringPersonne = function() {
         return this.listPersonne.join();
@@ -85,16 +84,15 @@ var act3 = new ActiviteDetail('resto3');
 //act3.listConsommation[0] = "Steak";
 
 act3.ajouterFrais('steak',12,1);
+act3.ajouterFrais('soda',3,1);
 
 act3.affecterPersonne(['toto','titi','tata'],'Steak');
 
 act3.ajouterPersonne('caca');
 act3.ajouterPersonne('pipi');
 
-
-
-console.log(act1.DateCreation);
-console.log(act2.DateCreation);
+//console.log(act1 instanceof Activite);
+//console.log(act2 instanceof ActiviteDetail);
 console.log(act2.calculeSimple());
 console.log(act2.nbPersonne);
 console.log(act3.listFrais);
