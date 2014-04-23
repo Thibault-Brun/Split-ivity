@@ -5,7 +5,7 @@ CACHE MANIFEST
 
 
 CACHE:
-index.php
+index.html
 js/calculs.js
 js/interface-mobile.js
 js/libs/less.js
@@ -18,5 +18,5 @@ stylesheets/spinningwheel.css
 fonts/pacifico.woff
 
 NETWORK:
-index.php
+index.html
 *
