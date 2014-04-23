@@ -1,0 +1,80 @@
+
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="Content-Type" content="text/html"/>
+		
+		<link rel="stylesheet/less" type="text/css" href="stylesheets/stylesheet.less"/>
+		<script src="js/less-1.7.0.min.js" type="text/javascript"></script>
+		
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" />
+		<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+		<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.2/jquery.mobile.min.css" />
+		<script src="http://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.2/jquery.mobile.min.js"></script>
+		
+		<title>
+		Split'ivity
+		</title>
+		
+		<script>
+$(function() {
+var frais = [
+"steak",
+"frites",
+"saumon",
+"salade",
+"poulet",
+"vin"
+];
+$( "#nomFrais" ).autocomplete({
+source: frais
+});
+
+var prenom = [
+"renaud",
+"thibault",
+"martin",
+"bharath",
+"sebastien"
+];
+$( "#nomPersonne" ).autocomplete({
+source: prenom
+});
+
+});
+</script>
+
+	</head>
+	
+	<body ontouchmove="BlockElasticScroll(event);">
+		<header>
+			<h1>Split'ivity</h1>
+			<div class="tabs">
+			<ul>
+				<li>Simple</li><li class="active">Détail</li></ul></div>
+		</header>
+		
+		<div id="details">
+			<div data-role="collapsible-set" data-theme="c" data-content-theme="d" data-mini="true">
+			<div data-role="collapsible">
+			<h3>Frais</h3>
+			<div id="zoneFrais"> 
+				<INPUT id="nomFrais" type="text" placeholder="Ajouter" name="nomFrais">
+				<INPUT id="prixFrais" type="text" placeholder="Prix" name="prixFrais">
+ 			</div>
+			</div>
+			<div data-role="collapsible">
+			<h3>Personnes</h3>
+			<div> 
+				<INPUT id="nomPersonne" type="text" placeholder="Ajouter quelqu'un" name="nomPersonne">
+				
+ 			</div>
+			</div>
+		</div>
+		
+</div>
+
+	</body>
+
+</html>

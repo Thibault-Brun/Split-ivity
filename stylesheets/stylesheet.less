@@ -1,4 +1,4 @@
-@couleur-principale : RGBA(217, 125, 2, 1); // Orange
+@couleur-principale : RGBA(217, 125, 2, 1);
 
 @couleur-simple : RGBA(175, 1, 4, 1); // Rouge
 
@@ -13,9 +13,11 @@
   src: local('Pacifico Regular'), local('Pacifico-Regular'), url(../fonts/pacifico.woff) format('woff');
 }
 
-.font-splitivity{font-family: 'Pacifico', 'comic sans';}
+.font-splitivity{font-family: 'Pacifico', 'cursive';}
 	
 .font-clean{font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;}
+
+html { -webkit-text-size-adjust: 100%; }
 
 body{
 margin: 0;
@@ -24,7 +26,6 @@ margin: 0;
 	background-color : @couleur-principale;
 	text-align: center;
 	box-sizing: border-box;
-	-moz-box-sizing: border-box;
 	border: none;
 	padding-top: 5px;
 		h1{
@@ -42,15 +43,13 @@ margin: 0;
 				padding: 0;
 				width: 100%;
 				box-sizing: border-box;
-				-moz-box-sizing: border-box;
 				li{
 					display: inline-block;
 					padding: 10px;
 					margin: 0px;
-					width: 35%;
+					width: 65%;
 					text-align: center;
 					box-sizing: border-box;
-					-moz-box-sizing: border-box;
 					color:white;
 					background-color : @couleur-detail;
 					font-size: @font-size;
@@ -58,7 +57,8 @@ margin: 0;
 						background-color : @couleur-simple;
 					}
 					&.active{
-					width: 65%;
+					width: 35%;
+					
 					}
 				}
 			}
@@ -72,7 +72,6 @@ margin: 0;
 		.total{
 		width: 100%;
 		box-sizing: border-box;
-		-moz-box-sizing: border-box;
 		text-align: center;
 		.font-clean;
 		font-size: @font-size;
@@ -102,7 +101,6 @@ margin: 0;
 			text-align: center;
 			width: 100%;
 			box-sizing: border-box;
-			-moz-box-sizing: border-box;
 			font-size: @font-size;
 		}
 	
@@ -112,7 +110,6 @@ margin: 0;
 			width: 100%;
 			padding: 15px;
 			box-sizing: border-box;
-			-moz-box-sizing: border-box;
 			.font-clean;
 			text-align: center;
 			font-size: @font-size;
@@ -131,5 +128,13 @@ margin: 0;
 	
 	.red{
 		color : @couleur-simple;
+	}
+}
+
+.ui-input-text{
+	display:inline-block;
+	width:19%;
+	&:first-child{
+		width:80%;
 	}
 }
