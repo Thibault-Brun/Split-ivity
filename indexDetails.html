@@ -35,6 +35,7 @@
 	<script type="text/javascript" src="js/calculs.js"></script>
 	<script type="text/javascript" src="js/interface-mobile.js"></script>
 	<script type="text/javascript" src="js/ajouterFrais.js"></script>
+	<script type="text/javascript" src="js/ajouterPersonne.js"></script>
 	
 	<!-- Scripts de gestion du cache (DEV) -->
 	<script type="text/javascript" src="js/dev/cache-log.js"></script>
@@ -103,8 +104,9 @@ source: prenom
 			<div data-role="collapsible">
 			<h3>Personnes</h3>
 			<div> 
-				<INPUT id="nomPersonne" type="text" placeholder="Ajouter quelqu'un" name="nomPersonne">
-				
+				<INPUT id="newNomPersonne" type="text" placeholder="Ajouter quelqu'un" name="nomPersonne" onblur="ajoutPersonne();"/>
+				<ul id="listePersonne">
+				</ul>
  			</div>
 			</div>
 		</div>
