@@ -46,7 +46,7 @@
 	<script type="text/javascript" src="js/ajouterFrais.js"></script>
 	<script type="text/javascript" src="js/ajouterPersonne.js"></script>
 	
-	
+	<script type="text/javascript" src="ressources/dictionnaires/lire_donnees.js"></script>
 		
 		<title>
 		Split'ivity
@@ -54,6 +54,7 @@
 		
 		<script>
 $(function() {
+
 var frais = [
 "steak",
 "frites",
@@ -73,9 +74,24 @@ var prenom = [
 "bharath",
 "sebastien"
 ];
-$( "#nomPersonne" ).autocomplete({
-source: prenom
+$("#newNomPersonne").autocomplete({
+ source: function (request, response) {
+ 
+        $.ajax({
+	url: "./ressources/dictionnaires/dico_prenoms.json",
+	data: request,
+	type: "GET",
+	dataType: "json",
+	success: function(data) {
+	//alert(data);
+              response(data); },
+	error: function() {
+              alert('La requête n\'a pas abouti'); }
+    }); 
+		
+    }
 });
+console.log(prenom);
 
 });
 </script>
