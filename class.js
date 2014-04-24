@@ -99,6 +99,6 @@ console.log(act3.listFrais);
 console.log(act3.listPersonne);
 console.log(act3.listConsommation);
 
-$(document).ready(function() {
-    //console.log( "ready!" );
-});
+//$(document).ready(function() {
+//    //console.log( "ready!" );
+//});

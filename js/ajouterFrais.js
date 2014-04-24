@@ -1,12 +1,17 @@
 function ajoutFrais(){
 			
-	if ($.trim($("#newNomFrais").val()) && $.trim($("#newPrixFrais").val())) {
+	if ( $.trim($("input[name=nomFrais].editable").first().val())!="" && $.trim($("input[name=prixFrais].editable").first().val())!="" && $.trim($("input[name=qteFrais].editable").first().val())!="") {
+			
+		formulaire = '<li class="formFrais">'+$(".formFrais").first().html()+'</li>';
+		alert(formulaire);
+			
+		$("#nomFrais.editable").removeClass("editable");
+		$("#prixFrais.editable").removeClass("editable");
+		$("#qteFrais.editable").removeClass("editable");
+		$("#listeFrais").prepend(formulaire);
 		
-		var newFrais = new Frais($("#newNomFrais").val(), $("#newPrixFrais").val(), 1);
-		
-		$("#listeFrais").append('<li><div class="nomFrais">'+newFrais.intitule+'</div><div class="qteFrais">'+newFrais.quantite+'</div><div class="prixFrais">'+newFrais.montant+'</div></li>');
-		
-		$("#newNomFrais").val('');
-		$("#newPrixFrais").val('');
+		$("input[name=qteFrais].editable").first().focus();
 	}
 }
+
+

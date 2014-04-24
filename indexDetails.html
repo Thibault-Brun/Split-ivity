@@ -23,6 +23,15 @@
 	<!-- Feuilles de styles -->
 	<link rel="stylesheet" href="stylesheets/spinningwheel.css" type="text/css" media="all" />
 	<link rel="stylesheet/less" type="text/css" href="stylesheets/stylesheet.less"/>
+	
+	<!-- Scripts de gestion du cache (DEV) -->
+	<script type="text/javascript" src="js/dev/cache-log.js"></script>
+	<script type="text/javascript" src="js/dev/cache-updater.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" />
+		<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+		<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.2/jquery.mobile.min.css" />
+		<script src="http://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.2/jquery.mobile.min.js"></script>
 
 	<!-- Librairies JavaScript utilisées -->
 	<script type="text/javascript"src="js/libs/less.js"></script>
@@ -37,14 +46,7 @@
 	<script type="text/javascript" src="js/ajouterFrais.js"></script>
 	<script type="text/javascript" src="js/ajouterPersonne.js"></script>
 	
-	<!-- Scripts de gestion du cache (DEV) -->
-	<script type="text/javascript" src="js/dev/cache-log.js"></script>
-	<script type="text/javascript" src="js/dev/cache-updater.js"></script>
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-		<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" />
-		<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
-		<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.2/jquery.mobile.min.css" />
-		<script src="http://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.2/jquery.mobile.min.js"></script>
+	
 		
 		<title>
 		Split'ivity
@@ -94,11 +96,12 @@ source: prenom
 			<div data-role="collapsible-set" data-theme="c" data-content-theme="d" data-mini="true">
 			<div data-role="collapsible">
 			<h3>Frais</h3>
-				<div id="zoneFrais"> 
-					<INPUT id="newNomFrais" type="text" placeholder="Ajouter" name="newNomFrais" onblur="ajoutFrais();"/>
-					<INPUT id="newPrixFrais" type="text" placeholder="Prix" name="newPrixFrais" onblur="ajoutFrais();"/>
-				</div>
 				<ul id="listeFrais">
+					<li class="formFrais"> 
+						<INPUT class="editable" type="number" placeholder="Quantite" name="qteFrais" onblur="ajoutFrais();"/>
+						<INPUT class="editable" type="text" placeholder="Ajouter" name="nomFrais" onblur="ajoutFrais();"/>
+						<INPUT class="editable" type="number" placeholder="Prix" name="prixFrais" onblur="ajoutFrais();"/>
+					</li>
 				</ul>
 			</div>
 			<div data-role="collapsible">
