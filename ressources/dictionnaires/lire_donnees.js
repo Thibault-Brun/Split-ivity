@@ -1,7 +1,15 @@
-var fileSystem=new ActiveXObject("Scripting.FileSystemObject");
-var monfichier=fileSystem.OpenTextFile("dico_prenoms.txt", 1 ,true); 
-//Ouverture du fichier  1:lecture ;2:écriture ;8:écriture à la fin du fichier;
 
-console.log(monfichier.ReadAll());
-alert(monfichier.ReadAll()); // imprime: "tutoriels en folie"
-monFichier.Close();
+function lireDonnee(nomFic){
+
+$.ajax({
+	url: "./ressources/dictionnaires/dico_prenoms.json",
+	type: "GET",
+	dataType: "json",
+	success: function(data) {
+	alert(data);
+              console.log(data); },
+	error: function() {
+              alert('La requête n\'a pas abouti'); }
+    }); 
+}
+
