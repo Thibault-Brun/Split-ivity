@@ -50,7 +50,7 @@
 		<title>
 		Split'ivity
 		</title>
-		
+	<!--	
 		<script>
 $(function() {
 
@@ -76,7 +76,7 @@ var prenom = [
 $("#newNomPersonne").autocomplete({
  source: function (request, response) {
         $.ajax({
-	url: "./ressources/dictionnaires/dico_prenoms.json",
+	url: "/ressources/dictionnaires/dico_prenoms.json",
 	data: request,
 	type: "GET",
 	dataType: "json",
@@ -93,7 +93,7 @@ console.log(prenom);
 
 });
 </script>
-
+-->
 	</head>
 	
 	<body ontouchmove="BlockElasticScroll(event);">
@@ -106,7 +106,7 @@ console.log(prenom);
 			</div>
 		</header>
 		
-		<div id="details" class="scrollable">
+		<div id="details" >
 			<div data-role="collapsible-set" data-theme="c" data-content-theme="d" data-mini="true">
 			<div data-role="collapsible">
 
@@ -116,12 +116,12 @@ console.log(prenom);
 				<INPUT id="quantiteFrais" type="text" placeholder="Quantité" name="quantiteFrais"/><INPUT id="nomFrais" type="text" placeholder="Ajouter" name="nomFrais"/><INPUT id="prixFrais" type="text" placeholder="Prix" name="prixFrais"/>
 				</li><!--<li class="frais">
 				<INPUT id="quantiteFrais" type="text" placeholder="Quantité" name="quantiteFrais"/><INPUT id="nomFrais" type="text" placeholder="Ajouter" name="nomFrais"/><INPUT id="prixFrais" type="text" placeholder="Prix" name="prixFrais"/>
-				</li><li class="frais">
+				</li>--><li class="frais">
 				<INPUT id="quantiteFrais" type="text" placeholder="Quantité" name="quantiteFrais"/><INPUT id="nomFrais" type="text" placeholder="Ajouter" name="nomFrais"/><INPUT id="prixFrais" type="text" placeholder="Prix" name="prixFrais"/>
-				</li>-->
+				</li>
 			</ul>
-			
 			</div>
+			
 			<div data-role="collapsible">
 			<h3 id="bouton-personnes"><span id="icone-personne-liste"></span>Personnes</h3>
 			<div id="zone-personnes"> 
@@ -146,8 +146,8 @@ console.log(prenom);
 
  			</div>
 			</div>
+			</div>
 		</div>
-		
 </div>
 
 	</body>
