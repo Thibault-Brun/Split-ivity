@@ -6,32 +6,38 @@ $( document ).ajaxComplete(function() {
 		chargerSimple();
 	}
 	else{
-	if($('#listeFrais').children().length == 0){
-		chargerDetails();
-		renderFraisIcon();
-		
-		 $.get("./formulaireFrais.html", function(data){$('#listeFrais').html((data));});
-		renderPersonneListeIcon();
-		$('#listeFrais').slideUp(0);
-		$('#bouton-frais').click(function(){
-			if($('#listeFrais').is(":visible")){
-				fermerFrais();
-			}
-			else{
-				fermerPersonnes();
-				ouvrirFrais();
-			}
-		});
-		
-		$('#bouton-personnes').click(function(){
-			if($('#bouton-personnes').is(".active")){
-				fermerPersonnes();			}
-			else{
-				fermerFrais();
-				ouvrirPersonnes();
-			}
-		});
-		};		
+		if($('#listeFrais').children().length == 0){
+			chargerDetails();
+			
+			renderFraisIcon();
+			$.get("./formulaireFrais.html", function(data){$('#listeFrais').html((data));});
+			$('#listeFrais').slideUp(0);
+			
+			renderPersonneListeIcon();
+			if($('#listePersonne').children().length == 0){
+				$.get("./formulairePersonne.html", function(data){$('#listePersonne').html((data));});
+				$('#listePersonne').slideUp(0);
+			};
+			
+			$('#bouton-frais').click(function(){
+				if($('#listeFrais').is(":visible")){
+					fermerFrais();
+				}
+				else{
+					fermerPersonnes();
+					ouvrirFrais();
+				}
+			});
+			
+			$('#bouton-personnes').click(function(){
+				if($('#bouton-personnes').is(".active")){
+					fermerPersonnes();			}
+				else{
+					fermerFrais();
+					ouvrirPersonnes();
+				}
+			});
+		};
 	}
 	});
 

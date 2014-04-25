@@ -1,11 +1,14 @@
 function ajoutPersonne(){
 			
-	if ($.trim($("#newNomPersonne").val())) {
+	if ( $.trim($("input[name=nomPersonne].editable").first().val()) !="") {
+			
+		$(".nomPersonne.editable").removeClass("editable");
+		$(".totalPersonne.hidden").removeClass("hidden");
+		$(".detailsPersonne.hidden").removeClass("hidden");
 		
-		var newPersonne = new Personne($("#newNomPersonne").val());
-		
-		$("#listePersonne").append('<li><div class="nomPersonne">'+newPersonne.nom+'</div></li>');
-		
-		$("#newNomPersonne").val('');
+		$.get("./formulairePersonne.html", function(data){$('#listePersonne').prepend(data);});
+		$("input[name=nomPersonne].editable").first().focus();
 	}
 }
+
+

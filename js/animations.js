@@ -106,6 +106,7 @@ function fermerFrais(){
 }
 
 function fermerPersonnes(){
+	replierListe($('#listePersonne'));	
 	$('#bouton-personnes').removeClass('active');
 	tournerPersonneListeIcon('0');	
 	$('.tabs').slideDown();
@@ -121,6 +122,7 @@ function ouvrirFrais(){
 }
 
 function ouvrirPersonnes(){
+	deplierListe($('#listePersonne'));
 	$('#bouton-personnes').addClass('active');
 	tournerPersonneListeIcon('90');
 	$('#bouton-frais').slideUp(200);
