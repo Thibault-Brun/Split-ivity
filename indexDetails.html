@@ -23,15 +23,6 @@
 	<!-- Feuilles de styles -->
 	<link rel="stylesheet" href="stylesheets/spinningwheel.css" type="text/css" media="all" />
 	<link rel="stylesheet/less" type="text/css" href="stylesheets/stylesheet.less"/>
-
-	<!-- Librairies JavaScript utilisées -->
-	<script type="text/javascript"src="js/libs/less.js"></script>
-	<script type="text/javascript" src="js/libs/raphael.js"></script>
-	<script type="text/javascript" src="js/libs/spinningwheel.js"></script>
-		
-	<!-- Scripts de l'application -->
-	<script type="text/javascript" src="js/calculs.js"></script>
-	<script type="text/javascript" src="js/interface-mobile.js"></script>
 	
 	<!-- Scripts de gestion du cache (DEV) -->
 	<script type="text/javascript" src="js/dev/cache-log.js"></script>
@@ -41,6 +32,20 @@
 		<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
 		<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.2/jquery.mobile.min.css" />
 		<script src="http://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.2/jquery.mobile.min.js"></script>
+
+	<!-- Librairies JavaScript utilisées -->
+	<script type="text/javascript"src="js/libs/less.js"></script>
+	<script type="text/javascript" src="js/libs/raphael.js"></script>
+	<script type="text/javascript" src="js/libs/spinningwheel.js"></script>
+		
+	<!-- Scripts de l'application -->
+	<script type="text/javascript" src="class.js"></script>
+	<script type="text/javascript" src="js/calculs.js"></script>
+	<script type="text/javascript" src="js/interface-mobile.js"></script>
+	<script type="text/javascript" src="js/ajouterFrais.js"></script>
+	<script type="text/javascript" src="js/ajouterPersonne.js"></script>
+	
+	<script type="text/javascript" src="ressources/dictionnaires/lire_donnees.js"></script>
 		
 		<title>
 		Split'ivity
@@ -48,6 +53,7 @@
 		
 		<script>
 $(function() {
+
 var frais = [
 "steak",
 "frites",
@@ -67,9 +73,24 @@ var prenom = [
 "bharath",
 "sebastien"
 ];
-$( "#nomPersonne" ).autocomplete({
-source: prenom
+$("#newNomPersonne").autocomplete({
+ source: function (request, response) {
+ 
+        $.ajax({
+	url: "./ressources/dictionnaires/dico_prenoms.json",
+	data: request,
+	type: "GET",
+	dataType: "json",
+	success: function(data) {
+	//alert(data);
+              response(data); },
+	error: function() {
+              alert('La requête n\'a pas abouti'); }
+    }); 
+		
+    }
 });
+console.log(prenom);
 
 });
 </script>
@@ -81,12 +102,15 @@ source: prenom
 			<h1>Split'ivity</h1>
 			<div class="tabs">
 			<ul>
-				<li>Simple</li><li class="active">Détail</li></ul></div>
+				<li>Simple</li><li class="active">Détail</li>
+			</ul>
+			</div>
 		</header>
 		
 		<div id="details" class="scrollable">
 			<div data-role="collapsible-set" data-theme="c" data-content-theme="d" data-mini="true">
 			<div data-role="collapsible">
+<<<<<<< HEAD
 			<h3 id="bouton-frais"><span id="icone-frais"></span>Frais</h3>
 			<ul id="listeFrais">
 				<li class="frais fantome">
@@ -120,6 +144,23 @@ source: prenom
 			<div id="zone-personnes"> 
 				<INPUT id="nomPersonne" type="text" placeholder="Ajouter quelqu'un" name="nomPersonne">
 				
+=======
+			<h3>Frais</h3>
+				<ul id="listeFrais">
+					<li class="formFrais"> 
+						<INPUT class="editable" type="number" placeholder="Quantite" name="qteFrais" onblur="ajoutFrais();"/>
+						<INPUT class="editable" type="text" placeholder="Ajouter" name="nomFrais" onblur="ajoutFrais();"/>
+						<INPUT class="editable" type="number" placeholder="Prix" name="prixFrais" onblur="ajoutFrais();"/>
+					</li>
+				</ul>
+			</div>
+			<div data-role="collapsible">
+			<h3>Personnes</h3>
+			<div> 
+				<INPUT id="newNomPersonne" type="text" placeholder="Ajouter quelqu'un" name="nomPersonne" onblur="ajoutPersonne();"/>
+				<ul id="listePersonne">
+				</ul>
+>>>>>>> FETCH_HEAD
  			</div>
 			</div>
 		</div>
