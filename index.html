@@ -20,46 +20,43 @@
 		<link href="images/startup.png"rel="apple-touch-startup-image">	
 		
 	<!-- Feuilles de styles -->
-	<link rel="stylesheet" href="stylesheets/spinningwheel.css" type="text/css" media="all" />
-	<link rel="stylesheet/less" type="text/css" href="http://renaudparize.fr/splitivity/stylesheets/stylesheet.less"/>
+	<link rel="stylesheet" href="stylesheets/spinningwheel.css" type="text/css" />
+	<link rel="stylesheet" href="stylesheets/animate.css" type="text/css" />
+	<link rel="stylesheet/less" type="text/css" href="stylesheets/stylesheet.less"/>
 
 	<!-- Librairies JavaScript utilisées -->
-	<script type="text/javascript"src="js/libs/less.js"></script>
+	<script type="text/javascript" src="js/libs/jquery-2.1.0.min.js"></script>	
+	<script type="text/javascript" src="js/libs/less.js"></script>
 	<script type="text/javascript" src="js/libs/raphael.js"></script>
 	<script type="text/javascript" src="js/libs/spinningwheel.js"></script>
+	<script type="text/javascript" src="js/libs/jquery.hammer-full.min.js"></script>	
 	
 		
 	<!-- Scripts de l'application -->
 	<script type="text/javascript" src="js/calculs.js"></script>
 	<script type="text/javascript" src="js/interface-mobile.js"></script>
+	<script type="text/javascript" src="js/animations.js"></script>
 	
 	<!-- Scripts de gestion du cache (DEV) -->
 	<script type="text/javascript" src="js/dev/cache-log.js"></script>
 	<script type="text/javascript" src="js/dev/cache-updater.js"></script>
-
 		<title>
 		Split'ivity
 		</title>
 	</head>
-	<body ontouchmove="BlockElasticScroll(event);">
+	<body>
 		<header>
-			<h1>Split'ivity</h1>
-			<div class="tabs">
-			<ul>
-				<li class="active">Simple</li><li>Détail</li></ul></div>
+			<h1 id="splitivity-title">Split'ivity</h1>
 		</header>
-		<div id="simple">
-		<div class="total">
-			Prix total
-			<input type="number" min="0" id="total" name="total" placeholder="0.00" value=""/ onblur="calculSimple();">€
-		</div>
-		<div id="result" class="resultat">
-			0,00 €
-		</div>
-		<div id="personnes" class="personnes">
-			<script>
-				renderPersonneIcon();
-			</script>
+		<div class="tabs">
+			<ul>
+				<li class="active" id="simple-button">Simple</li><li id="details-button">Détails</li></ul></div>
+
+		<div id="container" class="scrollable">
+		<script>
+		$( "#container" ).load( "vueSimple.html #simple");
+		</script>
+		<script type="text/javascript" src="js/touch.js"></script>
 		</div>
 		</div>
 	</body>

@@ -5,18 +5,37 @@ CACHE MANIFEST
 
 
 CACHE:
+# Pages de l'application
 index.html
+indexDetails.html
+vueSimple.html
+
+# Scripts de l'application
 js/calculs.js
 js/interface-mobile.js
+js/animations.js
+
+#Librairies Javascript
 js/libs/less.js
 js/libs/raphael.js
 js/libs/spinningwheel.js
+js/libs/jquery-2.1.0.min.js
+js/libs/jquery.hammer-full.min.js
+
+# Images
 images/startup.png
 images/sw-alpha.png
+
+# Feuilles de style
 stylesheets/stylesheet.less
 stylesheets/spinningwheel.css
+stylesheets/animate.css
+
+# Polices
 fonts/pacifico.woff
 
 NETWORK:
 index.html
+indexDetails.html
+stylesheets/stylesheet.less
 *

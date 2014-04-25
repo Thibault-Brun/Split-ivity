@@ -2,7 +2,15 @@
 
 @couleur-simple : RGBA(175, 1, 4, 1); // Rouge
 
-@couleur-detail : RGBA(6, 114, 133, 1); // Bleu
+@couleur-details : RGBA(6, 114, 133, 1); // Bleu
+
+@couleur-bouton-frais : RGBA(107, 161, 205, 1);
+
+@couleur-boutons-personnes : RGBA(253, 111, 148, 1);
+
+@ombre : #222222;
+
+@ombre-box : 0px 3px 0px;
 
 @font-size : 150%;
 
@@ -17,27 +25,53 @@
 	
 .font-clean{font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;}
 
+.ombre-text{text-shadow: 0px -1px 0px black;
+}
+
+.animation-rapide{
+	-webkit-animation-duration: 0.5s;
+    -webit-animation-delay: 0.5s;
+}
+.box-sizing{
+	box-sizing: border-box;
+}
+*{
+    transition: width 0.5s ease-in-out ;
+    
+}
+
+
 html { -webkit-text-size-adjust: 100%; }
 
 body{
-margin: 0;
-	
+	margin: 0;
 	header{
+	position: fixed;
+	top:0px;
+	width: 100%;
+	.animation-rapide;
+	z-index: 300;
 	background-color : @couleur-principale;
 	text-align: center;
 	box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	border: none;
+	.ombre-text;
 	padding-top: 5px;
 		h1{
 		color : white;
 		.font-splitivity;
+		
 		font-weight: lighter;
 		margin: 0;
-		margin-bottom: 5px;
 		
 	}
-	.tabs{
+	
+}
+.tabs{
+	margin-top: 62px;
+	margin-bottom: 20px;
+	z-index: 2;
 			.font-clean;
 			ul{
 				margin: 0;
@@ -48,31 +82,42 @@ margin: 0;
 				li{
 					display: inline-block;
 					padding: 10px;
+					padding-bottom: 10px;
 					margin: 0px;
 					width: 35%;
 					text-align: center;
 					box-sizing: border-box;
 					-moz-box-sizing: border-box;
 					color:white;
-					background-color : @couleur-detail;
+					background-color : @couleur-details;
 					font-size: @font-size;
+					box-shadow: 0px 3px 0px @couleur-details - @ombre inset;
+
 					&:first-child{
 						background-color : @couleur-simple;
+						box-shadow: @ombre-box @couleur-simple - @ombre inset;
+						&.active{
+							box-shadow: @ombre-box @couleur-simple - @ombre ;
+
+						}
 					}
 					&.active{
 					width: 65%;
+					box-shadow: @ombre-box @couleur-details - @ombre;
+					padding-bottom: 7px;
+
 					
 					}
 				}
 			}
 		}
-}
 	
 	#simple{
 	margin: 0;
 		
 	
 		.total{
+		.animation-rapide;
 		width: 100%;
 		box-sizing: border-box;
 		-moz-box-sizing: border-box;
@@ -88,7 +133,8 @@ margin: 0;
 				text-align: center;
 				width: 100px;
 				&:focus{
-					border: 1px solid @couleur-principale;
+				
+				border: 1px solid @couleur-principale;
 					box-shadow: 0px 0px 5px @couleur-principale;
 					outline: none;
 				}
@@ -110,21 +156,122 @@ margin: 0;
 		}
 	
 		.personnes{
+		.animation-rapide;
 		position: absolute;
+		box-sizing: border-box;
+			-moz-box-sizing: border-box;
 			bottom: 0px;
 			width: 100%;
 			padding: 15px;
-			box-sizing: border-box;
-			-moz-box-sizing: border-box;
+			transition: all 0.2s ease-in-out ;
 			.font-clean;
 			text-align: center;
 			font-size: @font-size;
+			&.activated{
+				position: fixed;
+				background: white;
+				padding-bottom: 60px;
+				box-shadow: 0px -3px 10px RGBA(0,0,0,0.5);
+			}
 		}
 		
 		#picker{
 			text-align: center;
 			width: 100%;
 			background-color: white;
+		}
+	}
+	
+	#details{
+	-webkit-overflow-scrolling: touch;
+		.font-clean;
+		h3{
+		transition: all 0.5s ease-in-out ;
+			.animation-rapide;
+			box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			color : white;
+			font-weight: normal;
+			width: 100%;
+			padding: 10px;
+			margin: 0px;
+			
+			&#bouton-frais{
+				background-color: @couleur-bouton-frais;
+				box-shadow: @ombre-box @couleur-bouton-frais - @ombre;
+				&.active{
+					box-shadow: @ombre-box @couleur-bouton-frais - @ombre inset;
+					margin : 0px;
+					position: fixed;
+					top:62px;
+				}
+			}
+			&#bouton-personnes{
+				margin-top: 20px;
+				background-color: @couleur-boutons-personnes;
+				box-shadow: @ombre-box @couleur-boutons-personnes - @ombre;
+				&.active{
+					box-shadow: @ombre-box @couleur-boutons-personnes - @ombre inset;
+					margin-top: 62px;
+				}
+				margin-bottom: 20px;
+			}
+		}
+		#zone-frais, #zone-personnes{
+			display: none;
+		}
+		
+		#listeFrais{
+		.animation-rapide;
+		margin-top: 122px;
+		padding: 0px;
+	}
+	
+	#icone-frais, #icone-personne-liste{
+		margin-right: 10px;
+	}
+		
+		li{
+		.box-sizing;
+		
+		list-style: none;
+		width: 100%;
+		padding: 0px;
+		margin: 0px;
+		border-bottom:1px solid @couleur-bouton-frais;
+		&:first-child{
+			border-top: 1px solid @couleur-bouton-frais;
+		}
+		
+		input{
+		.box-sizing;
+			font-size: 15pt;
+			padding: 10px;
+			border: none;
+			margin: 0px;
+			box-shadow: none;
+			min-width: 0px;
+			outline: none;
+			border-radius: 0px;
+			&[name=nomFrais]{
+				width: 60%;
+			}
+			&[name=quantiteFrais]{
+				width: 20%;
+			}
+			&[name=prixFrais]{
+				text-align: right;
+				width: 20%;
+			}
+			&:focus{
+				border-bottom: 2px solid @couleur-bouton-frais;
+			}
+		}
+		
+		&.fantome{
+			border: 1px silver dashed;
+			margin-bottom: 15px;
+		}
 		}
 	}
 	
@@ -135,7 +282,11 @@ margin: 0;
 	.red{
 		color : @couleur-simple;
 	}
+	
+	
+	
 }
+
 
 .ui-input-text{
 	display:inline-block;

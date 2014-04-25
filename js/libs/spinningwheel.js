@@ -113,7 +113,7 @@ var SpinningWheel = {
 		// Create the Spinning Wheel main wrapper
 		div = document.createElement('div');
 		div.id = 'sw-wrapper';
-		div.style.top = window.innerHeight + window.pageYOffset + 'px';		// Place the SW down the actual viewing screen
+		div.style.top = window.innerHeight + 'px';		// Place the SW down the actual viewing screen
 		div.style.webkitTransitionProperty = '-webkit-transform';
 		div.innerHTML = '<div id="sw-header"><div id="sw-cancel">Annuler</' + 'div><div id="sw-done">Ok</' + 'div></' + 'div><div id="sw-slots-wrapper"><div id="sw-slots"></' + 'div></' + 'div><div id="sw-frame"></' + 'div>';
 
@@ -164,25 +164,25 @@ var SpinningWheel = {
 		window.addEventListener('scroll', this, true);				// Reposition SW on page scroll
 
 		// Cancel/Done buttons events
-		document.getElementById('sw-cancel').addEventListener('touchstart', this, false);
+		
 		document.getElementById('sw-done').addEventListener('touchstart', this, false);
 		document.getElementById('sw-done').addEventListener("mousedown", this, false);
-		document.getElementById('sw-cancel').addEventListener("mousedown", this, false);
 		document.getElementById('sw-done').addEventListener("mouseup", this, false);
+		document.getElementById('sw-cancel').addEventListener("mousedown", this, false);
+		document.getElementById('sw-cancel').addEventListener('touchstart', this, false);
 		document.getElementById('sw-cancel').addEventListener("mouseup", this, false);
 
 		// Add scrolling to the slots
 		this.swFrame.addEventListener('touchstart', this, false);
-		this.swFrame.addEventListener('mousedown', this, false);
-		this.swFrame.addEventListener('mouseup', this, false);
 	},
 
 	open: function () {
 		this.create();
 
 		this.swWrapper.style.webkitTransitionTimingFunction = 'ease-out';
-		this.swWrapper.style.webkitTransitionDuration = '400ms';
+		this.swWrapper.style.webkitTransitionDuration = '200ms';
 		this.swWrapper.style.webkitTransform = 'translate3d(0, -260px, 0)';
+		
 	},
 	
 	
@@ -221,7 +221,7 @@ var SpinningWheel = {
 	
 	close: function () {
 		this.swWrapper.style.webkitTransitionTimingFunction = 'ease-in';
-		this.swWrapper.style.webkitTransitionDuration = '400ms';
+		this.swWrapper.style.webkitTransitionDuration = '200ms';
 		this.swWrapper.style.webkitTransform = 'translate3d(0, 0, 0)';
 		
 		this.swWrapper.addEventListener('webkitTransitionEnd', this, false);
@@ -358,13 +358,13 @@ var SpinningWheel = {
 	scrollEnd: function (e) {
 		this.swFrame.removeEventListener('touchmove', this, false);
 		this.swFrame.removeEventListener('touchend', this, false);
-
 		// If we are outside of the boundaries, let's go back to the sheepfold
 		if (this.slotEl[this.activeSlot].slotYPosition > 0 || this.slotEl[this.activeSlot].slotYPosition < this.slotEl[this.activeSlot].slotMaxScroll) {
 			this.scrollTo(this.activeSlot, this.slotEl[this.activeSlot].slotYPosition > 0 ? 0 : this.slotEl[this.activeSlot].slotMaxScroll);
+			iconePersonneSetText();
 			return false;
 		}
-
+		iconePersonneSetText();
 		// Lame formula to calculate a fake deceleration
 		var scrollDistance = this.slotEl[this.activeSlot].slotYPosition - this.scrollStartY;
 
@@ -410,7 +410,6 @@ var SpinningWheel = {
 		}
 
 		this.scrollTo(this.activeSlot, Math.round(newPosition), Math.round(newDuration) + 'ms');
- 
 		return true;
 	},
 
