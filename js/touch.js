@@ -19,3 +19,17 @@ $('ul').on('touchmove', function (e) {
 	console.log(event);
 	event.stopPropagation();
 });
+
+
+//suppression a gauche
+
+	$(".frais").on( 'drag', function(e){
+			if(!$(this).hasClass('fantome')){
+			$(this).css("position", "relative")
+					.css( "left", e.gesture.deltaX+"px");
+				if(e.gesture.direction == "right")
+					e.stopPropagation();
+					}
+		});
+		
+////
