@@ -30,24 +30,10 @@ $( document ).ajaxComplete(function() {
 				fermerFrais();
 				ouvrirPersonnes();
 			}
-<<<<<<< HEAD
 		});
-<<<<<<< HEAD
-
-=======
-		
-	
-		
-		
-		
-=======
-		});		
->>>>>>> 7ec8f1c08468b706509fee79fde0db269a24a51e
-		
+		};		
 	}
->>>>>>> ce82d916215d1920520ca3c4cc3bba7f5267f50d
-	}
-});
+	});
 
 // Définition du comportement des onglets "simple" et "détails"
 $( document ).ready(function(){
