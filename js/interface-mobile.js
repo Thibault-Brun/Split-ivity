@@ -42,9 +42,7 @@ $( document ).ajaxComplete(function() {
 				$('.tabs').slideUp();
 			}
 		});
-<<<<<<< HEAD
 		}
-=======
 		$('#newNomPersonne').autocomplete({
  source: function (request, response) {
  
@@ -63,7 +61,6 @@ $( document ).ajaxComplete(function() {
     }
 });
 		
->>>>>>> 1e27d7a11aaa61bf093defb9cd44c944b14d0892
 	}
 });
 
