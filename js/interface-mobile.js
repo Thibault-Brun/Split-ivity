@@ -42,7 +42,28 @@ $( document ).ajaxComplete(function() {
 				$('.tabs').slideUp();
 			}
 		});
+<<<<<<< HEAD
 		}
+=======
+		$('#newNomPersonne').autocomplete({
+ source: function (request, response) {
+ 
+        $.ajax({
+	url: "/ressources/dictionnaires/dico_prenoms.json",
+	data: request,
+	type: "GET",
+	dataType: "json",
+	success: function(data) {
+	//alert(data);
+              response(data); },
+	error: function() {
+              alert('La requête n\'a pas abouti'); }
+    }); 
+		
+    }
+});
+		
+>>>>>>> 1e27d7a11aaa61bf093defb9cd44c944b14d0892
 	}
 });
 
