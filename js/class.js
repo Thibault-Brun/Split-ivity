@@ -143,7 +143,7 @@ function ActiviteDetail (arg1) {
 extendClass(PackageSpecifique, PackageDefault);
 extendClass(ActiviteSimple, Activite);
 extendClass(ActiviteDetail, Activite);
-
+/*
 var pack1 = new PackageDefault("defaut");
 var pack2 = new PackageSpecifique("toto");
 //console.log(pack1.getInfo());
@@ -198,4 +198,4 @@ console.log(act3.listConsommation);
 
 //$(document).ready(function() {
 //    //console.log( "ready!" );
-//});
+//});*/
