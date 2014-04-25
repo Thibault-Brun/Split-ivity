@@ -6,8 +6,11 @@ $( document ).ajaxComplete(function() {
 		chargerSimple();
 	}
 	else{
+	if($('#listeFrais').children().length == 0){
 		chargerDetails();
 		renderFraisIcon();
+		
+		 $.get("./formulaireFrais.html", function(data){$('#listeFrais').html((data));});
 		renderPersonneListeIcon();
 		$('#listeFrais').slideUp(0);
 		$('#bouton-frais').click(function(){
@@ -39,6 +42,7 @@ $( document ).ajaxComplete(function() {
 				$('.tabs').slideUp();
 			}
 		});
+		}
 	}
 });
 
@@ -54,7 +58,8 @@ $( document ).ready(function(){
 			$("#simple-button").removeClass("active");
 			
 			setTimeout(function(){
-						$( "#container" ).load("indexDetails.html #details");}, 300);
+						$( "#container" ).load("indexDetails.html #details");
+			}, 300);
 		}
 		});
 		$( "#simple-button" ).click(function(){
