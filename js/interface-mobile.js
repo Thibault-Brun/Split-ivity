@@ -15,52 +15,24 @@ $( document ).ajaxComplete(function() {
 		$('#listeFrais').slideUp(0);
 		$('#bouton-frais').click(function(){
 			if($('#listeFrais').is(":visible")){
-				replierListe($('#listeFrais'));	
-				$('#bouton-frais').removeClass('active');		
-				tournerFraisIcon('0');	
-				$('.tabs').slideDown();
+				fermerFrais();
 			}
 			else{
-				deplierListe($('#listeFrais'));
-				$('#bouton-frais').addClass('active');
-				tournerFraisIcon('90');
-				$('.tabs').slideUp();
+				fermerPersonnes();
+				ouvrirFrais();
 			}
 		});
 		
 		$('#bouton-personnes').click(function(){
 			if($('#bouton-personnes').is(".active")){
-				$('#bouton-personnes').removeClass('active');		
-				tournerPersonneListeIcon('0');	
-				$('.tabs').slideDown();
-				$('#bouton-frais').slideDown();
-			}
+				fermerPersonnes();			}
 			else{
-				$('#bouton-personnes').addClass('active');
-				tournerPersonneListeIcon('90');
-				$('#bouton-frais').slideUp();
-				$('.tabs').slideUp();
+				fermerFrais();
+				ouvrirPersonnes();
 			}
-		});
-		}
-		$('#newNomPersonne').autocomplete({
- source: function (request, response) {
- 
-        $.ajax({
-	url: "/ressources/dictionnaires/dico_prenoms.json",
-	data: request,
-	type: "GET",
-	dataType: "json",
-	success: function(data) {
-	//alert(data);
-              response(data); },
-	error: function() {
-              alert('La requête n\'a pas abouti'); }
-    }); 
+		});		
 		
-    }
-});
-		
+	}
 	}
 });
 
