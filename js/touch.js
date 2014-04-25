@@ -15,8 +15,9 @@ $("body")
         e.preventDefault();
 });
 
-$('ul').on('touchmove', function (e) {
+$('ul').hammer().on('drag', function (e) {
 	console.log(event);
+<<<<<<< HEAD
 	event.stopPropagation();
 });
 
@@ -33,3 +34,7 @@ $('ul').on('touchmove', function (e) {
 		});
 		
 ////
+=======
+	e.gesture.stopPropagation();
+});
+>>>>>>> 7ec8f1c08468b706509fee79fde0db269a24a51e

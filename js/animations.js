@@ -96,3 +96,33 @@ function replierListe(liste){
 	//var animationListe = 'animated fadeOutRight';
 	liste.slideUp(500);
 }
+
+
+function fermerFrais(){
+	replierListe($('#listeFrais'));	
+	$('#bouton-frais').removeClass('active');		
+	tournerFraisIcon('0');	
+	$('.tabs').slideDown(200);
+}
+
+function fermerPersonnes(){
+	$('#bouton-personnes').removeClass('active');
+	tournerPersonneListeIcon('0');	
+	$('.tabs').slideDown();
+	$('#bouton-frais').slideDown(200);
+
+}
+
+function ouvrirFrais(){
+	deplierListe($('#listeFrais'));
+	$('#bouton-frais').addClass('active');
+	tournerFraisIcon('90');
+	$('.tabs').slideUp(200);
+}
+
+function ouvrirPersonnes(){
+	$('#bouton-personnes').addClass('active');
+	tournerPersonneListeIcon('90');
+	$('#bouton-frais').slideUp(200);
+	$('.tabs').slideUp(200);
+}
