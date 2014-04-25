@@ -15,7 +15,7 @@ $("body")
         e.preventDefault();
 });
 
-$('ul').on('touchmove', function (e) {
+$('ul').hammer().on('drag', function (e) {
 	console.log(event);
-	event.stopPropagation();
+	e.gesture.stopPropagation();
 });
