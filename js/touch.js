@@ -20,7 +20,6 @@ Touch = {
 					header.moveTo(header.currPos+ev.gesture.deltaY);
 					header.addClass("ombre");
 					}
-
 				})
 				.on("dragend", function(ev){
 					if(!(ev.gesture.deltaY>-60 && ev.gesture.deltaY<60)){
@@ -41,42 +40,11 @@ Touch = {
 				});
 	}
 }
-  
-/*// Android fixer  
-function touchHandlerDummy(e) {
-	e.preventDefault();
-}
-
-function touch_preventTabSwitching(e){
-	if(e.gesture.direction == "right")
- 	e.gesture.preventDefault();
- 	e.stopPropagation();
-
-}
-
-function touch_setListeHandlers(liste){
-	console.log("Touch.js : attribution des handlers de liste à "+liste);
-		$(liste).hammer()
-		
-		.on('drag', function(e){
-			if(e.gesture.deltaX>40 || e.gesture.deltaX< -40){
-				animation_dragListElement(this,e.gesture.deltaX);		}	
-		})
-		
-		.on('dragend', function(e){
-			if(e.gesture.deltaX>40 || e.gesture.deltaX< -40){
+	$(".frais").on( 'drag', function(e){
+			if(!$(this).hasClass('fantome')){
+			$(this).css("position", "relative")
+					.css( "left", e.gesture.deltaX+"px");
 				if(e.gesture.direction == "right")
-					move = 50;
-				else if(e.gesture.direction == "left") 
-					move = -50;
-				
-				animation_moveListElementTo(this,move);
-			}
-			touch_preventTabSwitching(e);
-		})
-		 .on("tap", function(){
-			 animation_moveListElementTo($(this),0);
-		 });
-
-
-}*/
+					e.stopPropagation();
+					}
+		});

@@ -63,11 +63,6 @@ function animation_raphaelObjectShrink(el){
 	});
 }
 
-function animation_dragListElement(element, x){
-	$(element).css("position", "relative")
-			.css( "left", x+"px");
-}
-
 function animation_moveListElementTo(element, x){
 	console.log("Déplacement de "+element+" à "+x);
 	$(element).css("position", "relative")
@@ -78,6 +73,7 @@ function animation_moveListElementTo(element, x){
 }
 
 function ouvrirPersonnes(){
+	deplierListe($('#listePersonne'));
 	$('#bouton-personnes').addClass('active');
 	tournerPersonneListeIcon('90');
 	$('#bouton-frais').slideUp(200);

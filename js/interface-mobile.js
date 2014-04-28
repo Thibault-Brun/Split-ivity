@@ -10,9 +10,8 @@ window.onresize = function(){
 	Interface.repaint();
 }
 
-splitivityColor = '#D97D02';
-
 Interface = {
+	splitivityColor : '#D97D02',
 	repaint : function(){
 		header.coordUp= $(document).height()*-1 + header.splitivity.outerHeight();
 		tabs.coordDown = header.splitivity.outerHeight();
