@@ -63,7 +63,7 @@ function ActiviteDetail (arg1) {
             this.listConsommation[this.listFrais.length-1]= [newFrais,[]];
 			tabRep.push(this.listFrais.length-1);
         }
-		console.log(tabRep);
+		
 		return tabRep;
     };
     this.ajouterPersonne = function(pers) {
