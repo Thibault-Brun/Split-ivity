@@ -26,9 +26,9 @@ Interface = {
 	},
 	renderIconeNbPersonne : function(){
 		paper = Raphael(iconeNbPersonnes[0],100, 100);
-		iconeNbPersonnes.milieu 	= 	paper.path(RAPHAEL_bonhommes.centre).attr({fill: splitivityColor, stroke: "none"}).scale(3.3,3.3,0,0);
-		iconeNbPersonnes.gauche 	= 	paper.path(RAPHAEL_bonhommes.gauche).attr({fill: splitivityColor, stroke: "none"}).scale(3.3,3.3,0,0);
-		iconeNbPersonnes.droite 	= 	paper.path(RAPHAEL_bonhommes.droite).attr({fill: splitivityColor, stroke: "none"}).scale(3.3,3.3,0,0);
+		iconeNbPersonnes.milieu 	= 	paper.path(RAPHAEL_bonhommes.centre).attr({fill: Interface.splitivityColor, stroke: "none"}).scale(3.3,3.3,0,0);
+		iconeNbPersonnes.gauche 	= 	paper.path(RAPHAEL_bonhommes.gauche).attr({fill: Interface.splitivityColor, stroke: "none"}).scale(3.3,3.3,0,0);
+		iconeNbPersonnes.droite 	= 	paper.path(RAPHAEL_bonhommes.droite).attr({fill: Interface.splitivityColor, stroke: "none"}).scale(3.3,3.3,0,0);
 		iconeNbPersonnes.label 		= 	paper.text(51,55, '2').attr({fill: "#FFF", "font-size" : 20});
 	},
 	ouvrirListe : function(el){
