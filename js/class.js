@@ -53,7 +53,6 @@ function ActiviteDetail (arg1) {
     this.listPersonne = [];
     this.listFrais = [];
     this.listConsommation = [];
-    //this.listConsommation['row'] = [];
 
     this.ajouterFrais = function (frais, prix, qte) {
         for (var i = 0; i < qte; i++) {
@@ -62,6 +61,7 @@ function ActiviteDetail (arg1) {
             this.listConsommation[this.listFrais.length-1]= [newFrais,[]];
         };
     };
+
     this.supprimerFrais = function (frais) {
         if (frais instanceof Frais){ var objFrais = frais;} else { var objFrais = this.getFraisById(frais);}
         this.listFrais.splice(this.listFrais.indexOf(objFrais),1);
