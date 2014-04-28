@@ -1,0 +1,31 @@
+CACHE MANIFEST
+# Time: Mon Apr 28 2014 22:33:05 GMT+0200 (CEST)
+
+
+CACHE:
+formulaireFrais.html
+formulairePersonnes.html
+index.html
+indexDetails.html
+split.html
+vueSimple.html
+css/min.css
+fonts/pacifico.woff
+images/startup.png
+images/sw-alpha.png
+images/touch-icon-ipad-retina.png
+images/touch-icon-iphone-retina.png
+js/min.js
+
+
+NETWORK:
+http://*
+https://*
+*
+index.html
+
+
+SETTINGS:
+prefer-online
+
+# hash: 8056ee26fddf750f399242a77a84d79ca33c7b073b4673cba4e5f68f3697da74

@@ -1,0 +1,351 @@
+@font-face {
+  font-family: 'Pacifico';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Pacifico Regular'), local('Pacifico-Regular'), url(../fonts/pacifico.woff) format('woff');
+}
+.font-splitivity {
+  font-family: 'Pacifico', 'comic';
+}
+.font-clean {
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+}
+.ombre-text {
+  text-shadow: 0px -1px 0px #000000;
+}
+.animation-rapide {
+  -webkit-animation-duration: 0.5s;
+  -webit-animation-delay: 0.5s;
+}
+.box-sizing {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+* {
+  -webkit-transition: width 0.5s ease-in-out;
+  transition: width 0.5s ease-in-out;
+}
+html {
+  -webkit-text-size-adjust: 100%;
+  height: 100%;
+}
+body {
+  height: 100%;
+  margin: 0;
+}
+body header {
+  -webkit-animation-duration: 0.5s;
+  -webit-animation-delay: 0.5s;
+  z-index: 20;
+  top: 0px;
+  bottom: 0px;
+  right: 0px;
+  left: 0px;
+  height: auto;
+  position: fixed;
+  background-color: #d97d02;
+  text-align: center;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  border: none;
+  -webkit-transform: translate3d(0px, -100%, 0px);
+  -ms-transform: translate3d(0px, -100%, 0px);
+  transform: translate3d(0px, -100%, 0px);
+  -webkit-backface-visibility: hidden;
+  -ms-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-perspective: 1000;
+  -ms-perspective: 1000;
+  perspective: 1000;
+  text-shadow: 0px -1px 0px #000000;
+}
+body header.ombre {
+  -webkit-box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.8);
+  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.8);
+  border-bottom: 1px solid #fb9f24;
+}
+body header h1 {
+  color: white;
+  font-family: 'Pacifico', 'comic';
+  width: 100%;
+  text-align: center;
+  font-weight: lighter;
+  margin: 0;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+body header h1#splitivity-titre {
+  position: absolute;
+  bottom: 0px;
+}
+body header h1#menu-titre {
+  position: absolute;
+  top: 0px;
+}
+body .tabs {
+  width: 100%;
+  z-index: 2;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+}
+body .tabs ul {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+body .tabs ul li {
+  display: inline-block;
+  padding: 10px;
+  padding-bottom: 10px;
+  margin: 0px;
+  width: 35%;
+  text-align: center;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  color: white;
+  background-color: #067285;
+  font-size: 150%;
+  -webkit-box-shadow: 0px 3px 0px #005063 inset;
+  box-shadow: 0px 3px 0px #005063 inset;
+}
+body .tabs ul li:first-child {
+  background-color: #af0104;
+  -webkit-box-shadow: 0px 3px 0px #8d0000 inset;
+  box-shadow: 0px 3px 0px #8d0000 inset;
+}
+body .tabs ul li:first-child.active {
+  -webkit-box-shadow: 0px 3px 0px #8d0000;
+  box-shadow: 0px 3px 0px #8d0000;
+}
+body .tabs ul li.active {
+  width: 65%;
+  -webkit-box-shadow: 0px 3px 0px #005063;
+  box-shadow: 0px 3px 0px #005063;
+  padding-bottom: 7px;
+}
+body #container {
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  position: absolute;
+  height: -webkit-calc(100% - 116px);
+  height: calc(100% - 116px);
+}
+body #container #simple {
+  height: 100%;
+  margin: 0;
+}
+body #container #simple .total {
+  position: relative;
+  top: 0px;
+  -webkit-animation-duration: 0.5s;
+  -webit-animation-delay: 0.5s;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  text-align: center;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-size: 150%;
+  padding: 15px;
+}
+body #container #simple .total input {
+  padding: 5px;
+  margin-right: 5px;
+  border: none;
+  font-size: 1em;
+  text-align: center;
+  width: 100px;
+}
+body #container #simple .total input:focus {
+  border: 1px solid #d97d02;
+  -webkit-box-shadow: 0px 0px 5px #d97d02;
+  box-shadow: 0px 0px 5px #d97d02;
+  outline: none;
+}
+body #container #simple .total input:hover {
+  -webkit-box-shadow: 0px 0px 2px #d97d02;
+  box-shadow: 0px 0px 2px #d97d02;
+}
+body #container #simple .resultat {
+  position: relative;
+  margin: auto;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  text-align: center;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  font-size: 150%;
+}
+body #container #simple .personnes {
+  -webkit-animation-duration: 0.5s;
+  -webit-animation-delay: 0.5s;
+  position: absolute;
+  bottom: 0px;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  width: 100%;
+  padding: 15px;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  text-align: center;
+  font-size: 150%;
+}
+body #container #simple .personnes.activated {
+  position: fixed;
+  background: white;
+  padding-bottom: 60px;
+  -webkit-box-shadow: 0px -3px 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px -3px 10px rgba(0, 0, 0, 0.5);
+}
+body #container #simple .personnes:hover {
+  -webkit-transform: translateY(-20px);
+  -ms-transform: translateY(-20px);
+  transform: translateY(-20px);
+}
+body #container #simple #picker {
+  text-align: center;
+  width: 100%;
+  background-color: white;
+}
+body #container #details {
+  margin: 0;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+}
+body #container #details h3 {
+  -webkit-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+  -webkit-animation-duration: 0.5s;
+  -webit-animation-delay: 0.5s;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  color: white;
+  font-weight: normal;
+  width: 100%;
+  padding: 10px;
+  margin: 0px;
+  z-index: 250;
+  margin-bottom: 10px;
+}
+body #container #details h3.active {
+  position: fixed;
+}
+body #container #details h3#bouton-frais {
+  background-color: #6ba1cd;
+  -webkit-box-shadow: 0px 3px 0px #497fab;
+  box-shadow: 0px 3px 0px #497fab;
+  margin-top: 10px;
+}
+body #container #details h3#bouton-frais.active {
+  -webkit-box-shadow: 0px 3px 0px #497fab inset, 0px 2px 5px rgba(0, 0, 0, 0.6);
+  box-shadow: 0px 3px 0px #497fab inset, 0px 2px 5px rgba(0, 0, 0, 0.6);
+  margin: 0px;
+}
+body #container #details h3#bouton-personnes {
+  background-color: #fd6f94;
+  -webkit-box-shadow: 0px 3px 0px #db4d72;
+  box-shadow: 0px 3px 0px #db4d72;
+  margin-bottom: 20px;
+}
+body #container #details h3#bouton-personnes.active {
+  margin: 0;
+  -webkit-box-shadow: 0px 3px 0px #db4d72 inset, 0px 2px 5px rgba(0, 0, 0, 0.6);
+  box-shadow: 0px 3px 0px #db4d72 inset, 0px 2px 5px rgba(0, 0, 0, 0.6);
+}
+body #container #details #listeFrais,
+body #container #details #listePersonnes {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  left: 0px;
+  bottom: 0px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  overflow: scroll;
+  -webkit-animation-duration: 0.5s;
+  -webit-animation-delay: 0.5s;
+  padding: 0px;
+}
+body #container #details #icone-frais,
+body #container #details #icone-personne-liste {
+  margin-right: 10px;
+}
+body #container #details li {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  list-style: none;
+  width: 100%;
+  padding: 0px;
+  margin: 0px;
+  border-bottom: 1px solid #6ba1cd;
+}
+body #container #details li:first-child {
+  border-top: 1px solid #6ba1cd;
+}
+body #container #details li input {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  font-size: 15pt;
+  padding: 10px;
+  border: none;
+  margin: 0px;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  min-width: 0px;
+  outline: none;
+  border-radius: 0px;
+}
+body #container #details li input[name=nomFrais] {
+  width: 60%;
+}
+body #container #details li input[name=quantiteFrais] {
+  width: 20%;
+}
+body #container #details li input[name=prixFrais] {
+  text-align: right;
+  width: 20%;
+}
+body #container #details li input:focus {
+  border-bottom: 2px solid #6ba1cd;
+}
+body #container #details li.fantome {
+  border-bottom: 1px silver dashed;
+  border-top: 1px silver dashed;
+  margin-bottom: 15px;
+}
+body #container .colored {
+  color: #d97d02;
+}
+body #container .red {
+  color: #af0104;
+}
+body .ui-input-text {
+  display: inline-block;
+  width: 19%;
+}
+body .ui-input-text:first-child {
+  width: 60%;
+}

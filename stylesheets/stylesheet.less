@@ -41,36 +41,72 @@
 }
 
 
-html { -webkit-text-size-adjust: 100%; }
+html { -webkit-text-size-adjust: 100%; height:100%; }
 
 body{
+	height: 100%;
 	margin: 0;
+	
+	
 	header{
-	position: fixed;
-	top:0px;
-	width: 100%;
 	.animation-rapide;
-	z-index: 300;
+	z-index: 20;
+	top:0px;
+	bottom: 0px;
+	right: 0px;
+	left:0px;
+	height: auto;
+	position: fixed;
 	background-color : @couleur-principale;
 	text-align: center;
 	box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	border: none;
+	-webkit-transform: translate3d(0px,-100%,0px);
+	-moz-transform: translate3d(0px,-100%,0px);
+	-ms-transform: translate3d(0px,-100%,0px);
+	-o-transform: translate3d(0px,-100%,0px);
+	transform: translate3d(0px,-100%,0px);
+	-webkit-backface-visibility: hidden;
+   -moz-backface-visibility: hidden;
+   -ms-backface-visibility: hidden;
+   backface-visibility: hidden;
+
+   -webkit-perspective: 1000;
+   -moz-perspective: 1000;
+   -ms-perspective: 1000;
+   perspective: 1000;
 	.ombre-text;
-	padding-top: 5px;
+	&.ombre{
+		box-shadow: 0px 3px 10px rgba(0,0,0,0.8);
+		border-bottom: 1px solid @couleur-principale + @ombre;
+	}
+	
 		h1{
 		color : white;
 		.font-splitivity;
-		
+		width: 100%;
+		text-align: center;
 		font-weight: lighter;
 		margin: 0;
+		padding-top: 5px;
+		padding-bottom: 5px;
+		box-sizing: border-box;
+	-moz-box-sizing: border-box;
 		
-	}
+		&#splitivity-titre{
+			position: absolute;
+			bottom: 0px;
+		}
+		&#menu-titre{
+			position: absolute;
+			top:0px;
+		}
+		}
 	
 }
 .tabs{
-	margin-top: 62px;
-	margin-bottom: 20px;
+	width: 100%;
 	z-index: 2;
 			.font-clean;
 			ul{
@@ -112,11 +148,21 @@ body{
 			}
 		}
 	
+#container{
+	top:0px;
+	bottom:0px;
+	left: 0px;
+	right: 0px;
+	position: absolute;
+	height: ~'calc(100% - 116px)';
 	#simple{
+	height: 100%;
 	margin: 0;
 		
 	
 		.total{
+		position: relative;
+		top:0px;
 		.animation-rapide;
 		width: 100%;
 		box-sizing: border-box;
@@ -145,8 +191,8 @@ body{
 		}
 	
 		.resultat{
-			position:absolute; 
-			top:60%;
+			position: relative;
+			margin: auto;
 			.font-clean;
 			text-align: center;
 			width: 100%;
@@ -158,9 +204,9 @@ body{
 		.personnes{
 		.animation-rapide;
 		position: absolute;
+		bottom:0px;
 		box-sizing: border-box;
 			-moz-box-sizing: border-box;
-			bottom: 0px;
 			width: 100%;
 			padding: 15px;
 			transition: all 0.2s ease-in-out ;
@@ -173,6 +219,9 @@ body{
 				padding-bottom: 60px;
 				box-shadow: 0px -3px 10px RGBA(0,0,0,0.5);
 			}
+			&:hover{
+				transform : translateY(-20px);
+			}
 		}
 		
 		#picker{
@@ -183,7 +232,9 @@ body{
 	}
 	
 	#details{
-	-webkit-overflow-scrolling: touch;
+		margin: 0;
+		position: absolute;
+		top:0px;left:0px; right:0px;
 		.font-clean;
 		h3{
 		transition: all 0.5s ease-in-out ;
@@ -195,35 +246,41 @@ body{
 			width: 100%;
 			padding: 10px;
 			margin: 0px;
+			z-index: 250;
+			margin-bottom: 10px;
+			&.active{
+				position: fixed;
+			}
 			
 			&#bouton-frais{
 				background-color: @couleur-bouton-frais;
 				box-shadow: @ombre-box @couleur-bouton-frais - @ombre;
+				margin-top: 10px;
 				&.active{
 					box-shadow: @ombre-box @couleur-bouton-frais - @ombre inset, 0px 2px 5px rgba(0,0,0,0.6);
 					margin : 0px;
-					position: fixed;
-					top:62px;
 				}
 			}
 			&#bouton-personnes{
-				margin-top: 20px;
 				background-color: @couleur-boutons-personnes;
 				box-shadow: @ombre-box @couleur-boutons-personnes - @ombre;
 				&.active{
+					margin: 0;
 					box-shadow: @ombre-box @couleur-boutons-personnes - @ombre inset, 0px 2px 5px rgba(0,0,0,0.6);
-					margin-top: 62px;
 				}
 				margin-bottom: 20px;
 			}
 		}
-		#zone-frais, #zone-personnes{
-			display: none;
-		}
 		
-		#listeFrais{
+		#listeFrais, #listePersonnes{
+		padding: 0;
+		margin: 0;
+		width: 100%;
+		position: absolute;
+		top:0px; right:0px; left:0px; bottom:0px;
+		box-sizing: border-box;
+		overflow: scroll;
 		.animation-rapide;
-		margin-top: 122px;
 		padding: 0px;
 	}
 	
@@ -269,7 +326,8 @@ body{
 		}
 		
 		&.fantome{
-			border: 1px silver dashed;
+			border-bottom: 1px silver dashed;
+			border-top: 1px silver dashed;
 			margin-bottom: 15px;
 		}
 		}
@@ -295,4 +353,5 @@ body{
 	&:first-child{
 		width:60%;
 	}
+}
 }

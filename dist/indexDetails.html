@@ -1,0 +1,42 @@
+<html><head><meta charset="UTF-8"/><meta http-equiv="Content-Type" content="text/html"/><meta name="mobile-web-app-capable" content="yes" /><meta name="apple-mobile-web-app-capable" content="yes" /><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" /><meta name="viewport" content="width=device-width, user-scalable=0" /><link rel="apple-touch-icon" sizes="120x120" href="images/touch-icon-iphone-retina.png"/><link rel="apple-touch-icon" sizes="152x152" href="images/touch-icon-ipad-retina.png"/><link href="images/startup.png" rel="apple-touch-startup-image"/><link rel="stylesheet" href="stylesheets/spinningwheel.css" type="text/css" media="all" /><link rel="stylesheet/less" type="text/css" href="stylesheets/stylesheet.less"/><script type="text/javascript" src="js/dev/cache-log.js"></script><script type="text/javascript" src="js/dev/cache-updater.js"></script><script type="text/javascript" src="js/libs/less.js"></script><script type="text/javascript" src="js/libs/raphael.js"></script><script type="text/javascript" src="js/libs/spinningwheel.js"></script><script type="text/javascript" src="js/class.js"></script><script type="text/javascript" src="js/metier.js"></script><script type="text/javascript" src="js/calculs.js"></script><script type="text/javascript" src="js/interface-mobile.js"></script><script type="text/javascript" src="js/ajouterFrais.js"></script><script type="text/javascript" src="js/ajouterPersonne.js"></script><script type="text/javascript" src="ressources/dictionnaires/lire_donnees.js"></script><title> Split'ivity</title><!--<script>
+	$(function() {
+
+	var frais = [
+	"steak",
+	"frites",
+	"saumon",
+	"salade",
+	"poulet",
+	"vin"
+	];
+	$( "#nomFrais" ).autocomplete({
+	source: frais
+	});
+
+	var prenom = [
+	"renaud",
+	"thibault",
+	"martin",
+	"bharath",
+	"sebastien"
+	];
+	$("#newNomPersonne").autocomplete({
+	 source: function (request, response) {
+			$.ajax({
+		url: "/ressources/dictionnaires/dico_prenoms.json",
+		data: request,
+		type: "GET",
+		dataType: "json",
+		success: function(data) {
+		//alert(data);
+				  response(data); },
+		error: function() {
+				  alert('La requête n\'a pas abouti'); }
+		}); 
+			
+		}
+	});
+	console.log(prenom);
+
+	});
+	</script> --></head><body ontouchmove="BlockElasticScroll(event);"><header><h1>Split'ivity</h1><div class="tabs"><ul><li>Simple</li><li class="active">Détail</li></ul></div></header><div id="details" ><h3 id="bouton-frais"><span id="icone-frais"></span>Frais</h3><ul id="listeFrais"></ul><h3 id="bouton-personnes"><span id="icone-personne-liste"></span>Personnes</h3><ul id="listePersonne"></ul></div></body></html>

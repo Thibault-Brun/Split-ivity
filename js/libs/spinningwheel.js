@@ -1,27 +1,7 @@
-/**
- * 
- * Find more about the Spinning Wheel function at
- * http://cubiq.org/spinning-wheel-on-webkit-for-iphone-ipod-touch/11
- *
- * Copyright (c) 2009 Matteo Spinelli, http://cubiq.org/
- * Released under MIT license
- * http://cubiq.org/dropbox/mit-license.txt
- * 
- * Version 1.4 - Last updated: 2009.07.09
- * 
- */
-
 var SpinningWheel = {
 	cellHeight: 44,
 	friction: 0.003,
 	slotData: [],
-
-
-	/**
-	 *
-	 * Event handler
-	 *
-	 */
 
 	handleEvent: function (e) {
 		if (e.type == 'touchstart' || e.type == 'mousedown') {
@@ -57,13 +37,6 @@ var SpinningWheel = {
 			this.onScroll(e);
 		}
 	},
-
-
-	/**
-	 *
-	 * Global events
-	 *
-	 */
 
 	onOrientationChange: function (e) {
 		window.scrollTo(0, 0);
@@ -361,10 +334,10 @@ var SpinningWheel = {
 		// If we are outside of the boundaries, let's go back to the sheepfold
 		if (this.slotEl[this.activeSlot].slotYPosition > 0 || this.slotEl[this.activeSlot].slotYPosition < this.slotEl[this.activeSlot].slotMaxScroll) {
 			this.scrollTo(this.activeSlot, this.slotEl[this.activeSlot].slotYPosition > 0 ? 0 : this.slotEl[this.activeSlot].slotMaxScroll);
-			iconePersonneSetText();
+			interface_iconeNbPersonneUpdateLabel();
 			return false;
 		}
-		iconePersonneSetText();
+		interface_iconeNbPersonnesUpdateLabel();
 		// Lame formula to calculate a fake deceleration
 		var scrollDistance = this.slotEl[this.activeSlot].slotYPosition - this.scrollStartY;
 

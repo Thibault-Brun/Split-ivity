@@ -1,11 +1,22 @@
 function ajoutPersonne(){
-			
-	if ($.trim($("#newNomPersonne").val())) {
+	
+	var nom = $("input[name=nomPersonne].editable").first().val();
+	
+	if ( $.trim(nom) != "") {
+	
+		// UI
+		$(".nomPersonne.editable").removeClass("editable");
+		$(".totalPersonne.hidden").removeClass("hidden");
+		$(".detailsPersonne.hidden").removeClass("hidden");
+		$.get("./formulairePersonnes.html", function(data){$('#listePersonnes').prepend(data);});
+		$("input[name=nomPersonne].editable").first().focus();
 		
-		var newPersonne = new Personne($("#newNomPersonne").val());
-		
-		$("#listePersonne").append('<li><div class="nomPersonne">'+newPersonne.nom+'</div></li>');
-		
-		$("#newNomPersonne").val('');
+		// Metier
+		activiteDefaut.ajouterPersonne(nom);
+		/*activiteDefaut.affecterPersonne(['guigui'],1);
+		console.log(activiteDefaut.listPersonne);
+		console.log(activiteDefaut.calculeMontantPersonne('guigui'));
+		console.log(activiteDefaut);*/
 	}
 }
+
