@@ -9,7 +9,8 @@ function ajoutFrais(){
 		var tabID = activiteDefaut.ajouterFrais(frais, prix, qte);
 		$(".tabIDFrais.editable").first().val(tabID);
 		
-		$(".quantiteFrais.editable")[0].setAttribute('onblur', 'modifQte();'
+		$(".quantiteFrais.editable")[0].setAttribute('onfocus', 'prevQte()');
+		$(".quantiteFrais.editable")[0].setAttribute('onblur', 'modifQte();');
 		$(".nomFrais.editable")[0].setAttribute('onblur', 'modifFrais();');
 		$(".prixFrais.editable")[0].setAttribute('onblur', 'modifFrais();');
 		
@@ -19,20 +20,33 @@ function ajoutFrais(){
 		$(".tabIDFrais.editable").removeClass("editable");
 		
 		$.get("./formulaireFrais.html", function(data){$('#listeFrais').prepend(data);});
-		$("input[name=quantiteFrais].editable").first().focus();		
-		
-		/*nbFrais=nbFrais+1;
-		for (var i = 0 ; i < $("input[name=quantiteFrais].editable").first().val()-1 ; i++) {
-			frais = new Frais($("input[name=nomFrais].editable").first().val(), $("input[name=prixFrais].editable").first().val(), nbFrais);
-			console.log(frais);
-		}*/
+		$("input[name=quantiteFrais].editable").focus();		
 	}
 }
 
 function modifFrais() {
-	alert("Test onblur");
+	
+}
+
+function prevQte() {
+	lastElementQte = document.activeElement;
+	lastQte = lastElementQte.value;
 }
 
 function modifQte() {
-
+	var qte = lastElementQte.value;
+	var res = qte - lastQte;
+	
+	if (res > 0) {
+		var frais = lastElementQte.parentElement.getElementsByTagName("input")[1].value;
+		var prix = lastElementQte.parentElement.getElementsByTagName("input")[2].value;
+		var tabID = activiteDefaut.ajouterFrais(frais, prix, res);
+		lastElementQte.parentElement.getElementsByTagName("input")[3].value += ',' +tabID;
+	}
+	else if(res < 0) {
+		/*for (var i = 0 ; i > res ; i--) {
+			activiteDefaut.
+		}*/
+	}
+	
 }
