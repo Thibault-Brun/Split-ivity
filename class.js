@@ -56,11 +56,14 @@ function ActiviteDetail (arg1) {
     //this.listConsommation['row'] = [];
 
     this.ajouterFrais = function (frais, prix, qte) {
-        for (var i = 0; i < qte; i++) {
-            var newFrais = new Frais(frais, prix, this.listFrais.length);
+        var tabRep = [];
+		for (var i = 0; i < qte; i++) {
+		    var newFrais = new Frais(frais, prix, this.listFrais.length);
             this.listFrais.push(newFrais);
             this.listConsommation[this.listFrais.length-1]= [newFrais,[]];
+			tabRep[i] = this.listFrais.length-1;
         };
+		return tabRep;
     };
     this.ajouterPersonne = function(pers) {
         this.listPersonne.push(new Personne(pers));

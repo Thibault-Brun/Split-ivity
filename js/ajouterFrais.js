@@ -6,9 +6,13 @@ function ajoutFrais(){
 	if ( $.trim(frais) !="" && ($.trim(prix) !="" && $.trim(qte) !="")) {		
 		
 		// UI
+		//$(".prixFrais.editable").setAttribute("onblur", modifFrais()); 
+		//$(".quantiteFrais.editable").setAttribute("onblur", "modifFrais();");
+		
 		$(".nomFrais.editable").removeClass("editable");
 		$(".prixFrais.editable").removeClass("editable");
 		$(".quantiteFrais.editable").removeClass("editable");
+		
 		$.get("./formulaireFrais.html", function(data){$('#listeFrais').prepend(data);});
 		$("input[name=quantiteFrais].editable").first().focus();
 		
@@ -26,4 +30,8 @@ function ajoutFrais(){
 	}
 }
 
+function modifFrais() {
 
+alert("Nice !");
+
+}
