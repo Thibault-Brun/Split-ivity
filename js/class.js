@@ -53,7 +53,6 @@ function ActiviteDetail (arg1) {
     this.listPersonne = [];
     this.listFrais = [];
     this.listConsommation = [];
-    //this.listConsommation['row'] = [];
 
     this.ajouterFrais = function (frais, prix, qte) {
         var tabRep = [];
@@ -61,11 +60,34 @@ function ActiviteDetail (arg1) {
 		    var newFrais = new Frais(frais, prix, this.listFrais.length);
             this.listFrais.push(newFrais);
             this.listConsommation[this.listFrais.length-1]= [newFrais,[]];
-			tabRep.push(this.listFrais.length-1);
-        }
-		console.log(tabRep);
-		return tabRep;
+            tabRep.push(this.listFrais.length-1);
+        };
+        return tabRep;
     };
+
+    this.supprimerFrais = function (frais) {
+        if (frais instanceof Frais){ var objFrais = frais;} else { var objFrais = this.getFraisById(frais);}
+        this.listFrais.splice(this.listFrais.indexOf(objFrais),1);
+        var delInd = null;
+        $.each(this.listConsommation, function(index, value){ 
+            if (value != undefined) {
+                if (value[0].identifiant == objFrais.identifiant) {
+                    delInd = index;
+                }
+            };
+        });
+        this.listConsommation.splice(delInd,1);
+    };
+    this.getFraisById = function(arg1) {
+        var rep = null;
+        $.each(this.listFrais, function(index, value){
+            if(value.identifiant == arg1){
+                rep = value;
+            }
+        });
+        return rep;
+    };
+    
     this.ajouterPersonne = function(pers) {
         this.listPersonne.push(new Personne(pers));
     };
