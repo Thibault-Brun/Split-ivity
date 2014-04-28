@@ -55,11 +55,14 @@ function ActiviteDetail (arg1) {
     this.listConsommation = [];
 
     this.ajouterFrais = function (frais, prix, qte) {
-        for (var i = 0; i < qte; i++) {
-            var newFrais = new Frais(frais, prix, this.listFrais.length);
+        var tabRep = [];
+		for (var i = 0; i < qte; i++) {
+		    var newFrais = new Frais(frais, prix, this.listFrais.length);
             this.listFrais.push(newFrais);
             this.listConsommation[this.listFrais.length-1]= [newFrais,[]];
+            tabRep.push(this.listFrais.length-1);
         };
+        return tabRep;
     };
 
     this.supprimerFrais = function (frais) {
@@ -84,21 +87,9 @@ function ActiviteDetail (arg1) {
         });
         return rep;
     };
+    
     this.ajouterPersonne = function(pers) {
         this.listPersonne.push(new Personne(pers));
-    };
-    this.supprimerPersonne = function(pers) {
-        if (pers instanceof Personne){ var objPers = pers;} else { var objPers = this.getPersonneByNom(pers);}
-        this.listPersonne.splice(this.listPersonne.indexOf(objPers),1);
-    };
-    this.getPersonneByNom = function(arg1){
-        var rep = null;
-        $.each(this.listPersonne, function(index, value){
-            if(value.nom == arg1){
-                rep = value;
-            }
-        });
-        return rep;
     };
     this.affecterPersonne = function(pers, frais) {
         if (this.listConsommation[frais] != undefined) {
@@ -114,17 +105,16 @@ function ActiviteDetail (arg1) {
     };
     this.calculeMontantPersonnes = function() {
         $.each(this.listPersonne, function(index, value){
-            console.log("Total pour "+value.nom+" :"+this.calculeMontantPersonne(value.nom));
+            console.log("Total pour "+value.nom+" :"+calculeMontantPersonne(value.nom));
         });
     };
     this.calculeMontantPersonne = function(pers) {
         var rep = 0;
-        if (pers instanceof Personne){ nomPers = pers.nom; } else {nomPers = pers; }
         $.each(this.listConsommation, function(index, value){ 
             if (value != undefined) {
                 //console.log(value[1]);
                 $.each(value[1], function(index2, value2){
-                    if (value2 == nomPers) {
+                    if (value2 == pers) {
                         if(value[1].length == 1){ rep += value[0].montant; }
                         if(value[1].length > 1){ rep += value[0].montant/value[1].length; }
                     }
@@ -132,6 +122,14 @@ function ActiviteDetail (arg1) {
             };
         });
         return rep;
+    };
+    this.getFraisByName = function(arg1) {
+        $.each(this.listFrais, function(index, value){
+            if (value.intitule == arg1){
+                return value;
+            }
+        });
+        return null;
     };
     this.stringPersonne = function() {
         return this.listPersonne.join();
@@ -143,8 +141,8 @@ function ActiviteDetail (arg1) {
 extendClass(PackageSpecifique, PackageDefault);
 extendClass(ActiviteSimple, Activite);
 extendClass(ActiviteDetail, Activite);
-/*
-var pack1 = new PackageDefault("defaut");
+
+/*var pack1 = new PackageDefault("defaut");
 var pack2 = new PackageSpecifique("toto");
 //console.log(pack1.getInfo());
 //console.log(pack2.getInfo());
@@ -179,19 +177,11 @@ console.log(act3.listConsommation);
 console.log("calculeMontantGlobal -->"+act3.calculeMontantGlobal());
 
 
-//act3.calculeMontantPersonnes();
-console.log("Total pour tata :"+act3.calculeMontantPersonne('tata'));
+act3.calculeMontantPersonnes();
+/*console.log("Total pour tata :"+act3.calculeMontantPersonne('tata'));
 console.log("Total pour titi :"+act3.calculeMontantPersonne('titi'));
 console.log("Total pour toto :"+act3.calculeMontantPersonne('toto'));
-console.log("Total pour lala :"+act3.calculeMontantPersonne('lala'));
-
-console.log(act3.getPersonneByNom('titi'));
-act3.supprimerPersonne('titi');
-console.log(act3.listPersonne);
-console.log(act3.getFraisById(3));
-act3.supprimerFrais('3');
-console.log(act3.listFrais);
-console.log(act3.listConsommation);
+console.log("Total pour lala :"+act3.calculeMontantPersonne('lala'));*/
 
 //console.log(act3.getFraisByName('Steak').quantite);
 //console.log(act3.listConsommation['tdsq']);
