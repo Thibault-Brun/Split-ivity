@@ -6,18 +6,25 @@ function ajoutFrais(){
 	if ( $.trim(frais) !="" && ($.trim(prix) !="" && $.trim(qte) !="")) {		
 		
 		// UI
-		//$(".prixFrais.editable").setAttribute("onblur", modifFrais()); 
-		//$(".quantiteFrais.editable").setAttribute("onblur", "modifFrais();");
-		
 		$(".nomFrais.editable").removeClass("editable");
 		$(".prixFrais.editable").removeClass("editable");
 		$(".quantiteFrais.editable").removeClass("editable");
 		
+		var tabID = [];
+		console.log(tabID);
+		tabID = activiteDefaut.ajouterFrais(frais, prix, qte);
+		console.log(tabID);
+		
 		$.get("./formulaireFrais.html", function(data){$('#listeFrais').prepend(data);});
 		$("input[name=quantiteFrais].editable").first().focus();
 		
+		$("input[name=tabID]").first().val(tabID);
+		
+		//$("input[name=nomFrais]").last.setAttribute('onblur', 'modifFrais();');
+		//$("input[prix=nomFrais]").last.setAttribute("onblur", "modifFrais();");
+		
 		// Metier
-		activiteDefaut.ajouterFrais(frais, prix, qte);
+		
 		
 		console.log(activiteDefaut);
 		console.log(activiteDefaut.listFrais);
@@ -28,10 +35,4 @@ function ajoutFrais(){
 			console.log(frais);
 		}*/
 	}
-}
-
-function modifFrais() {
-
-alert("Nice !");
-
 }
