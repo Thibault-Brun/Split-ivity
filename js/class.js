@@ -87,15 +87,37 @@ function ActiviteDetail (arg1) {
         });
         return rep;
     };
-    
+
     this.ajouterPersonne = function(pers) {
         this.listPersonne.push(new Personne(pers));
     };
+    
+    /* A FINIR */
+    this.supprimerPersonne = function(pers) {
+        if (pers instanceof Personne){ var objPers = pers;} else { var objPers = this.getPersByNom(pers);}
+        this.listPersonne.splice(this.listPersonne.indexOf(objPers),1);
+        // console.log(objPers);
+        console.log(this.listPersonne);
+        $.each(this.listConsommation, function(index, value){ 
+            if (value != undefined) {
+                $.each(value, function(index2, value2){
+                    if(value2 == objPers.nom){ value.splice(index2,1); }
+                });
+            };
+        });
+    };
+    /* FIN A FINIR */
     this.affecterPersonne = function(pers, frais) {
         if (this.listConsommation[frais] != undefined) {
             this.listConsommation[frais][1] = pers;
         };
     };
+    this.getPersByNom = function (pers){
+        $.each(this.listPersonne, function(index, value){
+            if(value.nom == pers){ return value; }
+        });
+    }
+
     this.calculeMontantGlobal = function() {
         var somme = 0;
         $.each(this.listFrais, function(index, value){
@@ -176,8 +198,16 @@ console.log(act3.listPersonne);
 console.log(act3.listConsommation);
 console.log("calculeMontantGlobal -->"+act3.calculeMontantGlobal());
 
+act3.ajouterPersonne('testSup1');
+act3.ajouterPersonne('testSup2');
 
-act3.calculeMontantPersonnes();
+act3.affecterPersonne(['lala','testSup1'],2);
+//act3.affecterPersonne(['toto','testSup2'],3);
+console.log(act3.listPersonne);
+//console.log(act3.getPersByNom('testSup1'));
+
+act3.supprimerPersonne('testSup1');
+//act3.calculeMontantPersonnes();
 /*console.log("Total pour tata :"+act3.calculeMontantPersonne('tata'));
 console.log("Total pour titi :"+act3.calculeMontantPersonne('titi'));
 console.log("Total pour toto :"+act3.calculeMontantPersonne('toto'));
@@ -188,4 +218,4 @@ console.log("Total pour lala :"+act3.calculeMontantPersonne('lala'));*/
 
 //$(document).ready(function() {
 //    //console.log( "ready!" );
-//});*/
+//}); */
