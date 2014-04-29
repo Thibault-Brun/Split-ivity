@@ -108,7 +108,7 @@
 		frais.liste.frais = {};
 		frais.liste.ajouter = function(el, id){
 			Touch.listElement(el);
-			//frais.liste.frais.push({el : id});
+			frais.liste.frais.push({el : id});
 		};
 		frais.liste.getIdByElement = function(el){
 			return frais.liste.frais.find(el);
@@ -126,7 +126,7 @@
 		personnes.liste.personnes = new Array;
 		personnes.liste.ajouter = function(el, id){
 			Touch.listElement(el);
-			//personnes.liste.personnes.push({el : id});
+			personnes.liste.personnes.push({el : id});
 		};
 		personnes.liste.getIdByElement = function(el){
 			return personnes.liste.personnes.find(el);
