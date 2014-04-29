@@ -96,7 +96,7 @@ function ActiviteDetail (arg1) {
 	
 	this.modifierPersonne=function(id,newNom){
 		$.each(this.listPersonne,function(index, value){
-			if(value.identifiant==id)
+			if(value.identifiant=id)
 				value.nom=newNom;
 		});
 	}

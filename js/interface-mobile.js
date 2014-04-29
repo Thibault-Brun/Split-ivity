@@ -6,10 +6,6 @@ $( document ).ready(function(){
 	container.simple();
 });
 
-window.onresize = function(){
-	Interface.repaint();
-}
-
 Interface = {
 	splitivityColor : '#D97D02',
 	renderIconeNbPersonne : function(){
@@ -18,6 +14,11 @@ Interface = {
 		iconeNbPersonnes.gauche 	= 	paper.path(RAPHAEL_bonhommes.gauche).attr({fill: Interface.splitivityColor, stroke: "none"}).scale(3.3,3.3,0,0);
 		iconeNbPersonnes.droite 	= 	paper.path(RAPHAEL_bonhommes.droite).attr({fill: Interface.splitivityColor, stroke: "none"}).scale(3.3,3.3,0,0);
 		iconeNbPersonnes.label 		= 	paper.text(51,55, '2').attr({fill: "#FFF", "font-size" : 20});
+	},
+	enterPressed : function(e,el){
+		if(e.which == 13){
+	        $(el).blur();
+	    }
 	},
 	ouvrirListe : function(el){
 		tabs.up();

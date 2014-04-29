@@ -1,17 +1,21 @@
 Touch = {
 	tabSwipe : function(){
 		$('body')	.hammer()
-					.on("drag", function(ev){
-				  			ev.gesture.preventDefault();
-				  	})
+					.on("drag", function(e){
+						e.gesture.preventDefault();
+					})
 				  	.on("dragend", function(ev) { 
-						ev.gesture.preventDefault();
 						if(ev.gesture.deltaX<40 && ev.gesture.deltaX>-40) return;
 						if(ev.gesture.direction == "right")
 							tabs.simple.click();
 						else
 							tabs.details.click();
 				 	 });
+	},
+	noTabSwipe : function(){
+		$('body')	.hammer()
+					.off("drag")
+					.off("dragend");
 	},
 	menu : function(){
 		header	.hammer()
@@ -44,18 +48,40 @@ Touch = {
 	},
 	listElement : function(el){
 		el 	.hammer()
+			.on('hold', function(e){
+				alert(el+"\n"+personnes.liste.getIdByElement(el));
+			})
 			.on( 'drag', function(e){
-			if(el.is('li')){
-				el.animate({transform: 'translateX('+e.gesture.deltaX+'px)'},0);
-				if(!el.hasClass('touched'))
-				el.addClass('touched');
+				Touch.noTabSwipe();
+				if(e.gesture.direction == 'left' || e.gesture.direction == 'right'){
+					if(el.is('li')){
+						el.animate({transform: 'translateX('+e.gesture.deltaX+'px)'},0);
+						if(!el.hasClass('touched'))
+						el.addClass('touched');
+						e.gesture.preventDefault();
+					}
+				}
+			})
+			.on('tap', function(e){
+				if(el.moved){
+					Animation.slideTo(el, 0);
+					el.moved = false;
+					e.gesture.preventDefault();
+					e.stopPropagation();
 				}
 			})
 			.on('dragend', function(e){
 				el.removeClass('touched');
-				Animation.slideTo(el, 0);
+				if(e.gesture.direction == "right")
+					Animation.slideTo(el, 40);
+				else if(e.gesture.direction == "left")
+					Animation.slideTo(el, -40);
+				el.moved = true;
+				e.gesture.stopPropagation();
 				e.gesture.preventDefault();
+				e.preventDefault();
 				e.stopPropagation();
-			});
-	}
-}
+				Touch.tabSwipe();
+			})
+		}
+	};
