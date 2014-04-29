@@ -1,12 +1,12 @@
 @couleur-principale : RGBA(217, 125, 2, 1); // Splitivity
 
-@couleur-simple : RGBA(175, 1, 4, 1); // Rouge
+@couleur-simple : RGBA(204, 27, 22, 1); // Rouge
 
 @couleur-details : RGBA(6, 114, 133, 1); // Bleu
 
-@couleur-bouton-frais : RGBA(107, 161, 205, 1);
+@couleur-bouton-frais :RGBA(85, 98, 111, 1);
 
-@couleur-boutons-personnes : RGBA(253, 111, 148, 1);
+@couleur-boutons-personnes : RGBA(120, 189, 155, 1);
 
 @ombre : #222222; 
 
@@ -66,7 +66,6 @@ body{
 	right: 0px;
 	left:0px;
 	height: auto;
-	position: fixed;
 	background-color : @couleur-principale;
 	text-align: center;
 	box-sizing: border-box;
@@ -243,7 +242,6 @@ body{
 			width: 100%;
 			padding: 10px;
 			margin: 0px;
-			z-index: 250;
 			margin-bottom: 10px;
 			&.active{
 				position: fixed;
@@ -301,6 +299,7 @@ body{
 		 }
 		input{
 		.box-sizing;
+			background: none;
 			font-size: 15pt;
 			padding: 10px;
 			border: none;
@@ -312,6 +311,10 @@ body{
 			&[name=nomFrais]{
 				width: 60%;
 			}
+			&[name=nomPersonne]{
+				width: 100%;
+			}
+
 			&[name=quantiteFrais]{
 				width: 20%;
 			}
@@ -355,6 +358,10 @@ body{
 }
  .hidden{
 	display : none;
+ }
+
+ .touched{
+ 	background-color: RGBA(240, 240, 240, 1);
  }
 
 .detailsPersonne{

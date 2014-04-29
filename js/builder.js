@@ -81,6 +81,7 @@
 				tabs.details.active = false;
 				container.simple();
 				tabs.down();
+				container.down();
 			}
 		});
 		tabs.details.click(function(){
@@ -95,6 +96,7 @@
 				tabs.simple.active = false;
 				container.details();
 				tabs.down();
+				container.down();
 			}
 		});
  	},
@@ -165,6 +167,14 @@
  	personneFantome : function(){
  		personnes.liste.fantome = $('.personne.fantome');
  		personnes.liste.fantome.nom = $('.personne.fantome > input');
+ 		personnes.liste.fantome.nom.onkeypress = function(e) {
+		    var event = e || window.event;
+		    var charCode = event.which || event.keyCode;
+
+		    if ( charCode == '13' ) {
+		      ajouterPersonne();
+		    }
+		}
  		personnes.liste.fantome.total = $(".totalPersonne.hidden");
 		personnes.liste.fantome.details = $(".detailsPersonne.hidden");
  	},

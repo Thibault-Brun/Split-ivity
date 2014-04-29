@@ -47,9 +47,12 @@ Touch = {
 			.on( 'drag', function(e){
 			if(el.is('li')){
 				el.animate({transform: 'translateX('+e.gesture.deltaX+'px)'},0);
+				if(!el.hasClass('touched'))
+				el.addClass('touched');
 				}
 			})
 			.on('dragend', function(e){
+				el.removeClass('touched');
 				Animation.slideTo(el, 0);
 				e.gesture.preventDefault();
 				e.stopPropagation();

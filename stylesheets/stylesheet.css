@@ -48,7 +48,6 @@ body header {
   right: 0px;
   left: 0px;
   height: auto;
-  position: fixed;
   background-color: #d97d02;
   text-align: center;
   -webkit-box-sizing: border-box;
@@ -122,13 +121,13 @@ body .tabs ul li {
   box-shadow: 0px 3px 0px #005063 inset;
 }
 body .tabs ul li:first-child {
-  background-color: #af0104;
-  -webkit-box-shadow: 0px 3px 0px #8d0000 inset;
-  box-shadow: 0px 3px 0px #8d0000 inset;
+  background-color: #cc1b16;
+  -webkit-box-shadow: 0px 3px 0px #aa0000 inset;
+  box-shadow: 0px 3px 0px #aa0000 inset;
 }
 body .tabs ul li:first-child.active {
-  -webkit-box-shadow: 0px -3px 0px #8d0000 inset;
-  box-shadow: 0px -3px 0px #8d0000 inset;
+  -webkit-box-shadow: 0px -3px 0px #aa0000 inset;
+  box-shadow: 0px -3px 0px #aa0000 inset;
 }
 body .tabs ul li.active {
   width: 65%;
@@ -253,33 +252,32 @@ body #container #details h3 {
   width: 100%;
   padding: 10px;
   margin: 0px;
-  z-index: 250;
   margin-bottom: 10px;
 }
 body #container #details h3.active {
   position: fixed;
 }
 body #container #details h3#bouton-frais {
-  background-color: #6ba1cd;
-  -webkit-box-shadow: 0px -3px 0px #497fab inset;
-  box-shadow: 0px -3px 0px #497fab inset;
+  background-color: #55626f;
+  -webkit-box-shadow: 0px -3px 0px #33404d inset;
+  box-shadow: 0px -3px 0px #33404d inset;
   margin-top: 10px;
 }
 body #container #details h3#bouton-frais.active {
-  -webkit-box-shadow: 0px 3px 0px #497fab inset;
-  box-shadow: 0px 3px 0px #497fab inset;
+  -webkit-box-shadow: 0px 3px 0px #33404d inset;
+  box-shadow: 0px 3px 0px #33404d inset;
   margin: 0px;
 }
 body #container #details h3#bouton-personnes {
-  background-color: #fd6f94;
-  -webkit-box-shadow: 0px -3px 0px #db4d72 inset;
-  box-shadow: 0px -3px 0px #db4d72 inset;
+  background-color: #78bd9b;
+  -webkit-box-shadow: 0px -3px 0px #569b79 inset;
+  box-shadow: 0px -3px 0px #569b79 inset;
   margin-bottom: 20px;
 }
 body #container #details h3#bouton-personnes.active {
   margin: 0;
-  -webkit-box-shadow: 0px 3px 0px #db4d72 inset;
-  box-shadow: 0px 3px 0px #db4d72 inset;
+  -webkit-box-shadow: 0px 3px 0px #569b79 inset;
+  box-shadow: 0px 3px 0px #569b79 inset;
 }
 body #container #details #listeFrais,
 body #container #details #listePersonnes {
@@ -311,10 +309,10 @@ body #container #details li {
   width: 100%;
   padding: 0px;
   margin: 0px;
-  border-bottom: 1px solid #6ba1cd;
+  border-bottom: 1px solid #55626f;
 }
 body #container #details li:first-child {
-  border-top: 1px solid #6ba1cd;
+  border-top: 1px solid #55626f;
 }
 body #container #details li div {
   display: inline-block;
@@ -323,6 +321,7 @@ body #container #details li input {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
+  background: none;
   font-size: 15pt;
   padding: 10px;
   border: none;
@@ -336,6 +335,9 @@ body #container #details li input {
 body #container #details li input[name=nomFrais] {
   width: 60%;
 }
+body #container #details li input[name=nomPersonne] {
+  width: 100%;
+}
 body #container #details li input[name=quantiteFrais] {
   width: 20%;
 }
@@ -344,7 +346,7 @@ body #container #details li input[name=prixFrais] {
   width: 20%;
 }
 body #container #details li input:focus {
-  border-bottom: 2px solid #6ba1cd;
+  border-bottom: 2px solid #55626f;
 }
 body #container #details li.fantome {
   border-bottom: 1px silver dashed;
@@ -355,7 +357,7 @@ body #container .colored {
   color: #d97d02;
 }
 body #container .red {
-  color: #af0104;
+  color: #cc1b16;
 }
 body .ui-input-text {
   display: inline-block;
@@ -366,6 +368,9 @@ body .ui-input-text:first-child {
 }
 .hidden {
   display: none;
+}
+.touched {
+  background-color: #f0f0f0;
 }
 .detailsPersonne {
   width: auto;
