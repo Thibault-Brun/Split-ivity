@@ -3,16 +3,21 @@ function ajoutPersonne(){
 	var nom = $("input[name=nomPersonne].editable").first().val();
 	
 	if ( $.trim(nom) != "") {
-	var id=activiteDefaut.listPersonne.length;
-		personnes.liste.fantome.nom.onfocus = modifierNomPersonne;	
+	idPersonne=activiteDefaut.listPersonne.length;
+	//personnes.liste.fantome.nom.blur('modifierNomPersonne();');
+	personnes.liste.fantome.nom.attr('onfocus', 'prevNomPersonne();');
+	personnes.liste.fantome.nom.attr('onblur', 'modifierNomPersonne();');
+		// personnes.liste.fantome.nom.onblur = modifierNomPersonne;	
 		
+		//recupere l id de l elem et de l objet
+	
 		// UI
 		personnes.liste.fantome.nom.removeClass("editable");
 		personnes.liste.fantome.removeClass('fantome');
 		personnes.liste.fantome.total.removeClass("hidden");
 		personnes.liste.fantome.details.removeClass("hidden");
 
-		personnes.liste.ajouter(personnes.liste.fantome,id);
+		personnes.liste.ajouter(personnes.liste.fantome,idPersonne);
 		$.get("./formulairePersonnes.html", function(data){$
 			personnes.liste.prepend(data);
 			Builder.personneFantome();
@@ -27,11 +32,12 @@ function ajoutPersonne(){
 		console.log(activiteDefaut);*/
 	}
 }
+function prevNomPersonne(){
+lastElementName=document.activeElement;
+}
 
 function modifierNomPersonne(){
-	var nom = document.activeElement.value;
-	activiteDefaut.modifierPersonne(document.activeElement.id,nom);
-
+	activiteDefaut.modifierPersonne(personnes.liste.getIdByElement(lastElementName.parentElement), lastElementName.value);
 }
 
 function supprimerPersonne(){

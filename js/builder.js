@@ -125,13 +125,23 @@
 					personnes.liste.html(data);
 					Builder.personneFantome();
 		});	
-		personnes.liste.personnes = new Array;
+		personnes.liste.personnes = new Array();
 		personnes.liste.ajouter = function(el, id){
+		
+		console.log(el);
 			Touch.listElement(el);
-			personnes.liste.personnes.push({el : id});
+			//personnes.liste.personnes.push({el : id});
+			personnes.liste.personnes.push({"li":el, "id":id});
 		};
 		personnes.liste.getIdByElement = function(el){
-			return personnes.liste.personnes.find(el);
+		
+		for(var val in personnes.liste.personnes){
+			if( personnes.liste.personnes[val].li[0]==el)
+				return personnes.liste.personnes[val].id;
+		}
+			//return personnes.liste.personnes.find(el);
+			//var res = personnes.liste.find(el);
+			//return res;
 		}
 		personnes.liste.height($(document).height()-header.splitivity.outerHeight()-personnes.bouton.outerHeight());
 		personnes.liste.hide();
