@@ -22,34 +22,35 @@ Interface = {
 	ouvrirListe : function(el){
 		tabs.up();
 		container.up();
-		el.addClass('active');
-		el.icone.tourner('90');
+		el.bouton.addClass('active');
+		el.bouton.icone.tourner('90');
 		el.liste.slideDown(300);
-		el.liste.css('top',el.outerHeight()+10);
-		if(el == boutonFrais){
-			Animation.upTo(boutonPersonnes, container.offset().top);
-			boutonPersonnes.hide();
+		el.liste.css('top',el.bouton.outerHeight()+10);
+		if(el == frais){
+			Animation.upTo(personnes.bouton, container.offset().top);
+			personnes.bouton.hide();
 		}
 		else{
-			boutonFrais.hide();
-			Animation.upTo(boutonFrais, container.offset().top);
+			frais.bouton.hide();
+			Animation.upTo(frais.bouton, container.offset().top);
 		}
+		
 	},
 	fermerListe : function(el){
 		tabs.down();
 		container.down();
-		el.removeClass('active');
-		el.icone.tourner('0');	
+		el.bouton.removeClass('active');
+		el.bouton.icone.tourner('0');	
 		el.liste.slideUp(0);
-		if(el == boutonFrais){
-			boutonPersonnes.show();
-			Animation.downTo(boutonPersonnes, container.offset().top);
-			Animation.downTo(boutonFrais, container.offset().top);
+		if(el == frais){
+			personnes.bouton.show();
+			Animation.downTo(personnes.bouton, container.offset().top);
+			Animation.downTo(frais.bouton, container.offset().top);
 		}
 		else{
-			boutonFrais.show();
-			Animation.downTo(boutonFrais, container.offset().top);
-			Animation.downTo(boutonPersonnes, container.offset().top);
+			frais.bouton.show();
+			Animation.downTo(frais.bouton, container.offset().top);
+			Animation.downTo(personnes.bouton, container.offset().top);
 		}
 	}
 };

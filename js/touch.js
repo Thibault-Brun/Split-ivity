@@ -41,13 +41,21 @@ Touch = {
 					ev.stopPropagation();
 					
 				});
+	},
+	listElement : function(el){
+		el 	.hammer()
+			.on( 'drag', function(e){
+			e.gesture.preventDefault();
+			e.stopPropagation();
+			if(el.hasClass('fantome')){
+				el.	css("position", "relative")
+					.css( "left", e.gesture.deltaX+"px");
+				
+			}
+			})
+			.on('dragend', function(e){
+				e.gesture.preventDefault();
+				e.stopPropagation();
+			});
 	}
 }
-	$(".frais").on( 'drag', function(e){
-			if(!$(this).hasClass('fantome')){
-			$(this).css("position", "relative")
-					.css( "left", e.gesture.deltaX+"px");
-				if(e.gesture.direction == "right")
-					e.stopPropagation();
-					}
-		});

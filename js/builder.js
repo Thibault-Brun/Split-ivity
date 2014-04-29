@@ -30,13 +30,15 @@
  		};
  		container.details = function(){
 			container.load("indexDetails.html #details", function(){
+				frais = {};
+				personnes = {}
 				Builder.boutonFrais();
 				Builder.boutonPersonnes();
 				
-				boutonPersonnes.icone = interface_renderListeButtonIcon(document.getElementById('icone-personne-liste'));
-				boutonFrais.icone = interface_renderListeButtonIcon(document.getElementById('icone-frais'));
+				personnes.bouton.icone = interface_renderListeButtonIcon(document.getElementById('icone-personne-liste'));
+				frais.bouton.icone = interface_renderListeButtonIcon(document.getElementById('icone-frais'));
 				
-				boutonPersonnes.icone.tourner = boutonFrais.icone.tourner = function(angle){
+				personnes.bouton.icone.tourner = frais.bouton.icone.tourner = function(angle){
 						this.animate({"transform":"r"+angle}, 200, "<>");
 				};
 				
@@ -97,52 +99,56 @@
 		});
  	},
  	listeFrais : function(){
- 		boutonFrais.liste = $('#listeFrais');
-		boutonFrais.liste.active = false;
+ 		frais.liste = $('#listeFrais');
+		frais.liste.active = false;
 		$.get("./formulaireFrais.html", function(data){
-					boutonFrais.liste.html(data);
+					frais.liste.html(data);
 		});	
-		boutonFrais.liste.height($(document).height()-header.splitivity.outerHeight()-boutonFrais.outerHeight());
-		boutonFrais.liste.hide();
+		frais.liste.height($(document).height()-header.splitivity.outerHeight()-frais.bouton.outerHeight());
+		frais.liste.frais = {};
+		frais.liste.add = function(el, id){
+			Touch.listElement(el);
+			frais.liste.frais.add({el : id});
+		};
+		frais.liste.getIdByElement = function(el){
+			return frais.liste.frais.find(el);
+		}
+		frais.liste.hide();
  	},
  	listePersonnes : function(){
- 		boutonPersonnes.liste = $('#listePersonnes');
-		boutonPersonnes.liste.active = false;
+ 		personnes.liste = $('#listePersonnes');
+		personnes.liste.active = false;
 		$.get("./formulairePersonnes.html", function(data){
-					boutonPersonnes.liste.html(data);
+					personnes.liste.html(data);
 		});	
-		boutonPersonnes.liste.height($(document).height()-header.splitivity.outerHeight()-boutonPersonnes.outerHeight());
-		boutonPersonnes.liste.hide();
+		personnes.liste.height($(document).height()-header.splitivity.outerHeight()-personnes.bouton.outerHeight());
+		personnes.liste.hide();
  	},
  	boutonPersonnes : function(){
- 		boutonPersonnes = $('#bouton-personnes');
-		boutonPersonnes.active = false;
-		boutonPersonnes.click(function(){
-			if(boutonPersonnes.active){
-				Interface.fermerListe(boutonPersonnes);
-				boutonPersonnes.active = false;
-				boutonPersonnes.liste.active = false;	
+ 		personnes.bouton = $('#bouton-personnes');
+		personnes.bouton.active = false;
+		personnes.bouton.click(function(){
+			if(personnes.bouton.active){
+				Interface.fermerListe(personnes);
+				personnes.bouton.active = false;
 			}
 			else{
-				Interface.ouvrirListe(boutonPersonnes)
-				boutonPersonnes.liste.active = true;
-				boutonPersonnes.active = true;
+				Interface.ouvrirListe(personnes)
+				personnes.bouton.active = true;
 			}
 		});
  	},
  	boutonFrais : function(){
- 		boutonFrais = $('#bouton-frais');
-		boutonFrais.active = false;
-		boutonFrais.click(function(){
-			if(boutonFrais.active){
-				Interface.fermerListe(boutonFrais);
-				boutonFrais.active = false;
-				boutonFrais.liste.active = false;			
+ 		frais.bouton = $('#bouton-frais');
+		frais.bouton.active = false;
+		frais.bouton.click(function(){
+			if(frais.bouton.active){
+				Interface.fermerListe(frais);
+				frais.bouton.active = false;		
 			}
 			else{
-				Interface.ouvrirListe(boutonFrais);
-				boutonFrais.liste.active = true;
-				boutonFrais.active = true;
+				Interface.ouvrirListe(frais);
+				frais.bouton.active = true;
 			}
 		});		
  	},
