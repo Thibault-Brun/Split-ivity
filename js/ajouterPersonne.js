@@ -3,10 +3,10 @@ function ajoutPersonne(){
 	var nom = $("input[name=nomPersonne].editable").first().val();
 	
 	if ( $.trim(nom) != "") {
-	var id=activiteDefaut.listPersonne.length;
+	 //idADonne=activiteDefaut.listPersonne.length;
 		$(".nomPersonne.editable")[0].setAttribute('onfocus','modifierNomPersonne();');	
-		//$(".nomPersonne.editable")[0].setAttribute('id',id);	
-		personnes.liste.add($(".nomPersonne.editable")[0],id)
+	//	$(".nomPersonne.editable")[0].setAttribute('id',idADonne);	
+		//personnes.liste.add($(".nomPersonne.editable")[0],id)
 		// UI
 		$(".nomPersonne.editable").removeClass("editable");
 		$(".totalPersonne.hidden").removeClass("hidden");
@@ -17,6 +17,8 @@ function ajoutPersonne(){
 		
 	
 		$(".hidden").removeClass("hidden");
+		
+		
 		// Metier
 		activiteDefaut.ajouterPersonne(nom);
 		
@@ -29,10 +31,8 @@ function ajoutPersonne(){
 
 function modifierNomPersonne(){
 	var nom = document.activeElement.value;
-	
-	activiteDefaut.modifierPersonne($(this),nom);
-	console.log(nom);
-	
+	activiteDefaut.modifierPersonne(document.activeElement.id,nom);
+
 }
 
 function supprimerPersonne(){

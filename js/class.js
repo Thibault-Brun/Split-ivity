@@ -5,8 +5,8 @@ var extendClass = function(child, parent) {
 };
 
 function Personne (arg1,arg2) {
-	this.identifiant = arg2;
     this.nom = arg1;
+	this.identifiant = arg2;
 };
 
 function Frais (arg1, arg2, arg3) {
