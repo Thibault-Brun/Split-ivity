@@ -14,6 +14,7 @@ function ajoutFrais(){
 		$(".nomFrais.editable")[0].setAttribute('onblur', 'modifFrais();');
 		$(".prixFrais.editable")[0].setAttribute('onblur', 'modifFrais();');
 		
+		$(".frais.fantome").removeClass("fantome");
 		$(".quantiteFrais.editable").removeClass("editable");
 		$(".nomFrais.editable").removeClass("editable");
 		$(".prixFrais.editable").removeClass("editable");
@@ -37,16 +38,31 @@ function modifQte() {
 	var qte = lastElementQte.value;
 	var res = qte - lastQte;
 	
-	if (res > 0) {
-		var frais = lastElementQte.parentElement.getElementsByTagName("input")[1].value;
-		var prix = lastElementQte.parentElement.getElementsByTagName("input")[2].value;
-		var tabID = activiteDefaut.ajouterFrais(frais, prix, res);
-		lastElementQte.parentElement.getElementsByTagName("input")[3].value += ',' +tabID;
-	}
-	else if(res < 0) {
-		/*for (var i = 0 ; i > res ; i--) {
-			activiteDefaut.
-		}*/
-	}
+	if (qte >= 1 && qte <= 99) {
 	
+		if (res > 0) {
+			var frais = lastElementQte.parentElement.getElementsByTagName("input")[1].value;
+			var prix = lastElementQte.parentElement.getElementsByTagName("input")[2].value;
+			var tabID = activiteDefaut.ajouterFrais(frais, prix, res);
+			lastElementQte.parentElement.getElementsByTagName("input")[3].value += ',' +tabID;
+		}
+		else if(res < 0) {
+			var listeID = lastElementQte.parentElement.getElementsByTagName("input")[3].value;
+			var reg = new RegExp("[,]+", "g");
+			var tabID = listeID.split(reg);
+			
+			res *= -1;
+			var delID = tabID.splice(tabID.length-res, tabID.length);
+			lastElementQte.parentElement.getElementsByTagName("input")[3].value = tabID;
+			
+			for (var i in delID) {
+				activiteDefaut.supprimerFrais(activiteDefaut.listFrais[delID[i]]);
+			}
+			
+			console.log(activiteDefaut.listFrais);
+		}
+	}
+	else {
+		lastElementQte.value = lastQte;
+	}
 }
