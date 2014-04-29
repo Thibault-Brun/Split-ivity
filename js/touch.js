@@ -41,13 +41,18 @@ Touch = {
 					ev.stopPropagation();
 					
 				});
+	},
+	listElement : function(el){
+		el 	.hammer()
+			.on( 'drag', function(e){
+			if(el.is('li')){
+				el.animate({transform: 'translateX('+e.gesture.deltaX+'px)'},0);
+				}
+			})
+			.on('dragend', function(e){
+				Animation.slideTo(el, 0);
+				e.gesture.preventDefault();
+				e.stopPropagation();
+			});
 	}
 }
-	$(".frais").on( 'drag', function(e){
-			if(!$(this).hasClass('fantome')){
-			$(this).css("position", "relative")
-					.css( "left", e.gesture.deltaX+"px");
-				if(e.gesture.direction == "right")
-					e.stopPropagation();
-					}
-		});
