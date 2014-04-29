@@ -4,19 +4,20 @@ function ajoutPersonne(){
 	
 	if ( $.trim(nom) != "") {
 	var id=activiteDefaut.listPersonne.length;
-		$(".nomPersonne.editable")[0].setAttribute('onfocus','modifierNomPersonne();');	
-		//$(".nomPersonne.editable")[0].setAttribute('id',id);	
-		personnes.liste.add($(".nomPersonne.editable")[0],id)
+		personnes.liste.fantome.nom.onfocus = modifierNomPersonne;	
+		
 		// UI
-		$(".nomPersonne.editable").removeClass("editable");
-		$(".totalPersonne.hidden").removeClass("hidden");
-		$(".detailsPersonne.hidden").removeClass("hidden");
-		$.get("./formulairePersonnes.html", function(data){$('#listePersonnes').prepend(data);});
-		$("input[name=nomPersonne].editable").first().focus();
-		
-		
-	
-		$(".hidden").removeClass("hidden");
+		personnes.liste.fantome.nom.removeClass("editable");
+		personnes.liste.fantome.removeClass('fantome');
+		personnes.liste.fantome.total.removeClass("hidden");
+		personnes.liste.fantome.details.removeClass("hidden");
+
+		personnes.liste.ajouter(personnes.liste.fantome,id);
+		$.get("./formulairePersonnes.html", function(data){$
+			personnes.liste.prepend(data);
+			Builder.personneFantome();
+			personnes.liste.fantome.nom.focus();
+		});
 		// Metier
 		activiteDefaut.ajouterPersonne(nom);
 		
