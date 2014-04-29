@@ -226,6 +226,7 @@ body #container #details {
   top: 0px;
   left: 0px;
   right: 0px;
+  bottom: 0px;
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 }
 body #container #details h3 {

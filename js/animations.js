@@ -22,6 +22,11 @@ Animation = {
 		duree = typeof duree !== 'undefined' ? duree : 500;
 		el.animate({'top': +value+'px'},{duration: duree,
 		easing: Animation.drop});;
+	},
+	slideDown : function(el, duree){
+		duree = typeof duree !== 'undefined' ? duree : 500;
+		el.slideDown({duration: duree,
+		easing: Animation.drop});
 	}
 }
 function animation_iconeNbPersonnesBounce(){

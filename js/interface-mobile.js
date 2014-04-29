@@ -38,21 +38,31 @@ Interface = {
 		el.icone.tourner('90');
 		el.liste.slideDown(300);
 		el.liste.css('top',el.outerHeight()+10);
-		if(el == boutonFrais)
+		if(el == boutonFrais){
+			Animation.upTo(boutonPersonnes, container.offset().top);
 			boutonPersonnes.hide();
-		else
+		}
+		else{
 			boutonFrais.hide();
+			Animation.upTo(boutonFrais, container.offset().top);
+		}
 	},
 	fermerListe : function(el){
-		if(el == boutonFrais)
-			boutonPersonnes.show();
-		else
-			boutonFrais.show();
 		tabs.down();
 		container.down();
 		el.removeClass('active');
 		el.icone.tourner('0');	
-		el.liste.slideUp(300);
+		el.liste.slideUp(0);
+		if(el == boutonFrais){
+			boutonPersonnes.show();
+			Animation.downTo(boutonPersonnes, container.offset().top);
+			Animation.downTo(boutonFrais, container.offset().top);
+		}
+		else{
+			boutonFrais.show();
+			Animation.downTo(boutonFrais, container.offset().top);
+			Animation.downTo(boutonPersonnes, container.offset().top);
+		}
 	}
 };
 
