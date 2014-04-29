@@ -2,8 +2,8 @@
  	header : function(){
  		header = $('header');
  		header.splitivity = $('#splitivity-titre');
- 		header.coordUp = $(document).height()*-1 + header.splitivity.outerHeight();
- 		header.currPos = header.coordUp;
+ 		header.coordDown = header.splitivity.outerHeight();
+ 		header.currPos = header.coorDown;
  		Touch.menu();
  		header.dropTo = function(pos){
  			header.currPos = pos;
@@ -16,15 +16,14 @@
  		header.moveTo = function(pos){
  			Animation.dropTo(header, pos, 0);
  		};
+ 		header.dropTo(header.coordDown-header.height());
  	},
  	container : function(){
  		container = $('#container');
- 		container.css('top',header.splitivity.outerHeight()+tabs.outerHeight());
-
+ 		container.coordDown = header.coordDown + tabs.outerHeight();
  		container.simple = function(){
 			container.load("vueSimple.html #simple", function(){
 				setTimeout(function(){
-				Interface.repaint();
 				Builder.iconeNbPersonnes();
 			}, 200);
 			});
@@ -46,11 +45,13 @@
 			});
 		};
 		container.up = function(){
-			Animation.upTo(container, header.splitivity.outerHeight());
+			Animation.upTo(container, header.coordDown);
 		};
 		container.down = function(){
-			Animation.downTo(container,header.splitivity.outerHeight()+tabs.outerHeight());
-		}
+			Animation.downTo(container,container.coordDown);
+		};
+
+		container.down();
  	},
  	tabs : function(){
 	 	tabs = $('.tabs');
@@ -58,7 +59,7 @@
 		tabs.details = $('#details-button');
 		tabs.simple.active = true;
 		tabs.details.active = false;
-		tabs.coordDown = header.splitivity.outerHeight();
+		tabs.coordDown = header.coordDown;
 		tabs.down = function(){
 			Animation.dropTo(tabs, tabs.coordDown);
 		};
@@ -68,9 +69,13 @@
 		tabs.down();
 		tabs.simple.click(function(){
 			if(!tabs.simple.active){
-				tabs.simple.addClass("active");
+				tabs.details.animate({'width':'35%'},500, 'easeOutElastic', function(){
+					tabs.simple.addClass('active');
+				});
+				tabs.simple.animate({'width':'65%'}, 500,'easeOutElastic', function(){
+					tabs.details.removeClass('active');
+				});
 				tabs.simple.active = true;
-				tabs.details.removeClass("active");
 				tabs.details.active = false;
 				container.simple();
 				tabs.down();
@@ -78,9 +83,13 @@
 		});
 		tabs.details.click(function(){
 			if(!tabs.details.active){
-				tabs.details.addClass("active");
+				tabs.simple.animate({'width':'35%'}, 500,'easeOutElastic', function(){
+					tabs.simple.removeClass('active');
+				});
+				tabs.details.animate({'width':'65%'}, 500,'easeOutElastic', function(){
+					tabs.details.addClass('active');
+				});
 				tabs.details.active = true;
-				tabs.simple.removeClass("active");
 				tabs.simple.active = false;
 				container.details();
 				tabs.down();

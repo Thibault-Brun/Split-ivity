@@ -8,9 +8,7 @@
 
 @couleur-boutons-personnes : RGBA(253, 111, 148, 1);
 
-@ombre : #222222;
-
-@ombre-box : 0px 3px 0px;
+@ombre : #222222; 
 
 @font-size : 150%;
 
@@ -35,11 +33,22 @@
 .box-sizing{
 	box-sizing: border-box;
 }
-*{
-    transition: width 0.5s ease-in-out ;
-    
-}
 
+.use-gpu(@val : 0px){
+	-webkit-transform: translate3d(0px,@val,0px);
+	-moz-transform: translate3d(0px,@val,0px);
+	-ms-transform: translate3d(0px,@val,0px);
+	-o-transform: translate3d(0px,@val,0px);
+	transform: translate3d(0px,@val,0px);
+	-webkit-backface-visibility: hidden;
+   -moz-backface-visibility: hidden;
+   -ms-backface-visibility: hidden;
+   backface-visibility: hidden;
+   -webkit-perspective: 1000;
+   -moz-perspective: 1000;
+   -ms-perspective: 1000;
+   perspective: 1000;
+}
 
 html { -webkit-text-size-adjust: 100%; height:100%; }
 
@@ -50,6 +59,7 @@ body{
 	
 	header{
 	.animation-rapide;
+	.use-gpu;
 	z-index: 20;
 	top:0px;
 	bottom: 0px;
@@ -62,20 +72,7 @@ body{
 	box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	border: none;
-	-webkit-transform: translate3d(0px,-100%,0px);
-	-moz-transform: translate3d(0px,-100%,0px);
-	-ms-transform: translate3d(0px,-100%,0px);
-	-o-transform: translate3d(0px,-100%,0px);
-	transform: translate3d(0px,-100%,0px);
-	-webkit-backface-visibility: hidden;
-   -moz-backface-visibility: hidden;
-   -ms-backface-visibility: hidden;
-   backface-visibility: hidden;
 
-   -webkit-perspective: 1000;
-   -moz-perspective: 1000;
-   -ms-perspective: 1000;
-   perspective: 1000;
 	.ombre-text;
 	&.ombre{
 		box-shadow: 0px 3px 10px rgba(0,0,0,0.8);
@@ -116,6 +113,7 @@ body{
 				box-sizing: border-box;
 				-moz-box-sizing: border-box;
 				li{
+					.use-gpu;
 					display: inline-block;
 					padding: 10px;
 					padding-bottom: 10px;
@@ -131,16 +129,15 @@ body{
 
 					&:first-child{
 						background-color : @couleur-simple;
-						box-shadow: @ombre-box @couleur-simple - @ombre inset;
+						box-shadow: 0px 3px 0px @couleur-simple - @ombre inset;
 						&.active{
-							box-shadow: @ombre-box @couleur-simple - @ombre ;
+							box-shadow: 0px -3px 0px @couleur-simple - @ombre inset;
 
 						}
 					}
 					&.active{
 					width: 65%;
-					box-shadow: @ombre-box @couleur-details - @ombre;
-					padding-bottom: 7px;
+					box-shadow: 0px -3px 0px @couleur-details - @ombre inset;
 
 					
 					}
@@ -237,7 +234,7 @@ body{
 		top:0px;left:0px; right:0px; bottom:0px;
 		.font-clean;
 		h3{
-		transition: all 0.5s ease-in-out ;
+			.use-gpu;
 			.animation-rapide;
 			box-sizing: border-box;
 			-moz-box-sizing: border-box;
@@ -254,19 +251,19 @@ body{
 			
 			&#bouton-frais{
 				background-color: @couleur-bouton-frais;
-				box-shadow: @ombre-box @couleur-bouton-frais - @ombre;
+				box-shadow: 0px -3px 0px @couleur-bouton-frais - @ombre inset;
 				margin-top: 10px;
 				&.active{
-					box-shadow: @ombre-box @couleur-bouton-frais - @ombre inset;
+					box-shadow: 0px 3px 0px @couleur-bouton-frais - @ombre inset;
 					margin : 0px;
 				}
 			}
 			&#bouton-personnes{
 				background-color: @couleur-boutons-personnes;
-				box-shadow: @ombre-box @couleur-boutons-personnes - @ombre;
+				box-shadow: 0px -3px 0px @couleur-boutons-personnes - @ombre inset;
 				&.active{
 					margin: 0;
-					box-shadow: @ombre-box @couleur-boutons-personnes - @ombre inset;
+					box-shadow: 0px 3px 0px @couleur-boutons-personnes - @ombre inset;
 				}
 				margin-bottom: 20px;
 			}

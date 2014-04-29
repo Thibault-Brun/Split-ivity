@@ -16,26 +16,29 @@ Touch = {
 	menu : function(){
 		header	.hammer()
 				.on("drag", function(ev){
-					if(header.currPos+ev.gesture.deltaY<0 && header.currPos+ev.gesture.deltaY> -1*$(document).height()+header.splitivity.outerHeight()){
+					if(header.currPos+ev.gesture.deltaY<0 && header.currPos+ev.gesture.deltaY> header.coordDown-header.height()){
 					header.moveTo(header.currPos+ev.gesture.deltaY);
 					header.addClass("ombre");
 					}
+					ev.gesture.preventDefault();
+					ev.stopPropagation();
 				})
 				.on("dragend", function(ev){
 					if(!(ev.gesture.deltaY>-60 && ev.gesture.deltaY<60)){
 						if(ev.gesture.direction == "down")
 							header.dropTo(0);
 						else
-							header.rollTo(header.coordUp);
+							header.rollTo(header.coordDown-header.height());
 					}
 					else{
 						if(ev.gesture.direction == "down")
-							header.rollTo(header.coordUp);
+							header.rollTo(header.coordDown-header.height());
 						else
 							header.dropTo(0);
 					}
 					header.removeClass("ombre");
 					ev.gesture.preventDefault();
+					ev.stopPropagation();
 					
 				});
 	}

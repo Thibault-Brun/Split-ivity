@@ -1,5 +1,5 @@
 CACHE MANIFEST
-# Time: Tue Apr 29 2014 09:51:18 GMT+0200 (CEST)
+# Time: Tue Apr 29 2014 11:53:36 GMT+0200 (CEST)
 
 
 CACHE:
@@ -9,8 +9,8 @@ index.html
 indexDetails.html
 split.html
 vueSimple.html
-fonts/pacifico.woff
 css/min.css
+fonts/pacifico.woff
 images/startup.png
 images/sw-alpha.png
 images/touch-icon-ipad-retina.png
@@ -28,4 +28,4 @@ index.html
 SETTINGS:
 prefer-online
 
-# hash: 7be88455a4298b10df0e114f05831a6e57c6cbcb00a12044bcd640345273faf8
+# hash: a6717ba3ff64b696ba874ee3903e53df65caea736dc515cd7adf872708807807

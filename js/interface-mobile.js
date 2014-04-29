@@ -12,18 +12,6 @@ window.onresize = function(){
 
 Interface = {
 	splitivityColor : '#D97D02',
-	repaint : function(){
-		header.coordUp= $(document).height()*-1 + header.splitivity.outerHeight();
-		tabs.coordDown = header.splitivity.outerHeight();
-		header.css('transform', 'translateY('+header.coordUp+'px)').delay(10);
-		tabs.css('transform', 'translateY('+tabs.coordDown+'px)').delay(40);
-		setTimeout(function(){
-		 	$(window).scrollTop(0);
-		 	tabs.down();
-		 	container.css('top', tabs.coordDown+tabs.outerHeight()+'px');
-		 }, 10);
-
-	},
 	renderIconeNbPersonne : function(){
 		paper = Raphael(iconeNbPersonnes[0],100, 100);
 		iconeNbPersonnes.milieu 	= 	paper.path(RAPHAEL_bonhommes.centre).attr({fill: Interface.splitivityColor, stroke: "none"}).scale(3.3,3.3,0,0);
@@ -67,17 +55,19 @@ Interface = {
 };
 
 function affichageClavierTotal(){
-	cacherPersonneIcon();
+	/*cacherPersonneIcon();
 	setTimeout(function(){
 	 $(window).scrollTop(0);
-	 }, 200);
+	 }, 200);*/
 }
 
 function masquageClavierTotal(){
+	/*
 	$('#total').removeClass("activated");
 	calculSimple();
-	afficherPersonneIcon();
+	afficherPersonneIcon();*/
 }
+
 /*
 // Définition du picker (roulette de sélection)
 function picker(){
@@ -86,7 +76,7 @@ function picker(){
 		var nbrSliders = 2;
 		
 		// Récupération du nombre de personnes actuelles
-		var n =  iconeNbPersonnes.label.getText();
+		var n =  iconeNbPersonnes.attr('text');
 		n = ""+n;
 		
 		// Ajout des zéros devant le chiffre (ex : 0002)
@@ -125,17 +115,16 @@ function pickerDone(){
 function pickerCancel(){
 	replacerPersonneIcon();
 }
-*/
 function deplacerPersonneIcon(){
 	$('#icone-personnes').addClass('activated');
-$('#icone-personnes').css('bottom',$( document ).height()-$('#sw-wrapper').offset().top+'px');
+$('#icone-personnes').css('top',$('#icone-personnes').height()+'px');
 }
 
 function replacerPersonneIcon(){
 	$('#icone-personnes').removeClass('activated');
 $('#icone-personnes').css('bottom','0px');
 }
-
+*/
 function interface_renderListeButtonIcon(iconContainer){
 	var paperContainer = Raphael(iconContainer,25,25);
 	return paperContainer.path("M11.166,23.963L22.359,17.5c1.43-0.824,1.43-2.175,0-3L11.166,8.037c-1.429-0.826-2.598-0.15-2.598,1.5v12.926C8.568,24.113,9.737,24.789,11.166,23.963z").attr({fill: "#FFF", stroke: "none"});
