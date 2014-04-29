@@ -9,9 +9,11 @@ function ajoutFrais(){
 		var tabID = activiteDefaut.ajouterFrais(frais, prix, qte);
 		$(".tabIDFrais.editable").first().val(tabID);
 		
-		$(".quantiteFrais.editable")[0].setAttribute('onfocus', 'prevQte()');
+		$(".quantiteFrais.editable")[0].setAttribute('onfocus', 'prevQte();');
 		$(".quantiteFrais.editable")[0].setAttribute('onblur', 'modifQte();');
+		$(".nomFrais.editable")[0].setAttribute('onfocus', 'prevFrais();');
 		$(".nomFrais.editable")[0].setAttribute('onblur', 'modifFrais();');
+		$(".prixFrais.editable")[0].setAttribute('onfocus', 'prevFrais();');
 		$(".prixFrais.editable")[0].setAttribute('onblur', 'modifFrais();');
 		
 		$(".frais.fantome").removeClass("fantome");
@@ -25,7 +27,13 @@ function ajoutFrais(){
 	}
 }
 
+function prevFrais() {
+	lastElementFrais = document.activeElement.parentElement;
+}
+
 function modifFrais() {
+	var listeID = lastElementFrais.getElementsByTagName("input")[3].value;
+	
 	
 }
 
