@@ -4,7 +4,8 @@ var extendClass = function(child, parent) {
     child.prototype = new Surrogate();
 };
 
-function Personne (arg1) {
+function Personne (arg1,arg2) {
+	this.identifiant = arg2;
     this.nom = arg1;
 };
 
@@ -89,10 +90,19 @@ function ActiviteDetail (arg1) {
     };
 
     this.ajouterPersonne = function(pers) {
-        this.listPersonne.push(new Personne(pers));
+		var p =new Personne(pers, this.listPersonne.length);
+		this.listPersonne.push(p);
     };
+	
+	this.modifierPersonne=function(id,newNom){
+		$.each(this.listPersonne,function(index, value){
+			if(value.identifiant=id)
+				value.nom=newNom;
+		});
+	}
     
     /* A FINIR */
+	
     this.supprimerPersonne = function(pers) {
         if (pers instanceof Personne){ var objPers = pers;} else { var objPers = this.getPersByNom(pers);}
         this.listPersonne.splice(this.listPersonne.indexOf(objPers),1);
