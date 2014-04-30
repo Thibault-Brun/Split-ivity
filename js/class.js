@@ -117,7 +117,7 @@ function ActiviteDetail (arg1) {
         $.each(this.listConsommation, function(index, value){
                 $.each(value[1], function(index2, value2){
                     //console.log(value2);
-                    if(value2 == objPers.nom){ value[1].splice(index2,1); }
+                    if(value2 == objPers.identifiant){ value[1].splice(index2,1); }
                 });
         });
     };
