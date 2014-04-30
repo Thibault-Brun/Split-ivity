@@ -1,14 +1,11 @@
 <div id="simple">
 	<div id="total" class="total">
 		Prix total
-		<input type="number" min="0" id="totalInput" name="total" placeholder="0.00" value="" onblur="masquageClavierTotal();" onfocus='affichageClavierTotal();'/>€
+		<input type="number" min="0" id="totalInput" name="total" placeholder="0.00" value="" onfocus="Touch.noTabSwipe();" onblur="Touch.tabSwipe();calculSimple();"/>€
 	</div>
 	<div id="result" class="resultat">
 		0,00 €
 	</div>
 	<div id="icone-personnes" class="personnes">
-	</div>
-	<div id="roulette">
-		ROULETTE
 	</div>
 </div>

@@ -1,17 +1,37 @@
+/**
+ * 
+ * Find more about the Spinning Wheel function at
+ * http://cubiq.org/spinning-wheel-on-webkit-for-iphone-ipod-touch/11
+ *
+ * Copyright (c) 2009 Matteo Spinelli, http://cubiq.org/
+ * Released under MIT license
+ * http://cubiq.org/dropbox/mit-license.txt
+ * 
+ * Version 1.4 - Last updated: 2009.07.09
+ * 
+ */
+
 var SpinningWheel = {
 	cellHeight: 44,
 	friction: 0.003,
 	slotData: [],
 
+
+	/**
+	 *
+	 * Event handler
+	 *
+	 */
+
 	handleEvent: function (e) {
-		if (e.type == 'touchstart' || e.type == 'mousedown') {
+		if (e.type == 'touchstart') {
 			this.lockScreen(e);
 			if (e.currentTarget.id == 'sw-cancel' || e.currentTarget.id == 'sw-done') {
 				this.tapDown(e);
 			} else if (e.currentTarget.id == 'sw-frame') {
 				this.scrollStart(e);
 			}
-		} else if (e.type == 'touchmove'|| e.type == 'mousemove') {
+		} else if (e.type == 'touchmove') {
 			this.lockScreen(e);
 			
 			if (e.currentTarget.id == 'sw-cancel' || e.currentTarget.id == 'sw-done') {
@@ -19,7 +39,7 @@ var SpinningWheel = {
 			} else if (e.currentTarget.id == 'sw-frame') {
 				this.scrollMove(e);
 			}
-		} else if (e.type == 'touchend'|| e.type == 'mouseup') {
+		} else if (e.type == 'touchend') {
 			if (e.currentTarget.id == 'sw-cancel' || e.currentTarget.id == 'sw-done') {
 				this.tapUp(e);
 			} else if (e.currentTarget.id == 'sw-frame') {
@@ -37,6 +57,13 @@ var SpinningWheel = {
 			this.onScroll(e);
 		}
 	},
+
+
+	/**
+	 *
+	 * Global events
+	 *
+	 */
 
 	onOrientationChange: function (e) {
 		window.scrollTo(0, 0);
@@ -86,9 +113,9 @@ var SpinningWheel = {
 		// Create the Spinning Wheel main wrapper
 		div = document.createElement('div');
 		div.id = 'sw-wrapper';
-		div.style.top = window.innerHeight + 'px';		// Place the SW down the actual viewing screen
+		div.style.top = window.innerHeight + window.pageYOffset + 'px';		// Place the SW down the actual viewing screen
 		div.style.webkitTransitionProperty = '-webkit-transform';
-		div.innerHTML = '<div id="sw-header"><div id="sw-cancel">Annuler</' + 'div><div id="sw-done">Ok</' + 'div></' + 'div><div id="sw-slots-wrapper"><div id="sw-slots"></' + 'div></' + 'div><div id="sw-frame"></' + 'div>';
+		div.innerHTML = '<div id="sw-header"><div id="sw-cancel">Cancel</' + 'div><div id="sw-done">Done</' + 'div></' + 'div><div id="sw-slots-wrapper"><div id="sw-slots"></' + 'div></' + 'div><div id="sw-frame"></' + 'div>';
 
 		document.body.appendChild(div);
 
@@ -137,13 +164,8 @@ var SpinningWheel = {
 		window.addEventListener('scroll', this, true);				// Reposition SW on page scroll
 
 		// Cancel/Done buttons events
-		
-		document.getElementById('sw-done').addEventListener('touchstart', this, false);
-		document.getElementById('sw-done').addEventListener("mousedown", this, false);
-		document.getElementById('sw-done').addEventListener("mouseup", this, false);
-		document.getElementById('sw-cancel').addEventListener("mousedown", this, false);
 		document.getElementById('sw-cancel').addEventListener('touchstart', this, false);
-		document.getElementById('sw-cancel').addEventListener("mouseup", this, false);
+		document.getElementById('sw-done').addEventListener('touchstart', this, false);
 
 		// Add scrolling to the slots
 		this.swFrame.addEventListener('touchstart', this, false);
@@ -153,9 +175,8 @@ var SpinningWheel = {
 		this.create();
 
 		this.swWrapper.style.webkitTransitionTimingFunction = 'ease-out';
-		this.swWrapper.style.webkitTransitionDuration = '200ms';
+		this.swWrapper.style.webkitTransitionDuration = '400ms';
 		this.swWrapper.style.webkitTransform = 'translate3d(0, -260px, 0)';
-		
 	},
 	
 	
@@ -194,7 +215,7 @@ var SpinningWheel = {
 	
 	close: function () {
 		this.swWrapper.style.webkitTransitionTimingFunction = 'ease-in';
-		this.swWrapper.style.webkitTransitionDuration = '200ms';
+		this.swWrapper.style.webkitTransitionDuration = '400ms';
 		this.swWrapper.style.webkitTransform = 'translate3d(0, 0, 0)';
 		
 		this.swWrapper.addEventListener('webkitTransitionEnd', this, false);
@@ -331,13 +352,14 @@ var SpinningWheel = {
 	scrollEnd: function (e) {
 		this.swFrame.removeEventListener('touchmove', this, false);
 		this.swFrame.removeEventListener('touchend', this, false);
+
 		// If we are outside of the boundaries, let's go back to the sheepfold
 		if (this.slotEl[this.activeSlot].slotYPosition > 0 || this.slotEl[this.activeSlot].slotYPosition < this.slotEl[this.activeSlot].slotMaxScroll) {
 			this.scrollTo(this.activeSlot, this.slotEl[this.activeSlot].slotYPosition > 0 ? 0 : this.slotEl[this.activeSlot].slotMaxScroll);
-			interface_iconeNbPersonneUpdateLabel();
+			iconeNbPersonnes.label.update();
 			return false;
 		}
-		interface_iconeNbPersonnesUpdateLabel();
+		iconeNbPersonnes.label.update();
 		// Lame formula to calculate a fake deceleration
 		var scrollDistance = this.slotEl[this.activeSlot].slotYPosition - this.scrollStartY;
 
@@ -383,6 +405,7 @@ var SpinningWheel = {
 		}
 
 		this.scrollTo(this.activeSlot, Math.round(newPosition), Math.round(newDuration) + 'ms');
+ 
 		return true;
 	},
 

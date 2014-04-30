@@ -2,14 +2,20 @@ Touch = {
 	tabSwipe : function(){
 		$('body')	.hammer()
 					.on("drag", function(e){
+						e.gesture.stopPropagation();
 						e.gesture.preventDefault();
+						e.preventDefault();
+						e.stopPropagation();
 					})
 				  	.on("dragend", function(ev) { 
-						if(ev.gesture.deltaX<40 && ev.gesture.deltaX>-40) return;
 						if(ev.gesture.direction == "right")
 							tabs.simple.click();
 						else
 							tabs.details.click();
+						ev.gesture.stopPropagation();
+						ev.gesture.preventDefault();
+						ev.preventDefault();
+						ev.stopPropagation();
 				 	 });
 	},
 	noTabSwipe : function(){
@@ -28,7 +34,7 @@ Touch = {
 					ev.stopPropagation();
 				})
 				.on("dragend", function(ev){
-					if(!(ev.gesture.deltaY>-60 && ev.gesture.deltaY<60)){
+					if(!(ev.gesture.deltaY>-70 && ev.gesture.deltaY<70)){
 						if(ev.gesture.direction == "down")
 							header.dropTo(0);
 						else
@@ -45,6 +51,11 @@ Touch = {
 					ev.stopPropagation();
 					
 				});
+	},
+	menuOff : function(){
+		header	.hammer()
+					.off("drag")
+					.off("dragend");
 	},
 	listElement : function(el){
 		el 	.hammer()
@@ -66,8 +77,10 @@ Touch = {
 				if(el.moved){
 					Animation.slideTo(el, 0);
 					el.moved = false;
+					e.gesture.stopPropagation();
 					e.gesture.preventDefault();
 					e.stopPropagation();
+					e.preventDefault();
 				}
 			})
 			.on('dragend', function(e){

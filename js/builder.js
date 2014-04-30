@@ -25,6 +25,7 @@
 			container.load("vueSimple.html #simple", function(){
 				setTimeout(function(){
 				Builder.iconeNbPersonnes();
+				Builder.inputTotal();
 			}, 200);
 			});
  		};
@@ -100,6 +101,8 @@
 			}
 		});
  	},
+ 	inputTotal : function(){
+ 		container.simple.total = $('#total > input'); 	},
  	listeFrais : function(){
  		frais.liste = $('#listeFrais');
 		frais.liste.active = false;
@@ -189,7 +192,34 @@
 			iconeNbPersonnes.label.attr({'text':text});
 		}
 		iconeNbPersonnes.click(function(){
-			// TODO
+			Interface.picker();
 		});
+		iconeNbPersonnes.up = function(){
+			Animation.rollTo(iconeNbPersonnes, $(document).height()*-1+SpinningWheel.swWrapper.offsetTop,200);
+			iconeNbPersonnes.addClass('activated');
+		};
+		iconeNbPersonnes.down = function(){
+			Animation.dropTo(iconeNbPersonnes, $(document).height()*-1+SpinningWheel.swWrapper.offsetTop,200);
+			iconeNbPersonnes.removeClass('activated');
+		};
+		iconeNbPersonnes.label.update = function(){
+			var valeurAvant = iconeNbPersonnes.label.getText();
+			var results = SpinningWheel.getSelectedValues();
+			var nbPersonnes = parseInt(results.values.join(''));
+		
+				if(nbPersonnes == 0){
+					nbPersonnes = 1;
+					SpinningWheel.scrollToValue(1,1);
+				}
+	
+			iconeNbPersonnes.label.setText(nbPersonnes);
+			// TODO
+			calculSimple();
+
+			if(valeurAvant<=nbPersonnes)
+				animation_iconeNbPersonnesBounce();
+			else
+				animation_iconeNbPersonnesShrink();
+		};
  	}
  };	

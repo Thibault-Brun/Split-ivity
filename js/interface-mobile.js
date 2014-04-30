@@ -53,32 +53,15 @@ Interface = {
 			Animation.downTo(frais.bouton, container.offset().top);
 			Animation.downTo(personnes.bouton, container.offset().top);
 		}
-	}
-};
-
-function affichageClavierTotal(){
-	/*cacherPersonneIcon();
-	setTimeout(function(){
-	 $(window).scrollTop(0);
-	 }, 200);*/
-}
-
-function masquageClavierTotal(){
-	/*
-	$('#total').removeClass("activated");
-	calculSimple();
-	afficherPersonneIcon();*/
-}
-
-/*
-// Définition du picker (roulette de sélection)
-function picker(){
-		
+	},
+	picker : function(){
+		Touch.noTabSwipe();
+		Touch.menuOff();
 		// Définition du nombre de sliders
 		var nbrSliders = 2;
 		
 		// Récupération du nombre de personnes actuelles
-		var n =  iconeNbPersonnes.attr('text');
+		var n =  iconeNbPersonnes.label.getText();
 		n = ""+n;
 		
 		// Ajout des zéros devant le chiffre (ex : 0002)
@@ -97,57 +80,33 @@ function picker(){
 		
 		SpinningWheel.open();
 		setTimeout(function(){
-			deplacerPersonneIcon();
-			setTimeout(function(){
-				animation_iconeNbPersonnesBounce();},
-			200);}, 
+			iconeNbPersonnes.up();
+			animation_iconeNbPersonnesBounce();},
 		200);
 		
 		// Sélection de la valeur actuelle de la roulette
 		for(i=nbrSliders-1; i>=0; i--)
 			SpinningWheel.scrollToValue(i,digits[i]);
-}
-
+	}
+};
 function pickerDone(){
-		iconePersonneSetText();
+	Touch.tabSwipe();
+	Touch.menu();
+	iconeNbPersonnes.down();
+	iconeNbPersonnes.label.update();
 		calculSimple();
-		replacerPersonneIcon();
 }
 
 function pickerCancel(){
-	replacerPersonneIcon();
-}
-function deplacerPersonneIcon(){
-	$('#icone-personnes').addClass('activated');
-$('#icone-personnes').css('top',$('#icone-personnes').height()+'px');
+	Touch.tabSwipe();
+	Touch.menu();
+	iconeNbPersonnes.down();
+	iconeNbPersonnes.label.update();
 }
 
-function replacerPersonneIcon(){
-	$('#icone-personnes').removeClass('activated');
-$('#icone-personnes').css('bottom','0px');
-}
-*/
 function interface_renderListeButtonIcon(iconContainer){
 	var paperContainer = Raphael(iconContainer,25,25);
 	return paperContainer.path("M11.166,23.963L22.359,17.5c1.43-0.824,1.43-2.175,0-3L11.166,8.037c-1.429-0.826-2.598-0.15-2.598,1.5v12.926C8.568,24.113,9.737,24.789,11.166,23.963z").attr({fill: "#FFF", stroke: "none"});
-}
-
-function interface_iconeNbPersonnesUpdateLabel(){
-	var valeurAvant = iconeNbPersonnes.label.getText();
-	var results = SpinningWheel.getSelectedValues();
-	var nbPersonnes = parseInt(results.values.join(''));
-		
-	if(nbPersonnes == 0){
-		nbPersonnes = 1;
-		SpinningWheel.scrollToValue(1,1);
-	}
-	
-	iconeNbPersonnes.label.setText(nbPersonnes);
-	calculSimple();
-	if(valeurAvant<=nbPersonnes)
-		animation_iconeNbPersonnesBounce();
-	else
-		animation_iconeNbPersonnesShrink();
 }
 
 function interface_ouvrirFrais(){
