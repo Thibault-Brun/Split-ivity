@@ -103,17 +103,19 @@
  	listeFrais : function(){
  		frais.liste = $('#listeFrais');
 		frais.liste.active = false;
+
 		$.get("./formulaireFrais.html", function(data){
 					frais.liste.html(data);
+					Builder.fraisFantome();
 		});	
-		frais.liste.height($(document).height()-header.splitivity.outerHeight()-frais.bouton.outerHeight());
-		frais.liste.frais = {};
+
+		frais.liste.frais = new Array;
 		frais.liste.ajouter = function(el, id){
 			Touch.listElement(el);
-			frais.liste.frais.push({el : id});
+			frais.liste.frais[id] = el;
 		};
 		frais.liste.getIdByElement = function(el){
-			return frais.liste.frais.find(el);
+			return frais.liste.frais.indexOf(el);
 		}
 		frais.liste.hide();
  	},
@@ -127,13 +129,12 @@
 		});	
 		personnes.liste.personnes = new Array;
 		personnes.liste.ajouter = function(el, id){
-			Touch.listElement(el);
-			personnes.liste.personnes.push({el : id});
+			Touch.listElement($(el));
+			personnes.liste.personnes[id] = el;
 		};
 		personnes.liste.getIdByElement = function(el){
-			return personnes.liste.personnes.find(el);
+			return personnes.liste.personnes.indexOf(el);
 		}
-		personnes.liste.height($(document).height()-header.splitivity.outerHeight()-personnes.bouton.outerHeight());
 		personnes.liste.hide();
  	},
  	boutonPersonnes : function(){
@@ -166,17 +167,17 @@
  	},
  	personneFantome : function(){
  		personnes.liste.fantome = $('.personne.fantome');
- 		personnes.liste.fantome.nom = $('.personne.fantome > input');
- 		personnes.liste.fantome.nom.onkeypress = function(e) {
-		    var event = e || window.event;
-		    var charCode = event.which || event.keyCode;
-
-		    if ( charCode == '13' ) {
-		      ajouterPersonne();
-		    }
-		}
- 		personnes.liste.fantome.total = $(".totalPersonne.hidden");
-		personnes.liste.fantome.details = $(".detailsPersonne.hidden");
+ 		personnes.liste.fantome.nom = personnes.liste.fantome.find("input[name='nomPersonne']");
+ 		personnes.liste.fantome.total = personnes.liste.fantome.find("div[name='totalPersonne']");
+		personnes.liste.fantome.details = personnes.liste.fantome.find("div[name='detailsPersonne']");
+		personnes.liste.fantome.moved = false;
+ 	},
+ 	fraisFantome : function(){
+ 		frais.liste.fantome = $('.frais.fantome');
+ 		frais.liste.fantome.nom = frais.liste.fantome.find("input[name='nomFrais']");
+ 		frais.liste.fantome.quantite = frais.liste.fantome.find("input[name='quantiteFrais']");
+ 		frais.liste.fantome.prix = frais.liste.fantome.find("input[name='prixFrais']");
+		frais.liste.fantome.moved = false;
  	},
  	iconeNbPersonnes : function(){
  		iconeNbPersonnes = $('#icone-personnes');

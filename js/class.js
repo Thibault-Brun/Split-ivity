@@ -4,14 +4,15 @@ var extendClass = function(child, parent) {
     child.prototype = new Surrogate();
 };
 
-function Personne (arg1,arg2) {
+Personne.nextId = 0;
+function Personne (arg1) {
     this.nom = arg1;
-	this.identifiant = arg2;
+	this.identifiant = Personne.nextId;
+	Personne.nextId += 1;
 };
 
 
 function Frais (arg1, arg2) {
-
     this.intitule = arg1;
     this.montant = arg2;
     this.identifiant = Frais.nextId;
@@ -95,13 +96,13 @@ function ActiviteDetail (arg1) {
     };
 
     this.ajouterPersonne = function(pers) {
-		var p =new Personne(pers, this.listPersonne.length);
+		var p =new Personne(pers);
 		this.listPersonne.push(p);
     };
 	
 	this.modifierPersonne=function(id,newNom){
 		$.each(this.listPersonne,function(index, value){
-			if(value.identifiant=id)
+			if(value.identifiant==id)
 				value.nom=newNom;
 		});
 	}

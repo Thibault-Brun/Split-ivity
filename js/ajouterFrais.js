@@ -1,29 +1,35 @@
 function ajoutFrais(){
-	var frais = $("input[name=nomFrais].editable").first().val();
-	var prix = $("input[name=prixFrais].editable").first().val();
-	var qte = $("input[name=quantiteFrais].editable").first().val();
+	var nom = frais.liste.fantome.nom.val();
+	var prix = frais.liste.fantome.prix.val();
+	var qte = frais.liste.fantome.quantite.val();
 	
-	if ( $.trim(frais) !="" && ($.trim(prix) !="" && $.trim(qte) !="")) {		
+	if ( $.trim(nom) !="" && ($.trim(prix) !="" && $.trim(qte) !="")) {		
 		
 		// UI
-		var tabID = activiteDefaut.ajouterFrais(frais, prix, qte);
-		$(".tabIDFrais.editable").first().val(tabID);
+		var tabID = activiteDefaut.ajouterFrais(nom, prix, qte);
 		
-		$(".quantiteFrais.editable")[0].setAttribute('onfocus', 'prevQte();');
-		$(".quantiteFrais.editable")[0].setAttribute('onblur', 'modifQte();');
-		$(".nomFrais.editable")[0].setAttribute('onfocus', 'prevFrais();');
-		$(".nomFrais.editable")[0].setAttribute('onblur', 'modifFrais();');
-		$(".prixFrais.editable")[0].setAttribute('onfocus', 'prevFrais();');
-		$(".prixFrais.editable")[0].setAttribute('onblur', 'modifFrais();');
+		// SUREMENT A ENLEVER :P
+		// frais.liste.fantome.quantite.onfocus = prevQte;
+		// frais.liste.fantome.nom.onfocus = prevFrais;
+		// frais.liste.fantome.prix.onfocus = prevPrix;
 		
-		$(".frais.fantome").removeClass("fantome");
-		$(".quantiteFrais.editable").removeClass("editable");
-		$(".nomFrais.editable").removeClass("editable");
-		$(".prixFrais.editable").removeClass("editable");
-		$(".tabIDFrais.editable").removeClass("editable");
+		frais.liste.fantome.quantite.onblur = modifQte;
+		frais.liste.fantome.nom.onblur = modifQte;
+		frais.liste.fantome.prix.onblur = modifQte;
 		
-		$.get("./formulaireFrais.html", function(data){$('#listeFrais').prepend(data);});
-		$("input[name=quantiteFrais].editable").focus();		
+		frais.liste.fantome.removeClass("fantome");
+
+		frais.liste.ajouter(frais.liste.fantome, tabID);
+		
+		$.get("./formulaireFrais.html", function(data){
+			frais.liste.prepend(data);
+			Builder.fraisFantome();
+
+			// A passer à fantome.nom quand la
+			// barre de + - sera ajoutée
+			frais.liste.fantome.quantite.focus();
+		});
+				
 	}
 }
 

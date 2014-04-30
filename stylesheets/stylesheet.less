@@ -66,6 +66,7 @@ body{
 	right: 0px;
 	left:0px;
 	height: auto;
+	position:fixed;
 	background-color : @couleur-principale;
 	text-align: center;
 	box-sizing: border-box;
@@ -270,13 +271,13 @@ body{
 		#listeFrais, #listePersonnes{
 		padding: 0;
 		margin: 0;
-		width: 100%;
+		width: auto;
 		position: absolute;
 		top:0px; right:0px; left:0px; bottom:0px;
 		box-sizing: border-box;
 		overflow: scroll;
+		-webkit-overflow-scrolling: touch;
 		.animation-rapide;
-		padding: 0px;
 	}
 	
 	#icone-frais, #icone-personne-liste{
