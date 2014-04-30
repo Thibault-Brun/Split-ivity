@@ -27,5 +27,7 @@ function modifierNomPersonne(el){
 	activiteDefaut.modifierPersonne(personnes.liste.getIdByElement(el.parentElement), el.value);
 }
 
-function supprimerPersonne(){
+function supprimerPersonne(id){
+
+activiteDefaut.supprimerPersonne(id);
 }
