@@ -9,11 +9,15 @@ function Personne (arg1,arg2) {
 	this.identifiant = arg2;
 };
 
-function Frais (arg1, arg2, arg3) {
+
+function Frais (arg1, arg2) {
+
     this.intitule = arg1;
     this.montant = arg2;
-    this.identifiant = arg3;
+    this.identifiant = Frais.nextId;
+    Frais.nextId++;
 }
+Frais.nextId = 0;
 
 // classe Packages
 function PackageDefault (arg1) {
@@ -57,8 +61,9 @@ function ActiviteDetail (arg1) {
 
     this.ajouterFrais = function (frais, prix, qte) {
         var tabRep = [];
+        //console.log(this.listFrais[this.listFrais.length].identifiant);
 		for (var i = 0; i < qte; i++) {
-		    var newFrais = new Frais(frais, prix, this.listFrais.length);
+		    var newFrais = new Frais(frais, prix);
             this.listFrais.push(newFrais);
             this.listConsommation[this.listFrais.length-1]= [newFrais,[]];
             tabRep.push(this.listFrais.length-1);
@@ -104,16 +109,16 @@ function ActiviteDetail (arg1) {
     /* A FINIR */
 	
     this.supprimerPersonne = function(pers) {
-        if (pers instanceof Personne){ var objPers = pers;} else { var objPers = this.getPersByNom(pers);}
+        if (pers instanceof Personne){ objPers = pers;} else { objPers = this.getPersByNom(pers);}
+        //console.log(pers);
+        //console.log(objPers);
         this.listPersonne.splice(this.listPersonne.indexOf(objPers),1);
-        // console.log(objPers);
-        console.log(this.listPersonne);
-        $.each(this.listConsommation, function(index, value){ 
-            if (value != undefined) {
-                $.each(value, function(index2, value2){
-                    if(value2 == objPers.nom){ value.splice(index2,1); }
+        //console.log(this.listPersonne);
+        $.each(this.listConsommation, function(index, value){
+                $.each(value[1], function(index2, value2){
+                    //console.log(value2);
+                    if(value2 == objPers.nom){ value[1].splice(index2,1); }
                 });
-            };
         });
     };
     /* FIN A FINIR */
@@ -123,9 +128,11 @@ function ActiviteDetail (arg1) {
         };
     };
     this.getPersByNom = function (pers){
+        var rep = null;
         $.each(this.listPersonne, function(index, value){
-            if(value.nom == pers){ return value; }
+            if(value.nom == pers){ rep = value; }
         });
+        return rep;
     }
 
     this.calculeMontantGlobal = function() {
@@ -174,7 +181,7 @@ extendClass(PackageSpecifique, PackageDefault);
 extendClass(ActiviteSimple, Activite);
 extendClass(ActiviteDetail, Activite);
 
-/*var pack1 = new PackageDefault("defaut");
+var pack1 = new PackageDefault("defaut");
 var pack2 = new PackageSpecifique("toto");
 //console.log(pack1.getInfo());
 //console.log(pack2.getInfo());
@@ -209,23 +216,36 @@ console.log(act3.listConsommation);
 console.log("calculeMontantGlobal -->"+act3.calculeMontantGlobal());
 
 act3.ajouterPersonne('testSup1');
-act3.ajouterPersonne('testSup2');
+//act3.ajouterPersonne('voila');
 
-act3.affecterPersonne(['lala','testSup1'],2);
-//act3.affecterPersonne(['toto','testSup2'],3);
-console.log(act3.listPersonne);
-//console.log(act3.getPersByNom('testSup1'));
-
-act3.supprimerPersonne('testSup1');
-//act3.calculeMontantPersonnes();
 /*console.log("Total pour tata :"+act3.calculeMontantPersonne('tata'));
 console.log("Total pour titi :"+act3.calculeMontantPersonne('titi'));
 console.log("Total pour toto :"+act3.calculeMontantPersonne('toto'));
 console.log("Total pour lala :"+act3.calculeMontantPersonne('lala'));*/
+
+act3.affecterPersonne(['lala','testSup1'],2);
+//act3.affecterPersonne(['toto','testSup2'],3);
+//console.log(act3.listConsommation);
+
+//console.log(act3.getPersByNom('testSup1'));
+//act3.calculeMontantPersonne('toto');
+
+
+//console.log(act3.getPersByNom('testSup1'));
+
+console.log(act3.listPersonne);
+console.log(act3.listConsommation);
+
+act3.supprimerPersonne('testSup1');
+
+console.log(act3.listPersonne);
+console.log(act3.listConsommation);
+
+
 
 //console.log(act3.getFraisByName('Steak').quantite);
 //console.log(act3.listConsommation['tdsq']);
 
 //$(document).ready(function() {
 //    //console.log( "ready!" );
-//}); */
+//});
