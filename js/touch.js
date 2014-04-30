@@ -49,7 +49,7 @@ Touch = {
 	listElement : function(el){
 		el 	.hammer()
 			.on('hold', function(e){
-				alert(el+"\n"+personnes.liste.getIdByElement(el));
+				alert(el+"\n"+personnes.liste.getIdByElement(el[0]));
 			})
 			.on( 'drag', function(e){
 				Touch.noTabSwipe();

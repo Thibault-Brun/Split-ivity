@@ -129,7 +129,7 @@
 		});	
 		personnes.liste.personnes = new Array;
 		personnes.liste.ajouter = function(el, id){
-			Touch.listElement(el);
+			Touch.listElement($(el));
 			personnes.liste.personnes[id] = el;
 		};
 		personnes.liste.getIdByElement = function(el){
