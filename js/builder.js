@@ -114,11 +114,11 @@
 
 		frais.liste.frais = new Array;
 		frais.liste.ajouter = function(el, id){
-			Touch.listElement(el);
-			frais.liste.frais[id] = el;
+			Touch.listElement($(el));
+			frais.liste.frais[el] = id;
 		};
 		frais.liste.getIdByElement = function(el){
-			return frais.liste.frais.indexOf(el);
+			return frais.liste.frais[el];
 		}
 		frais.liste.hide();
  	},

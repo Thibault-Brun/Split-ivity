@@ -61,6 +61,7 @@ Touch = {
 		el 	.hammer()
 			.on('hold', function(e){
 				alert(el+"\n"+personnes.liste.getIdByElement(el[0]));
+				//alert(el+"\n"+frais.liste.getIdByElement(el[0]));
 			})
 			.on( 'drag', function(e){
 				Touch.noTabSwipe();
