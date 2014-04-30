@@ -11,14 +11,13 @@ function Personne (arg1) {
 	Personne.nextId += 1;
 };
 
-
+Frais.nextId = 0;
 function Frais (arg1, arg2) {
     this.intitule = arg1;
     this.montant = arg2;
     this.identifiant = Frais.nextId;
     Frais.nextId++;
 }
-Frais.nextId = 0;
 
 // classe Packages
 function PackageDefault (arg1) {
@@ -110,7 +109,7 @@ function ActiviteDetail (arg1) {
     /* A FINIR */
 	
     this.supprimerPersonne = function(pers) {
-        if (pers instanceof Personne){ objPers = pers;} else { objPers = this.getPersByNom(pers);}
+        if (pers instanceof Personne){ objPers = pers;} else { objPers = this.getPersById(pers);}
         //console.log(pers);
         //console.log(objPers);
         this.listPersonne.splice(this.listPersonne.indexOf(objPers),1);
@@ -132,6 +131,13 @@ function ActiviteDetail (arg1) {
         var rep = null;
         $.each(this.listPersonne, function(index, value){
             if(value.nom == pers){ rep = value; }
+        });
+        return rep;
+    }
+    this.getPersById = function (pers){
+        var rep = null;
+        $.each(this.listPersonne, function(index, value){
+            if(value.identifiant == pers){ rep = value; }
         });
         return rep;
     }
