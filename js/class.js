@@ -188,6 +188,7 @@ extendClass(PackageSpecifique, PackageDefault);
 extendClass(ActiviteSimple, Activite);
 extendClass(ActiviteDetail, Activite);
 
+/*
 var pack1 = new PackageDefault("defaut");
 var pack2 = new PackageSpecifique("toto");
 //console.log(pack1.getInfo());
@@ -243,12 +244,12 @@ act3.affecterPersonne(['lala','testSup1'],2);
 console.log(act3.listPersonne);
 console.log(act3.listConsommation);
 
-act3.supprimerPersonne('testSup1');
+act3.supprimerPersonne(4);
 
 console.log(act3.listPersonne);
 console.log(act3.listConsommation);
 
-
+*/
 
 //console.log(act3.getFraisByName('Steak').quantite);
 //console.log(act3.listConsommation['tdsq']);
