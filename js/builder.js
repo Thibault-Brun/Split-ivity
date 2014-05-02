@@ -173,6 +173,8 @@
  		personnes.liste.fantome.nom = personnes.liste.fantome.find("input[name='nomPersonne']");
  		personnes.liste.fantome.total = personnes.liste.fantome.find("div[name='totalPersonne']");
 		personnes.liste.fantome.details = personnes.liste.fantome.find("div[name='detailsPersonne']");
+		personnes.liste.fantome.supprimerGauche = personnes.liste.fantome.find(".supprimer.left");
+		personnes.liste.fantome.supprimerDroit = personnes.liste.fantome.find(".supprimer.right");
 		personnes.liste.fantome.moved = false;
  	},
  	fraisFantome : function(){
@@ -207,9 +209,9 @@
 			var results = SpinningWheel.getSelectedValues();
 			var nbPersonnes = parseInt(results.values.join(''));
 		
-				if(nbPersonnes == 0){
-					nbPersonnes = 1;
-					SpinningWheel.scrollToValue(1,1);
+				if(nbPersonnes <= 1){
+					nbPersonnes = 2;
+					SpinningWheel.scrollToValue(1,2);
 				}
 	
 			iconeNbPersonnes.label.setText(nbPersonnes);

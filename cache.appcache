@@ -3,24 +3,33 @@ CACHE MANIFEST
 # Split'ivity
 # version 0.01
 
-
 CACHE:
 # Pages de l'application
 index.html
 indexDetails.html
 vueSimple.html
+formulaireFrais.html
+formulairePersonnes.html
 
 # Scripts de l'application
 js/calculs.js
 js/interface-mobile.js
 js/animations.js
+js/builder.js
+js/touch.js
+js/class.js
+js/icones.js
+js/ajouterFrais.js
+js/ajouterPersonne.js
 
 #Librairies Javascript
 js/libs/less.js
 js/libs/raphael.js
 js/libs/spinningwheel.js
 js/libs/jquery-2.1.0.min.js
-js/libs/jquery.hammer-full.min.js
+js/libs/jquery.hammer-full.js
+js/libs/jquery.transform2d.js
+js/libs/jquery.easing.1.3.js
 
 # Images
 images/startup.png
@@ -33,9 +42,8 @@ stylesheets/animate.css
 
 # Polices
 fonts/pacifico.woff
+fonts/roboto.woff
 
 NETWORK:
 index.html
-indexDetails.html
-stylesheets/stylesheet.less
 *

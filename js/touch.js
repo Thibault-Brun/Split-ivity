@@ -10,7 +10,7 @@ Touch = {
 				  	.on("dragend", function(ev) { 
 						if(ev.gesture.direction == "right")
 							tabs.simple.click();
-						else
+						else if(ev.gesture.direction == "left")
 							tabs.details.click();
 						ev.gesture.stopPropagation();
 						ev.gesture.preventDefault();
@@ -66,7 +66,9 @@ Touch = {
 				Touch.noTabSwipe();
 				if(e.gesture.direction == 'left' || e.gesture.direction == 'right'){
 					if(el.is('li')){
+						console.log(el);
 						el.animate({transform: 'translateX('+e.gesture.deltaX+'px)'},0);
+						el.find(".supprimer.right").animate({'right': e.gesture.deltaX+'px'},0);
 						if(!el.hasClass('touched'))
 						el.addClass('touched');
 						e.gesture.preventDefault();
@@ -85,10 +87,14 @@ Touch = {
 			})
 			.on('dragend', function(e){
 				el.removeClass('touched');
-				if(e.gesture.direction == "right")
-					Animation.slideTo(el, 40);
-				else if(e.gesture.direction == "left")
-					Animation.slideTo(el, -40);
+				if(e.gesture.direction == "right"){
+					Animation.slideTo(el, el.find(".supprimer.right").outerHeight());
+					
+				}
+				else if(e.gesture.direction == "left"){
+					Animation.slideTo(el, -1*el.find(".supprimer.right").outerHeight());
+					el.find(".supprimer.right").animate({'right': el.find(".supprimer.right").outerHeight()*-1+'px'},0);
+				}
 				el.moved = true;
 				e.gesture.stopPropagation();
 				e.gesture.preventDefault();

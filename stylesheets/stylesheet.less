@@ -19,9 +19,16 @@
   src: local('Pacifico Regular'), local('Pacifico-Regular'), url(../fonts/pacifico.woff) format('woff');
 }
 
+@font-face {
+  font-family: 'roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: local('roboto'), url(../fonts/roboto.woff) format('woff');
+}
+
 .font-splitivity{font-family: 'Pacifico', 'comic';}
 	
-.font-clean{font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;}
+.font-clean{font-family: "roboto" ,"HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;}
 
 .ombre-text{text-shadow: 0px -1px 0px black;
 }
@@ -283,18 +290,31 @@ body{
 		
 		li{
 		.box-sizing;
-		
 		list-style: none;
 		width: 100%;
 		padding: 0px;
 		margin: 0px;
 		border-bottom:1px solid @couleur-bouton-frais;
-		&:first-child{
-			border-top: 1px solid @couleur-bouton-frais;
-		}
-		 div{
+		background-color: white;
+
+		div{
 			display : inline-block;
-		 }
+
+			&.supprimer{
+				font-size: 15pt;
+				position: absolute;
+				padding: 10px;
+				background-color: @couleur-simple;
+				color : white;
+				&.left{
+					left: 0px;
+				}
+				&.right{
+					right : 0px;
+				}
+
+			}
+		}
 		input{
 		.box-sizing;
 			background: none;

@@ -231,7 +231,7 @@ console.log("Total pour titi :"+act3.calculeMontantPersonne('titi'));
 console.log("Total pour toto :"+act3.calculeMontantPersonne('toto'));
 console.log("Total pour lala :"+act3.calculeMontantPersonne('lala'));*/
 
-act3.affecterPersonne(['lala','testSup1'],2);
+//act3.affecterPersonne(['lala','testSup1'],2);
 //act3.affecterPersonne(['toto','testSup2'],3);
 //console.log(act3.listConsommation);
 
@@ -241,15 +241,14 @@ act3.affecterPersonne(['lala','testSup1'],2);
 
 //console.log(act3.getPersByNom('testSup1'));
 
-console.log(act3.listPersonne);
-console.log(act3.listConsommation);
+//console.log(act3.listPersonne);
+//console.log(act3.listConsommation);
 
-act3.supprimerPersonne(4);
+//act3.supprimerPersonne(4);
 
-console.log(act3.listPersonne);
-console.log(act3.listConsommation);
+//console.log(act3.listPersonne);
+//console.log(act3.listConsommation);
 
-*/
 
 //console.log(act3.getFraisByName('Steak').quantite);
 //console.log(act3.listConsommation['tdsq']);
