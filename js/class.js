@@ -72,17 +72,23 @@ function ActiviteDetail (arg1) {
     };
 
     this.supprimerFrais = function (frais) {
-        if (frais instanceof Frais){ var objFrais = frais;} else { var objFrais = this.getFraisById(frais);}
-        this.listFrais.splice(this.listFrais.indexOf(objFrais),1);
-        var delInd = null;
-        $.each(this.listConsommation, function(index, value){ 
-            if (value != undefined) {
-                if (value[0].identifiant == objFrais.identifiant) {
-                    delInd = index;
-                }
-            };
+        //if (frais instanceof Frais){ var objFrais = frais;} else { var objFrais = this.getFraisById(frais);}
+        var currentAct = this;
+        var objFrais = null;
+        $.each(frais, function(index, value){
+            objFrais = currentAct.getFraisById(value);
+            currentAct.listFrais.splice(currentAct.listFrais.indexOf(objFrais),1);
+            var delInd = null;
+            $.each(currentAct.listConsommation, function(index2, value2){
+                console.log(objFrais);
+                if (value2 != undefined) {
+                    if (value2[0].identifiant == objFrais.identifiant) {
+                        delInd = index2;
+                    }
+                };
+            });
+            currentAct.listConsommation.splice(delInd,1);
         });
-        this.listConsommation.splice(delInd,1);
     };
 
     this.modifierFraisIntitule = function (frais, newNomFrais) {
@@ -257,6 +263,7 @@ console.log("Total pour lala :"+act3.calculeMontantPersonne('lala'));*/
 act3.affecterPersonne([5,4],3);
 //act3.affecterPersonne(['toto','testSup2'],3);
 console.log(act3.listConsommation);
+console.log(act3.listFrais);
 
 //console.log(act3.getPersByNom('testSup1'));
 //act3.calculeMontantPersonne('toto');
@@ -267,13 +274,14 @@ console.log(act3.listConsommation);
 //console.log(act3.listPersonne);
 //console.log(act3.listConsommation);
 
-act3.supprimerPersonne(4);
+act3.supprimerFrais([4,2]);
 
 //console.log(act3.listPersonne);
 act3.modifierFraisMontant(1,87);
 act3.modifierFraisIntitule(1,"Modif de ouf");
 
 console.log(act3.listConsommation);
+console.log(act3.listFrais);
 
 
 //console.log(act3.getFraisByName('Steak').quantite);
