@@ -118,11 +118,18 @@
 
 		frais.liste.frais = new Array;
 		frais.liste.ajouter = function(el, id){
+			console.log(id);
 			Touch.listElement($(el).find('.list-container'));
-			frais.liste.frais[el] = id;
+			$.each(id,function(key,id){
+				frais.liste.frais[id] = el;
+			});
 		};
 		frais.liste.getIdByElement = function(el){
-			return frais.liste.frais[el];
+			var values = Array;
+			$.each(frais.liste.frais, function(key, value){
+				if(value == el) values.push(key);
+			});
+			return values;
 		}
 		frais.liste.hide();
  	},

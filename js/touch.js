@@ -62,11 +62,10 @@ Touch = {
 					.off("dragend");
 	},
 	listElement : function(el){
-	console.log(el);
 		el 	.hammer()
 			.on('hold', function(e){
-				alert(el+"\n"+personnes.liste.getIdByElement(el[0]));
-				//alert(el+"\n"+frais.liste.getIdByElement(el[0]));
+				//alert(el+"\n"+personnes.liste.getIdByElement(el.parent()[0]));
+				alert(el+"\n"+frais.liste.getIdByElement(el.parent()[0]));
 			})
 			.on( 'drag', function(e){
 				Touch.noTabSwipe();
