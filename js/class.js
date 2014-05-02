@@ -120,6 +120,7 @@ function ActiviteDetail (arg1) {
     this.ajouterPersonne = function(pers) {
 		var p =new Personne(pers);
 		this.listPersonne.push(p);
+        return Personne.newId-1;
     };
 	
 	this.modifierPersonne=function(id,newNom){
@@ -208,8 +209,7 @@ extendClass(PackageSpecifique, PackageDefault);
 extendClass(ActiviteSimple, Activite);
 extendClass(ActiviteDetail, Activite);
 
-
-/* var pack1 = new PackageDefault("defaut");
+/*var pack1 = new PackageDefault("defaut");
 var pack2 = new PackageSpecifique("toto");
 //console.log(pack1.getInfo());
 //console.log(pack2.getInfo());
@@ -270,6 +270,9 @@ console.log(act3.listConsommation);
 act3.supprimerPersonne(4);
 
 //console.log(act3.listPersonne);
+act3.modifierFraisMontant(1,87);
+act3.modifierFraisIntitule(1,"Modif de ouf");
+
 console.log(act3.listConsommation);
 
 

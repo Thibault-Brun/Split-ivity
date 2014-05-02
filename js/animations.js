@@ -31,7 +31,7 @@ Animation = {
 	slideTo : function(el, value, duree){
 		duree = typeof duree !== 'undefined' ? duree : 500;
 		el.animate({transform: 'translateX('+value+'px)'},{duration: duree,
-		easing: Animation.roll});
+		easing: Animation.drop});
 	}
 }
 function animation_iconeNbPersonnesBounce(){
