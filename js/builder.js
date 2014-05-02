@@ -184,16 +184,23 @@
 					personnes.liste.html(data);
 					Builder.personneFantome();
 		});	
+		personnes.liste.icones = new Array;
 		personnes.liste.personnes = new Array;
 		personnes.liste.ajouter = function(el, id){
 			Touch.listElement($(el).find('.list-container'));
 			personnes.liste.personnes[id] = el;
+			personnes.liste.icones[id] = personnes.liste.fantome.icone;
 		};
 		personnes.liste.getIdByElement = function(el){
 			return personnes.liste.personnes.indexOf(el);
 		}
+<<<<<<< HEAD
 		personnes.liste.getElementById = function(id){
 			return personnes.liste.personnes[id];
+=======
+		personnes.liste.getIconeById = function(id){
+			return personnes.liste.icones[id];
+>>>>>>> 2c50dc2e0329e9f21fff318599ef55e3b4b9e071
 		}
 		personnes.liste.hide();
  	},
@@ -252,7 +259,11 @@
  		personnes.liste.fantome = $('.personne.fantome');
  		personnes.liste.fantome.nom = personnes.liste.fantome.find("input[name='nomPersonne']");
  		personnes.liste.fantome.total = personnes.liste.fantome.find("div[name='totalPersonne']");
-		personnes.liste.fantome.details = personnes.liste.fantome.find("div[name='detailsPersonne']");
+		personnes.liste.fantome.details = personnes.liste.fantome.find("#detailsPersonne");
+		personnes.liste.fantome.details.click(function(){
+			Interface.openIconeDetailsPersonne(personnes.liste.icones[personnes.liste.getIdByElement($(this).parent().parent()[0])]);
+		});
+		Interface.renderIconeDetailsPersonne(personnes.liste.fantome.details[0]);
 		personnes.liste.fantome.supprimerGauche = personnes.liste.fantome.find(".supprimer.left");
 		personnes.liste.fantome.supprimerDroit = personnes.liste.fantome.find(".supprimer.right");
 		personnes.liste.fantome.container = personnes.liste.fantome.find(".list-container");
