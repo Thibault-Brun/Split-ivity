@@ -84,6 +84,29 @@ function ActiviteDetail (arg1) {
         });
         this.listConsommation.splice(delInd,1);
     };
+
+    this.modifierFraisIntitule = function (frais, newNomFrais) {
+        if (frais instanceof Frais){ var objFrais = frais;} else { var objFrais = this.getFraisById(frais);}
+        $.each(this.listFrais, function(index, value){ 
+            if (value != undefined) {
+                if (value.identifiant == objFrais.identifiant) {
+                    value.intitule = newNomFrais;
+                }
+            };
+        });
+    };
+
+    this.modifierFraisMontant = function (frais, newMontantFrais) {
+        if (frais instanceof Frais){ var objFrais = frais;} else { var objFrais = this.getFraisById(frais);}
+        $.each(this.listFrais, function(index, value){ 
+            if (value != undefined) {
+                if (value.identifiant == objFrais.identifiant) {
+                    value.montant = newMontantFrais;
+                }
+            };
+        });
+    };
+
     this.getFraisById = function(arg1) {
         var rep = null;
         $.each(this.listFrais, function(index, value){
@@ -105,9 +128,7 @@ function ActiviteDetail (arg1) {
 				value.nom=newNom;
 		});
 	}
-    
-    /* A FINIR */
-	
+    	
     this.supprimerPersonne = function(pers) {
         if (pers instanceof Personne){ objPers = pers;} else { objPers = this.getPersById(pers);}
         //console.log(pers);
@@ -121,7 +142,7 @@ function ActiviteDetail (arg1) {
                 });
         });
     };
-    /* FIN A FINIR */
+
     this.affecterPersonne = function(pers, frais) {
         if (this.listConsommation[frais] != undefined) {
             this.listConsommation[frais][1] = pers;
@@ -187,8 +208,8 @@ extendClass(PackageSpecifique, PackageDefault);
 extendClass(ActiviteSimple, Activite);
 extendClass(ActiviteDetail, Activite);
 
-/*
-var pack1 = new PackageDefault("defaut");
+
+/* var pack1 = new PackageDefault("defaut");
 var pack2 = new PackageSpecifique("toto");
 //console.log(pack1.getInfo());
 //console.log(pack2.getInfo());
@@ -231,10 +252,11 @@ console.log("Total pour toto :"+act3.calculeMontantPersonne('toto'));
 console.log("Total pour lala :"+act3.calculeMontantPersonne('lala'));*/
 
 //act3.affecterPersonne(['lala','testSup1'],2);
-/*
-act3.affecterPersonne([2,4],2);
+
+/*act3.affecterPersonne([2,4],2);
+act3.affecterPersonne([5,4],3);
 //act3.affecterPersonne(['toto','testSup2'],3);
-//console.log(act3.listConsommation);
+console.log(act3.listConsommation);
 
 //console.log(act3.getPersByNom('testSup1'));
 //act3.calculeMontantPersonne('toto');
@@ -245,10 +267,10 @@ act3.affecterPersonne([2,4],2);
 //console.log(act3.listPersonne);
 //console.log(act3.listConsommation);
 
-//act3.supprimerPersonne(4);
+act3.supprimerPersonne(4);
 
 //console.log(act3.listPersonne);
-//console.log(act3.listConsommation);
+console.log(act3.listConsommation);
 
 
 //console.log(act3.getFraisByName('Steak').quantite);
