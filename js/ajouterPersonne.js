@@ -20,6 +20,8 @@ function ajoutPersonne(){
 
 		activiteDefaut.ajouterPersonne(nom);
 		
+		var nombrePersonne=activiteDefaut.listPersonne.length;
+		$("#nombre-personne").html(nombrePersonne);
 	}
 }
 
@@ -30,4 +32,6 @@ function modifierNomPersonne(el){
 function supprimerPersonne(id){
 
 activiteDefaut.supprimerPersonne(id);
+var nombrePersonne=activiteDefaut.listPersonne.length;
+	$("#nombre-personne").html(nombrePersonne);
 }

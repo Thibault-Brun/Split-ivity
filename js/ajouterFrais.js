@@ -20,7 +20,13 @@ function ajoutFrais(){
 			Builder.fraisFantome();
 			frais.liste.fantome.nom.focus();
 		});
+		var prixTotalFrais=activiteDefaut.calculeMontantGlobal();
+	$("#total-frais").html(prixTotalFrais+" €");
 	}
+	
+	
+
+	
 }
 
 function precQteFrais(el){
@@ -49,6 +55,8 @@ function modifierQteFrais(el){
 			frais.liste.supprimer(el.parentElement.parentElement, res);
 			// TODO Supprimer de frais.liste.frais
 		}
+			var prixTotalFrais=activiteDefaut.calculeMontantGlobal();
+	$("#total-frais").html(prixTotalFrais+" €");
 	}
 	else {
 		el.value = lastQte;
