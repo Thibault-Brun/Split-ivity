@@ -20,6 +20,29 @@ Interface = {
 	        $(el).blur();
 	    }
 	},
+	renderIconeDetailsPersonne : function(el){
+		var paper = Raphael(el,35, 35);
+		personnes.liste.fantome.icone = {
+		top : paper.path(RAPHAEL_hamburger_button.top).attr({fill: Interface.splitivityColor, stroke: "none"}).click(function(){console.log(this);}),
+		middle : paper.path(RAPHAEL_hamburger_button.middle).attr({fill: Interface.splitivityColor, stroke: "none"}),
+		bottom : paper.path(RAPHAEL_hamburger_button.bottom).attr({fill: Interface.splitivityColor, stroke: "none"}),
+		open : false
+		};
+	},
+	openIconeDetailsPersonne : function(icone){
+		if(icone.open){
+		icone.top.animate({transform:"r0t0,0"},500,'elastic');	
+		icone.middle.animate({opacity:"1"},100);
+		icone.bottom.animate({transform:"r0t0,0"},500,'elastic');
+			icone.open = false;
+		}
+		else{
+		icone.top.animate({transform:"r-45t0,10"},500,'elastic');
+		icone.middle.animate({opacity:"0"},100);
+		icone.bottom.animate({transform:"r45t0,-9"},500,'elastic');
+		icone.open = true;
+		}
+	},
 	ouvrirListe : function(el){
 		tabs.up();
 		container.up();
