@@ -186,7 +186,7 @@ function ActiviteDetail (arg1) {
     this.calculeMontantGlobal = function() {
         var somme = 0;
         $.each(this.listFrais, function(index, value){
-            somme += value.montant;
+            somme += parseFloat(value.montant);
         });
         return somme;
     };
@@ -263,6 +263,12 @@ console.log(act3.listConsommation);
 console.log("calculeMontantGlobal -->"+act3.calculeMontantGlobal());
 
 act3.ajouterPersonne('testSup1');
+
+act3.ajouterPersonne('voilou');
+act3.affecterPersonne([5],1);
+act3.affecterPersonne([5],2);
+console.log(act3.listConsommation);
+console.log(act3.calculeMontantPersonne("5"));
 //act3.ajouterPersonne('voila');
 
 /*console.log("Total pour tata :"+act3.calculeMontantPersonne('tata'));
