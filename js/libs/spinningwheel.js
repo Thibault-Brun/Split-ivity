@@ -549,8 +549,8 @@ var SpinningWheel = {
 	scrollToValue: function (slot, value) {
 		var yPos, count, i;
 
-		this.slotEl[slot].removeEventListener('webkitTransitionEnd', this, false);
-		this.slotEl[slot].style.webkitTransitionDuration = '0';
+		//this.slotEl[slot].removeEventListener('webkitTransitionEnd', this, false);
+		this.slotEl[slot].style.webkitTransitionDuration = '250ms';
 		
 		count = 0;
 		for (i in this.slotData[slot].values) {
