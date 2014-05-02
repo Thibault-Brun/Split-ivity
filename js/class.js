@@ -80,7 +80,6 @@ function ActiviteDetail (arg1) {
             currentAct.listFrais.splice(currentAct.listFrais.indexOf(objFrais),1);
             var delInd = null;
             $.each(currentAct.listConsommation, function(index2, value2){
-                console.log(objFrais);
                 if (value2 != undefined) {
                     if (value2[0].identifiant == objFrais.identifiant) {
                         delInd = index2;
@@ -92,24 +91,34 @@ function ActiviteDetail (arg1) {
     };
 
     this.modifierFraisIntitule = function (frais, newNomFrais) {
-        if (frais instanceof Frais){ var objFrais = frais;} else { var objFrais = this.getFraisById(frais);}
-        $.each(this.listFrais, function(index, value){ 
-            if (value != undefined) {
-                if (value.identifiant == objFrais.identifiant) {
-                    value.intitule = newNomFrais;
-                }
-            };
+        //if (frais instanceof Frais){ var objFrais = frais;} else { var objFrais = this.getFraisById(frais);}
+        var currentAct = this;
+        var objFrais = null;
+        $.each(frais, function(index, value){ 
+            objFrais = currentAct.getFraisById(value);
+            $.each(currentAct.listFrais, function(index2, value2){ 
+                if (value2 != undefined) {
+                    if (value2.identifiant == objFrais.identifiant) {
+                        value2.intitule = newNomFrais;
+                    }
+                };
+            });
         });
     };
 
     this.modifierFraisMontant = function (frais, newMontantFrais) {
-        if (frais instanceof Frais){ var objFrais = frais;} else { var objFrais = this.getFraisById(frais);}
-        $.each(this.listFrais, function(index, value){ 
-            if (value != undefined) {
-                if (value.identifiant == objFrais.identifiant) {
-                    value.montant = newMontantFrais;
-                }
-            };
+        //if (frais instanceof Frais){ var objFrais = frais;} else { var objFrais = this.getFraisById(frais);}
+        var currentAct = this;
+        var objFrais = null;
+        $.each(frais, function(index, value){ 
+            objFrais = currentAct.getFraisById(value);
+            $.each(currentAct.listFrais, function(index2, value2){ 
+                if (value2 != undefined) {
+                    if (value2.identifiant == objFrais.identifiant) {
+                        value2.montant = newMontantFrais;
+                    }
+                };
+            });
         });
     };
 
@@ -138,13 +147,9 @@ function ActiviteDetail (arg1) {
     	
     this.supprimerPersonne = function(pers) {
         if (pers instanceof Personne){ objPers = pers;} else { objPers = this.getPersById(pers);}
-        //console.log(pers);
-        //console.log(objPers);
         this.listPersonne.splice(this.listPersonne.indexOf(objPers),1);
-        //console.log(this.listPersonne);
         $.each(this.listConsommation, function(index, value){
                 $.each(value[1], function(index2, value2){
-                    console.log(value2);
                     if(value2 == objPers.identifiant){ value[1].splice(index2,1); }
                 });
         });
@@ -274,11 +279,13 @@ console.log(act3.listFrais);
 //console.log(act3.listPersonne);
 //console.log(act3.listConsommation);
 
-act3.supprimerFrais([4,2]);
+//act3.supprimerFrais([4,2]);
 
 //console.log(act3.listPersonne);
-act3.modifierFraisMontant(1,87);
-act3.modifierFraisIntitule(1,"Modif de ouf");
+
+act3.modifierFraisIntitule([1,2],"Modif de ouf");
+act3.modifierFraisIntitule([0,2,4],69);
+
 
 console.log(act3.listConsommation);
 console.log(act3.listFrais);
