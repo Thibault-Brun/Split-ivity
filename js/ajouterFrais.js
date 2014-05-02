@@ -8,8 +8,8 @@ function ajoutFrais(){
 	
 		frais.liste.fantome.quantite.attr('onfocus', 'precQteFrais(this);');
 		frais.liste.fantome.quantite.attr('onblur', 'modifierQteFrais(this);');
-		frais.liste.fantome.nom.attr('onblur', 'modifierFrais(this);');
-		frais.liste.fantome.prix.attr('onblur', 'modifierFrais(this);');
+		frais.liste.fantome.nom.attr('onblur', 'modifierNomFrais(this);');
+		frais.liste.fantome.prix.attr('onblur', 'modifierPrixFrais(this);');
 		
 		frais.liste.fantome.removeClass('fantome');
 		
@@ -46,7 +46,7 @@ function modifierQteFrais(el){
 			var delID = listeID.splice(listeID.length-res, res);
 			
 			activiteDefaut.supprimerFrais(delID);
-			frais.liste.modifierQuantite(el.parentElement.parentElement, res);
+			frais.liste.supprimer(el.parentElement.parentElement, res);
 			// TODO Supprimer de frais.liste.frais
 		}
 	}
@@ -56,16 +56,26 @@ function modifierQteFrais(el){
 }
 
 
-function modifierFrais(el){
+function modifierNomFrais(el){
 	var nom = el.parentElement.getElementsByTagName("input")[1].value;
-	var prix = el.parentElement.getElementsByTagName("input")[2].value;
-
-	if ( $.trim(nom) !="" && ($.trim(prix) !="")) {
+	
+	if ($.trim(nom) !="") {
 		var listeID = frais.liste.getAllIdByElement(el.parentElement.parentElement);
-		//TODO Maj sur activiteDefaut
+		activiteDefaut.modifierFraisIntitule(listeID, nom);
 	}
 }
 
-function supprimerFrais(){
+function modifierPrixFrais(el){
+	var prix = el.parentElement.getElementsByTagName("input")[2].value;
 	
+	if ($.trim(prix) !="") {
+		var listeID = frais.liste.getAllIdByElement(el.parentElement.parentElement);
+		activiteDefaut.modifierFraisMontant(listeID, prix);
+	}
+}
+
+function supprimerFrais(el){
+	var listeID = frais.liste.getAllIdByElement(el.parentElement);
+	activiteDefaut.supprimerFrais(listeID);
+	frais.liste.supprimer(el.parentElement, listeID.length);
 }

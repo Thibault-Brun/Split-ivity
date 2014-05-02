@@ -129,7 +129,7 @@
 				if(value == el) values.push(key);
 			});
 			return values;
-		}
+		};
 		
 		frais.liste.getAllIdByElement = function(el){
 			var tabID = [];
@@ -142,7 +142,7 @@
 			return tabID;
 		}
 		
-		frais.liste.modifierQuantite = function(el, nbLi) {
+		frais.liste.supprimer = function(el, nbLi) {
 			for (var i = 0 ; i < nbLi ; i++) {
 				frais.liste.frais.splice(frais.liste.frais.lastIndexOf(el), 1);
 			}
