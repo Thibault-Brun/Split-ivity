@@ -42,11 +42,11 @@ Touch = {
 						if(ev.gesture.direction == "down")
 							header.dropTo(0);
 						else
-							header.rollTo(header.coordDown-header.height());
+							header.rollTo(header.coordDown-header.height(),800);
 					}
 					else{
 						if(ev.gesture.direction == "down")
-							header.rollTo(header.coordDown-header.height());
+							header.rollTo(header.coordDown-header.height(),800);
 						else
 							header.dropTo(0);
 					}

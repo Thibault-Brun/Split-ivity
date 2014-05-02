@@ -20,7 +20,7 @@
  		header.addClass('ombre');
  		setTimeout(function(){header.rollTo(header.coordDown-header.height(), 1000);
 	 		setTimeout(function(){header.removeClass('ombre');}, 800);
- 		},500);
+ 		},1300);
  	},
  	container : function(){
  		container = $('#container');
@@ -118,7 +118,6 @@
 
 		frais.liste.frais = new Array;
 		frais.liste.ajouter = function(el, id){
-			console.log(id);
 			Touch.listElement($(el).find('.list-container'));
 			$.each(id,function(key,id){
 				frais.liste.frais[id] = el;
