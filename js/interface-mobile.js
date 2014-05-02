@@ -89,10 +89,10 @@ Interface = {
 			SpinningWheel.scrollToValue(i,digits[i]);
 	},
 	ajoutPersAuFrais : function(id,idPers){
-		activiteDefaut.affecterPersonne(activiteDefaut.listPersonne[idPers], id);
+		activiteDefaut.affecterPersonne(idPers, id);
 	},
 	suppPersAuFrais : function(id,idPers){
-		activiteDefaut.desaffecterPersonne(activiteDefaut.listPersonne[idPers], id);
+		activiteDefaut.desaffecterPersonne(idPers, id);
 	}
 
 };
