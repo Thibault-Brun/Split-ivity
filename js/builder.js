@@ -130,6 +130,23 @@
 			});
 			return values;
 		}
+		
+		frais.liste.getAllIdByElement = function(el){
+			var tabID = [];
+			
+			for (var i in frais.liste.frais) {
+				if (frais.liste.frais[i] == el)
+					tabID.push(i);
+			}
+			
+			return tabID;
+		}
+		
+		frais.liste.modifierQuantite = function(el, nbLi) {
+			for (var i = 0 ; i < nbLi ; i++) {
+				frais.liste.frais.splice(frais.liste.frais.lastIndexOf(el), 1);
+			}
+		}
 		frais.liste.hide();
  	},
  	listePersonnes : function(){
