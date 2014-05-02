@@ -38,18 +38,21 @@ Touch = {
 					ev.stopPropagation();
 				})
 				.on("dragend", function(ev){
-					if(!(ev.gesture.deltaY>-70 && ev.gesture.deltaY<70)){
-						if(ev.gesture.direction == "down")
-							header.dropTo(0);
-						else
-							header.rollTo(header.coordDown-header.height(),800);
-					}
-					else{
-						if(ev.gesture.direction == "down")
-							header.rollTo(header.coordDown-header.height(),800);
-						else
-							header.dropTo(0);
-					}
+					if(ev.gesture.direction == "down"){
+					if(ev.gesture.touches[0].screenY>$(document).height()/3)
+						header.dropTo(0);
+						
+					else
+						header.rollTo(header.coordDown-header.height(),800);
+						}
+						else if(ev.gesture.direction == "up"){
+						if(ev.gesture.touches[0].screenY>$(document).height()*0.80)
+						header.dropTo(0);
+						
+					else
+						header.rollTo(header.coordDown-header.height(),800);
+							
+						}
 					header.removeClass("ombre");
 					ev.gesture.preventDefault();
 					ev.stopPropagation();
