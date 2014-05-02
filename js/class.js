@@ -201,8 +201,8 @@ function ActiviteDetail (arg1) {
             if (value != undefined) {
                 $.each(value[1], function(index2, value2){
                     if (value2 == pers) {
-                        if(value[1].length == 1){ rep += value[0].montant; }
-                        if(value[1].length > 1){ rep += value[0].montant/value[1].length; }
+                        if(value[1].length == 1){ rep += parseFloat(value[0].montant); }
+                        if(value[1].length > 1){ rep += parseFloat(value[0].montant/value[1].length); }
                     }
                 });
             };
