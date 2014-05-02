@@ -1,0 +1,5 @@
+{{#lesPersonnes}}
+<li class="personne">
+		<div class="supprimer left">Suppr.</div><div class="list-container" style="-webkit-user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"><input type="text" placeholder="Ajouter personne" name="nomPersonne" value="{{nom}}" onblur="modifierNomPersonne(this);" onkeyup="Interface.enterPressed(event,this);"><div class="" name="totalPersonne"></div><div name="detailsPersonne"><a href="#" onclick="Builder.listeConsommation( $(this).parent().parent() );">details</a></div></div><div class="supprimer right">Suppr.</div>
+</li>
+{{/lesPersonnes}}

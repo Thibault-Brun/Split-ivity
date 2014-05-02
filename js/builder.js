@@ -39,7 +39,7 @@
 				personnes = {}
 				Builder.boutonFrais();
 				Builder.boutonPersonnes();
-				
+				Builder.startPersonnes();
 				personnes.bouton.icone = interface_renderListeButtonIcon(document.getElementById('icone-personne-liste'));
 				frais.bouton.icone = interface_renderListeButtonIcon(document.getElementById('icone-frais'));
 				
@@ -150,13 +150,15 @@
 		frais.liste.hide();
  	},
 	listeConsommation : function(el){
+		if(activiteDefaut.listFrais.length==0)
+			return;
 		var idPers=personnes.liste.getIdByElement(el.parent()[0]);
 
 		$.get("./fraisParPersonne.html", function(data){
 		container.html(data);
 		container.append(activiteDefaut.listPersonne[idPers].nom);
 		var fraisJson=JSON.parse(JSON.stringify(activiteDefaut.listFrais));
-			console.log(fraisJson);
+			//console.log(fraisJson);
 		$('#liste_frais').html(Mustache.render(data, {lesFrais : fraisJson}));
 		conso = {
 			liste : $('#liste_frais'),
@@ -192,6 +194,29 @@
 		}
 		personnes.liste.hide();
  	},
+	
+	startPersonnes : function(){
+		$.get("./lesPersonnesEnMemoire.html", function(data){
+		/*
+		container.html(data);
+		container.append(activiteDefaut.listPersonne);
+		*/
+		var personnesJson=JSON.parse(JSON.stringify(activiteDefaut.listPersonne));
+		personnes.liste.html(Mustache.render(data, {lesPersonnes : personnesJson}));
+		
+		});
+	
+	/*
+			var lesPersonnes=activiteDefaut.listpersonne;
+			var el="<li>azeifuh</li>"
+
+			for( idPers in lesPersonnes){
+			personnes.liste.ajouter(el,activiteDefaut.listPersonne[idPers].identifiant);
+			}
+		*/
+	},
+	
+	
  	boutonPersonnes : function(){
  		personnes.bouton = $('#bouton-personnes');
 		personnes.bouton.active = false;
