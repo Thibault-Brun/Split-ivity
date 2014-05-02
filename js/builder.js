@@ -20,7 +20,7 @@
  		header.addClass('ombre');
  		setTimeout(function(){header.rollTo(header.coordDown-header.height(), 1000);
 	 		setTimeout(function(){header.removeClass('ombre');}, 800);
- 		},1300);
+ 		},800);
  	},
  	container : function(){
  		container = $('#container');
@@ -148,6 +148,31 @@
 			}
 		}
 		frais.liste.hide();
+ 	},
+	listeConsommation : function(el){
+		var idPers=personnes.liste.getIdByElement(el.parent()[0]);
+
+		$.get("./fraisParPersonne.html", function(data){
+		container.html(data);
+		container.append(activiteDefaut.listPersonne[idPers].nom);
+		var fraisJson=JSON.parse(JSON.stringify(activiteDefaut.listFrais));
+			console.log(fraisJson);
+		$('#liste_frais').html(Mustache.render(data, {lesFrais : fraisJson}));
+		conso = {
+			liste : $('#liste_frais'),
+			ajoutOuSupp : function(el){
+			if(! el.parent().parent().hasClass("active")){
+			Interface.ajoutPersAuFrais(el.parent().parent().attr('id'),idPers);
+			el.parent().parent().addClass("active");
+			}
+			else{
+			Interface.suppPersAuFrais(el.parent().parent().attr('id'),idPers);
+			el.parent().parent().removeClass("active");
+			}
+			}
+		};
+			tabs.down();
+		});	
  	},
  	listePersonnes : function(){
  		personnes.liste = $('#listePersonnes');

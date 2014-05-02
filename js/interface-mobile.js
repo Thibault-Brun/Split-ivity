@@ -87,7 +87,14 @@ Interface = {
 		// Sélection de la valeur actuelle de la roulette
 		for(i=nbrSliders-1; i>=0; i--)
 			SpinningWheel.scrollToValue(i,digits[i]);
+	},
+	ajoutPersAuFrais : function(id,idPers){
+		activiteDefaut.affecterPersonne(activiteDefaut.listPersonne[idPers], id);
+	},
+	suppPersAuFrais : function(id,idPers){
+		activiteDefaut.desaffecterPersonne(activiteDefaut.listPersonne[idPers], id);
 	}
+
 };
 function pickerDone(){
 	Touch.tabSwipe();

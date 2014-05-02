@@ -157,9 +157,17 @@ function ActiviteDetail (arg1) {
 
     this.affecterPersonne = function(pers, frais) {
         if (this.listConsommation[frais] != undefined) {
-            this.listConsommation[frais][1] = pers;
+            this.listConsommation[frais][1].push(pers);
         };
     };
+	
+	this.desaffecterPersonne = function(pers, frais) {
+        if (this.listConsommation[frais] != undefined) {
+		 this.listConsommation[frais][1].splice(this.listConsommation[frais][1].indexOf(pers),1);
+
+        };
+    };
+	
     this.getPersByNom = function (pers){
         var rep = null;
         $.each(this.listPersonne, function(index, value){
