@@ -156,13 +156,16 @@ function ActiviteDetail (arg1) {
     };
 
     this.affecterPersonne = function(pers, frais) {
+		//if (frais instanceof Frais){ objFrais = frais;} else { objFrais = this.getFraisById(frais);}
         if (this.listConsommation[frais] != undefined) {
             this.listConsommation[frais][1].push(pers);
         };
+		return true;
     };
 	
 	this.desaffecterPersonne = function(pers, frais) {
-        if (this.listConsommation[frais] != undefined) {
+      //  if (frais instanceof Frais){ objFrais = frais;} else { objFrais = this.getFraisById(frais);}
+		if (this.listConsommation[frais] != undefined) {
 		 this.listConsommation[frais][1].splice(this.listConsommation[frais][1].indexOf(pers),1);
 
         };
@@ -191,8 +194,9 @@ function ActiviteDetail (arg1) {
         return somme;
     };
     this.calculeMontantPersonnes = function() {
+		var currentAct = this;
         $.each(this.listPersonne, function(index, value){
-            console.log("Total pour "+value.nom+" :"+calculeMontantPersonne(value.nom));
+            console.log("Total pour "+value.nom+" :"+currentAct.calculeMontantPersonne(value.identifiant));
         });
     };
     this.calculeMontantPersonne = function(pers) {
