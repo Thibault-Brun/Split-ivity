@@ -1,14 +1,15 @@
 <div id ="liste_frais">
 
-	les frais<br/>
+	
 	<ul id="les_frais">
 	
 	{{#lesFrais}}
-	
-	<b>{{identifiant}}</b>
+
+<li class="frais ">
+	<div class="list-container"><INPUT disabled="disabled" type="text"  name="nomFrais" value="{{intitule}}"/><INPUT type="text" disabled="disabled"  name="prixFrais" value="{{montant}}"/></div>
+</li>
 
 	{{/lesFrais}}
-	
 	</ul>
 	
 </div>
