@@ -66,7 +66,7 @@ function ActiviteDetail (arg1) {
 		    var newFrais = new Frais(frais, prix);
             this.listFrais.push(newFrais);
             this.listConsommation[this.listFrais.length-1]= [newFrais,[]];
-            tabRep.push(this.listFrais.length-1);
+            tabRep.push(newFrais.identifiant);
         };
         return tabRep;
     };
@@ -116,7 +116,7 @@ function ActiviteDetail (arg1) {
         //console.log(this.listPersonne);
         $.each(this.listConsommation, function(index, value){
                 $.each(value[1], function(index2, value2){
-                    //console.log(value2);
+                    console.log(value2);
                     if(value2 == objPers.identifiant){ value[1].splice(index2,1); }
                 });
         });
@@ -158,7 +158,6 @@ function ActiviteDetail (arg1) {
         var rep = 0;
         $.each(this.listConsommation, function(index, value){ 
             if (value != undefined) {
-                //console.log(value[1]);
                 $.each(value[1], function(index2, value2){
                     if (value2 == pers) {
                         if(value[1].length == 1){ rep += value[0].montant; }
@@ -232,6 +231,8 @@ console.log("Total pour toto :"+act3.calculeMontantPersonne('toto'));
 console.log("Total pour lala :"+act3.calculeMontantPersonne('lala'));*/
 
 //act3.affecterPersonne(['lala','testSup1'],2);
+/*
+act3.affecterPersonne([2,4],2);
 //act3.affecterPersonne(['toto','testSup2'],3);
 //console.log(act3.listConsommation);
 
@@ -255,4 +256,4 @@ console.log("Total pour lala :"+act3.calculeMontantPersonne('lala'));*/
 
 //$(document).ready(function() {
 //    //console.log( "ready!" );
-//});
+//}); */
