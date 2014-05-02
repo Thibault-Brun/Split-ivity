@@ -9,14 +9,18 @@
  			header.currPos = pos;
  			Animation.dropTo(header, pos);
  		};
- 		header.rollTo = function(pos){
+ 		header.rollTo = function(pos, duree){
+ 			duree = typeof duree !== 'undefined' ? duree : 500;
  			header.currPos = pos;
- 			Animation.rollTo(header, pos);
+ 			Animation.rollTo(header, pos, duree);
  		};
  		header.moveTo = function(pos){
  			Animation.dropTo(header, pos, 0);
  		};
- 		header.dropTo(header.coordDown-header.height());
+ 		header.addClass('ombre');
+ 		setTimeout(function(){header.rollTo(header.coordDown-header.height(), 1000);
+	 		setTimeout(function(){header.removeClass('ombre');}, 800);
+ 		},500);
  	},
  	container : function(){
  		container = $('#container');
@@ -114,7 +118,7 @@
 
 		frais.liste.frais = new Array;
 		frais.liste.ajouter = function(el, id){
-			Touch.listElement($(el));
+			Touch.listElement($(el).find('.list-container'));
 			frais.liste.frais[el] = id;
 		};
 		frais.liste.getIdByElement = function(el){
@@ -132,7 +136,7 @@
 		});	
 		personnes.liste.personnes = new Array;
 		personnes.liste.ajouter = function(el, id){
-			Touch.listElement($(el));
+			Touch.listElement($(el).find('.list-container'));
 			personnes.liste.personnes[id] = el;
 		};
 		personnes.liste.getIdByElement = function(el){
@@ -175,6 +179,7 @@
 		personnes.liste.fantome.details = personnes.liste.fantome.find("div[name='detailsPersonne']");
 		personnes.liste.fantome.supprimerGauche = personnes.liste.fantome.find(".supprimer.left");
 		personnes.liste.fantome.supprimerDroit = personnes.liste.fantome.find(".supprimer.right");
+		personnes.liste.fantome.container = personnes.liste.fantome.find(".list-container");
 		personnes.liste.fantome.moved = false;
  	},
  	fraisFantome : function(){

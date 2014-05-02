@@ -59,6 +59,8 @@
 
 html { -webkit-text-size-adjust: 100%; height:100%; }
 
+::-webkit-scrollbar{display: none};
+
 body{
 	height: 100%;
 	margin: 0;
@@ -294,18 +296,38 @@ body{
 		width: 100%;
 		padding: 0px;
 		margin: 0px;
-		border-bottom:1px solid @couleur-bouton-frais;
+		height: 50px;
+		position: relative;
 		background-color: white;
+		z-index: 10;
+		overflow: hidden;
+		-webkit-backface-visibility: visible;
+    -moz-backface-visibility:    visible;
+    -ms-backface-visibility:     visible;
+    -o-backface-visibility:     visible;
+    backface-visibility:     visible;
+ 
 
+		div.list-container{
+			display: inline-block;
+			width: 100%;
+			position: absolute;
+			background-color: white;
+			left:0px; top:0px; bottom : 0px; right: 0px;
+			& .touched{
+ 	background-color: RGBA(240, 240, 240, 1);
+ }
+		}
 		div{
 			display : inline-block;
-
 			&.supprimer{
-				font-size: 15pt;
 				position: absolute;
-				padding: 10px;
+				.box-sizing;
+				font-size: 15pt;
+				padding: 9px;
 				background-color: @couleur-simple;
 				color : white;
+				z-index: -1;
 				&.left{
 					left: 0px;
 				}
@@ -315,8 +337,9 @@ body{
 
 			}
 		}
-		input{
+			input{
 		.box-sizing;
+			display: inline-block;
 			background: none;
 			font-size: 15pt;
 			padding: 10px;
@@ -326,6 +349,7 @@ body{
 			min-width: 0px;
 			outline: none;
 			border-radius: 0px;
+			border-bottom: 1px solid @couleur-bouton-frais;
 			&[name=nomFrais]{
 				width: 60%;
 			}
@@ -344,11 +368,11 @@ body{
 				border-bottom: 2px solid @couleur-bouton-frais;
 			}
 		}
-		
 		&.fantome{
-			border-bottom: 1px silver dashed;
-			border-top: 1px silver dashed;
 			margin-bottom: 15px;
+			input{
+				border-bottom: 1px dashed @couleur-bouton-frais;
+			}
 		}
 		}
 	}
@@ -376,10 +400,6 @@ body{
 }
  .hidden{
 	display : none;
- }
-
- .touched{
- 	background-color: RGBA(240, 240, 240, 1);
  }
 
 .detailsPersonne{
