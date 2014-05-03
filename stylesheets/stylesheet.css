@@ -24,6 +24,8 @@
   -webit-animation-delay: 0.5s;
 }
 .box-sizing {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
 html {
@@ -41,16 +43,12 @@ body header {
   -webkit-animation-duration: 0.5s;
   -webit-animation-delay: 0.5s;
   -webkit-transform: translate3d(0px, 0px, 0px);
-  -moz-transform: translate3d(0px, 0px, 0px);
   -ms-transform: translate3d(0px, 0px, 0px);
-  -o-transform: translate3d(0px, 0px, 0px);
   transform: translate3d(0px, 0px, 0px);
   -webkit-backface-visibility: hidden;
-  -moz-backface-visibility: hidden;
   -ms-backface-visibility: hidden;
   backface-visibility: hidden;
   -webkit-perspective: 1000;
-  -moz-perspective: 1000;
   -ms-perspective: 1000;
   perspective: 1000;
   z-index: 20;
@@ -62,12 +60,14 @@ body header {
   position: fixed;
   background-color: #d97d02;
   text-align: center;
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   -moz-box-sizing: border-box;
   border: none;
   text-shadow: 0px -1px 0px #000000;
 }
 body header.ombre {
+  -webkit-box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.8);
   box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.8);
   border-bottom: 1px solid #fb9f24;
 }
@@ -80,6 +80,7 @@ body header h1 {
   margin: 0;
   padding-top: 5px;
   padding-bottom: 5px;
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   -moz-box-sizing: border-box;
 }
@@ -91,6 +92,22 @@ body header h1#menu-titre {
   position: absolute;
   top: 0px;
 }
+body header h2 {
+  color: white;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  font-family: 'Pacifico', 'comic';
+  width: 100%;
+  text-align: center;
+  font-weight: lighter;
+  position: absolute;
+  padding: 10px;
+  bottom: 50px;
+}
+body header h2 .noms {
+  font-size: 13pt;
+}
 body .tabs {
   width: 100%;
   z-index: 2;
@@ -100,21 +117,18 @@ body .tabs ul {
   margin: 0;
   padding: 0;
   width: 100%;
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   -moz-box-sizing: border-box;
 }
 body .tabs ul li {
   -webkit-transform: translate3d(0px, 0px, 0px);
-  -moz-transform: translate3d(0px, 0px, 0px);
   -ms-transform: translate3d(0px, 0px, 0px);
-  -o-transform: translate3d(0px, 0px, 0px);
   transform: translate3d(0px, 0px, 0px);
   -webkit-backface-visibility: hidden;
-  -moz-backface-visibility: hidden;
   -ms-backface-visibility: hidden;
   backface-visibility: hidden;
   -webkit-perspective: 1000;
-  -moz-perspective: 1000;
   -ms-perspective: 1000;
   perspective: 1000;
   display: inline-block;
@@ -123,22 +137,27 @@ body .tabs ul li {
   margin: 0px;
   width: 35%;
   text-align: center;
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   -moz-box-sizing: border-box;
   color: white;
   background-color: #067285;
   font-size: 150%;
+  -webkit-box-shadow: 0px 3px 0px #005063 inset;
   box-shadow: 0px 3px 0px #005063 inset;
 }
 body .tabs ul li:first-child {
   background-color: #cc1b16;
+  -webkit-box-shadow: 0px 3px 0px #aa0000 inset;
   box-shadow: 0px 3px 0px #aa0000 inset;
 }
 body .tabs ul li:first-child.active {
+  -webkit-box-shadow: 0px -3px 0px #aa0000 inset;
   box-shadow: 0px -3px 0px #aa0000 inset;
 }
 body .tabs ul li.active {
   width: 65%;
+  -webkit-box-shadow: 0px -3px 0px #005063 inset;
   box-shadow: 0px -3px 0px #005063 inset;
 }
 body #container {
@@ -147,6 +166,7 @@ body #container {
   left: 0px;
   right: 0px;
   position: absolute;
+  height: -webkit-calc(100% - 116px);
   height: calc(100% - 116px);
 }
 body #container #simple {
@@ -159,6 +179,7 @@ body #container #simple .total {
   -webkit-animation-duration: 0.5s;
   -webit-animation-delay: 0.5s;
   width: 100%;
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   -moz-box-sizing: border-box;
   text-align: center;
@@ -176,10 +197,12 @@ body #container #simple .total input {
 }
 body #container #simple .total input:focus {
   border: 1px solid #d97d02;
+  -webkit-box-shadow: 0px 0px 5px #d97d02;
   box-shadow: 0px 0px 5px #d97d02;
   outline: none;
 }
 body #container #simple .total input:hover {
+  -webkit-box-shadow: 0px 0px 2px #d97d02;
   box-shadow: 0px 0px 2px #d97d02;
 }
 body #container #simple .resultat {
@@ -188,6 +211,7 @@ body #container #simple .resultat {
   font-family: "roboto", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   text-align: center;
   width: 100%;
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   -moz-box-sizing: border-box;
   font-size: 150%;
@@ -197,10 +221,12 @@ body #container #simple .personnes {
   -webit-animation-delay: 0.5s;
   position: absolute;
   bottom: 0px;
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   -moz-box-sizing: border-box;
   width: 100%;
   padding: 15px;
+  -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
   font-family: "roboto", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   text-align: center;
@@ -210,6 +236,7 @@ body #container #simple .personnes.activated {
   z-index: 30;
   background: white;
   padding-bottom: 60px;
+  -webkit-box-shadow: 0px -3px 10px rgba(0, 0, 0, 0.5);
   box-shadow: 0px -3px 10px rgba(0, 0, 0, 0.5);
 }
 body #container #simple #picker {
@@ -228,20 +255,17 @@ body #container #details {
 }
 body #container #details h3 {
   -webkit-transform: translate3d(0px, 0px, 0px);
-  -moz-transform: translate3d(0px, 0px, 0px);
   -ms-transform: translate3d(0px, 0px, 0px);
-  -o-transform: translate3d(0px, 0px, 0px);
   transform: translate3d(0px, 0px, 0px);
   -webkit-backface-visibility: hidden;
-  -moz-backface-visibility: hidden;
   -ms-backface-visibility: hidden;
   backface-visibility: hidden;
   -webkit-perspective: 1000;
-  -moz-perspective: 1000;
   -ms-perspective: 1000;
   perspective: 1000;
   -webkit-animation-duration: 0.5s;
   -webit-animation-delay: 0.5s;
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   -moz-box-sizing: border-box;
   color: white;
@@ -256,20 +280,24 @@ body #container #details h3.active {
 }
 body #container #details h3#bouton-frais {
   background-color: #55626f;
+  -webkit-box-shadow: 0px -3px 0px #33404d inset;
   box-shadow: 0px -3px 0px #33404d inset;
   margin-top: 10px;
 }
 body #container #details h3#bouton-frais.active {
+  -webkit-box-shadow: 0px 3px 0px #33404d inset;
   box-shadow: 0px 3px 0px #33404d inset;
   margin: 0px;
 }
 body #container #details h3#bouton-personnes {
   background-color: #78bd9b;
+  -webkit-box-shadow: 0px -3px 0px #569b79 inset;
   box-shadow: 0px -3px 0px #569b79 inset;
   margin-bottom: 20px;
 }
 body #container #details h3#bouton-personnes.active {
   margin: 0;
+  -webkit-box-shadow: 0px 3px 0px #569b79 inset;
   box-shadow: 0px 3px 0px #569b79 inset;
 }
 body #container #details #listeFrais,
@@ -282,6 +310,8 @@ body #container #details #listePersonnes {
   right: 0px;
   left: 0px;
   bottom: 0px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
   box-sizing: border-box;
   overflow: scroll;
   -webkit-overflow-scrolling: touch;
@@ -293,6 +323,8 @@ body #container #details #icone-personne-liste {
   margin-right: 10px;
 }
 body #container #details li {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
   box-sizing: border-box;
   list-style: none;
   width: 100%;
@@ -304,9 +336,7 @@ body #container #details li {
   z-index: 10;
   overflow: hidden;
   -webkit-backface-visibility: visible;
-  -moz-backface-visibility: visible;
   -ms-backface-visibility: visible;
-  -o-backface-visibility: visible;
   backface-visibility: visible;
 }
 body #container #details li div.list-container {
@@ -327,6 +357,8 @@ body #container #details li div {
 }
 body #container #details li div.supprimer {
   position: absolute;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
   box-sizing: border-box;
   font-size: 15pt;
   padding: 9px;
@@ -340,7 +372,14 @@ body #container #details li div.supprimer.left {
 body #container #details li div.supprimer.right {
   right: 0px;
 }
+body #container #details li div#detailsPersonne {
+  right: 10px;
+  position: absolute;
+  padding: 10px;
+}
 body #container #details li input {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
   box-sizing: border-box;
   display: inline-block;
   background: none;
@@ -348,6 +387,7 @@ body #container #details li input {
   padding: 10px;
   border: none;
   margin: 0px;
+  -webkit-box-shadow: none;
   box-shadow: none;
   min-width: 0px;
   outline: none;
@@ -391,8 +431,11 @@ body .ui-input-text:first-child {
   width: 60%;
 }
 .hidden {
-  display: none;
+  display: none !important;
 }
 .detailsPersonne {
   width: auto;
+}
+.active {
+  background-color: red;
 }
