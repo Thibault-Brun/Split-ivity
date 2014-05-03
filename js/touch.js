@@ -100,5 +100,10 @@ Touch = {
 				e.gesture.stopPropagation();
 				e.stopPropagation();
 			})
-		}
+		},
+	tapFrais : function(){
+		$('.list-container').hammer().on('tap',function(e){
+			conso.ajoutOuSupp($(this));
+		});
+	}
 	};

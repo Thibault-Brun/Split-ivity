@@ -39,7 +39,7 @@ body {
   height: 100%;
   margin: 0;
 }
-body header {
+header {
   -webkit-animation-duration: 0.5s;
   -webit-animation-delay: 0.5s;
   -webkit-transform: translate3d(0px, 0px, 0px);
@@ -66,12 +66,12 @@ body header {
   border: none;
   text-shadow: 0px -1px 0px #000000;
 }
-body header.ombre {
+header.ombre {
   -webkit-box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.8);
   box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.8);
   border-bottom: 1px solid #fb9f24;
 }
-body header h1 {
+header h1 {
   color: white;
   font-family: 'Pacifico', 'comic';
   width: 100%;
@@ -84,15 +84,15 @@ body header h1 {
   box-sizing: border-box;
   -moz-box-sizing: border-box;
 }
-body header h1#splitivity-titre {
+header h1#splitivity-titre {
   position: absolute;
   bottom: 0px;
 }
-body header h1#menu-titre {
+header h1#menu-titre {
   position: absolute;
   top: 0px;
 }
-body header h2 {
+header h2 {
   color: white;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -105,15 +105,15 @@ body header h2 {
   padding: 10px;
   bottom: 50px;
 }
-body header h2 .noms {
+header h2 .noms {
   font-size: 13pt;
 }
-body .tabs {
+.tabs {
   width: 100%;
   z-index: 2;
   font-family: "roboto", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 }
-body .tabs ul {
+.tabs ul {
   margin: 0;
   padding: 0;
   width: 100%;
@@ -121,7 +121,7 @@ body .tabs ul {
   box-sizing: border-box;
   -moz-box-sizing: border-box;
 }
-body .tabs ul li {
+.tabs ul li {
   -webkit-transform: translate3d(0px, 0px, 0px);
   -ms-transform: translate3d(0px, 0px, 0px);
   transform: translate3d(0px, 0px, 0px);
@@ -146,21 +146,21 @@ body .tabs ul li {
   -webkit-box-shadow: 0px 3px 0px #005063 inset;
   box-shadow: 0px 3px 0px #005063 inset;
 }
-body .tabs ul li:first-child {
+.tabs ul li:first-child {
   background-color: #cc1b16;
   -webkit-box-shadow: 0px 3px 0px #aa0000 inset;
   box-shadow: 0px 3px 0px #aa0000 inset;
 }
-body .tabs ul li:first-child.active {
+.tabs ul li:first-child.active {
   -webkit-box-shadow: 0px -3px 0px #aa0000 inset;
   box-shadow: 0px -3px 0px #aa0000 inset;
 }
-body .tabs ul li.active {
+.tabs ul li.active {
   width: 65%;
   -webkit-box-shadow: 0px -3px 0px #005063 inset;
   box-shadow: 0px -3px 0px #005063 inset;
 }
-body #container {
+#container {
   top: 0px;
   bottom: 0px;
   left: 0px;
@@ -169,11 +169,11 @@ body #container {
   height: -webkit-calc(100% - 116px);
   height: calc(100% - 116px);
 }
-body #container #simple {
+#simple {
   height: 100%;
   margin: 0;
 }
-body #container #simple .total {
+#simple .total {
   position: relative;
   top: 0px;
   -webkit-animation-duration: 0.5s;
@@ -187,7 +187,7 @@ body #container #simple .total {
   font-size: 150%;
   padding: 15px;
 }
-body #container #simple .total input {
+#simple .total input {
   padding: 5px;
   margin-right: 5px;
   border: none;
@@ -195,17 +195,17 @@ body #container #simple .total input {
   text-align: center;
   width: 100px;
 }
-body #container #simple .total input:focus {
+#simple .total input:focus {
   border: 1px solid #d97d02;
   -webkit-box-shadow: 0px 0px 5px #d97d02;
   box-shadow: 0px 0px 5px #d97d02;
   outline: none;
 }
-body #container #simple .total input:hover {
+#simple .total input:hover {
   -webkit-box-shadow: 0px 0px 2px #d97d02;
   box-shadow: 0px 0px 2px #d97d02;
 }
-body #container #simple .resultat {
+#simple .resultat {
   position: relative;
   margin: auto;
   font-family: "roboto", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
@@ -216,7 +216,7 @@ body #container #simple .resultat {
   -moz-box-sizing: border-box;
   font-size: 150%;
 }
-body #container #simple .personnes {
+#simple .personnes {
   -webkit-animation-duration: 0.5s;
   -webit-animation-delay: 0.5s;
   position: absolute;
@@ -232,19 +232,19 @@ body #container #simple .personnes {
   text-align: center;
   font-size: 150%;
 }
-body #container #simple .personnes.activated {
+#simple .personnes.activated {
   z-index: 30;
   background: white;
   padding-bottom: 60px;
   -webkit-box-shadow: 0px -3px 10px rgba(0, 0, 0, 0.5);
   box-shadow: 0px -3px 10px rgba(0, 0, 0, 0.5);
 }
-body #container #simple #picker {
+#simple #picker {
   text-align: center;
   width: 100%;
   background-color: white;
 }
-body #container #details {
+#details {
   margin: 0;
   position: absolute;
   top: 0px;
@@ -253,7 +253,7 @@ body #container #details {
   bottom: 0px;
   font-family: "roboto", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 }
-body #container #details h3 {
+#details h3 {
   -webkit-transform: translate3d(0px, 0px, 0px);
   -ms-transform: translate3d(0px, 0px, 0px);
   transform: translate3d(0px, 0px, 0px);
@@ -275,41 +275,46 @@ body #container #details h3 {
   margin: 0px;
   margin-bottom: 10px;
 }
-body #container #details h3.active {
+#details h3.active {
   position: fixed;
 }
-body #container #details h3#bouton-frais {
+#details h3#bouton-frais {
   background-color: #55626f;
   -webkit-box-shadow: 0px -3px 0px #33404d inset;
   box-shadow: 0px -3px 0px #33404d inset;
   margin-top: 10px;
 }
-body #container #details h3#bouton-frais.active {
+#details h3#bouton-frais.active {
   -webkit-box-shadow: 0px 3px 0px #33404d inset;
   box-shadow: 0px 3px 0px #33404d inset;
   margin: 0px;
 }
-body #container #details h3#bouton-frais #total-frais {
+#details h3#bouton-frais #total-frais {
   padding: 3px;
 }
-body #container #details h3#bouton-personnes {
+#details h3#bouton-personnes {
   background-color: #78bd9b;
   -webkit-box-shadow: 0px -3px 0px #569b79 inset;
   box-shadow: 0px -3px 0px #569b79 inset;
   margin-bottom: 20px;
 }
-body #container #details h3#bouton-personnes.active {
+#details h3#bouton-personnes.active {
   margin: 0;
   -webkit-box-shadow: 0px 3px 0px #569b79 inset;
   box-shadow: 0px 3px 0px #569b79 inset;
 }
-body #container #details h3#bouton-personnes #compteur-personnes {
+#details h3#bouton-personnes #compteur-personnes {
   position: absolute;
   top: 0px;
   right: 5px;
 }
-body #container #details #listeFrais,
-body #container #details #listePersonnes {
+#details #icone-frais,
+#details #icone-personne-liste {
+  margin-right: 10px;
+}
+#listeFrais,
+#listePersonnes,
+#liste_frais {
   padding: 0;
   margin: 0;
   width: auto;
@@ -323,14 +328,10 @@ body #container #details #listePersonnes {
   box-sizing: border-box;
   overflow: scroll;
   -webkit-overflow-scrolling: touch;
-  -webkit-animation-duration: 0.5s;
-  -webit-animation-delay: 0.5s;
 }
-body #container #details #icone-frais,
-body #container #details #icone-personne-liste {
-  margin-right: 10px;
-}
-body #container #details li {
+#listeFrais li,
+#listePersonnes li,
+#liste_frais li {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -347,7 +348,9 @@ body #container #details li {
   -ms-backface-visibility: visible;
   backface-visibility: visible;
 }
-body #container #details li div.list-container {
+#listeFrais li div.list-container,
+#listePersonnes li div.list-container,
+#liste_frais li div.list-container {
   display: inline-block;
   width: 100%;
   position: absolute;
@@ -357,13 +360,27 @@ body #container #details li div.list-container {
   bottom: 0px;
   right: 0px;
 }
-body #container #details li div.list-container .touched {
+#listeFrais li div.list-container .touched,
+#listePersonnes li div.list-container .touched,
+#liste_frais li div.list-container .touched {
   background-color: #f0f0f0;
 }
-body #container #details li div {
+#listeFrais li div.list-container div.totalPersonne,
+#listePersonnes li div.list-container div.totalPersonne,
+#liste_frais li div.list-container div.totalPersonne {
+  font-family: "roboto", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  position: absolute;
+  right: 50px;
+  padding: 10px;
+}
+#listeFrais li div,
+#listePersonnes li div,
+#liste_frais li div {
   display: inline-block;
 }
-body #container #details li div.supprimer {
+#listeFrais li div.supprimer,
+#listePersonnes li div.supprimer,
+#liste_frais li div.supprimer {
   position: absolute;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -374,18 +391,26 @@ body #container #details li div.supprimer {
   color: white;
   z-index: -1;
 }
-body #container #details li div.supprimer.left {
+#listeFrais li div.supprimer.left,
+#listePersonnes li div.supprimer.left,
+#liste_frais li div.supprimer.left {
   left: 0px;
 }
-body #container #details li div.supprimer.right {
+#listeFrais li div.supprimer.right,
+#listePersonnes li div.supprimer.right,
+#liste_frais li div.supprimer.right {
   right: 0px;
 }
-body #container #details li div#detailsPersonne {
+#listeFrais li div#detailsPersonne,
+#listePersonnes li div#detailsPersonne,
+#liste_frais li div#detailsPersonne {
   right: 10px;
   position: absolute;
   padding: 10px;
 }
-body #container #details li input {
+#listeFrais li input,
+#listePersonnes li input,
+#liste_frais li input {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -402,50 +427,67 @@ body #container #details li input {
   border-radius: 0px;
   border-bottom: 1px solid #55626f;
 }
-body #container #details li input[name=nomFrais] {
+#listeFrais li input[name=nomFrais],
+#listePersonnes li input[name=nomFrais],
+#liste_frais li input[name=nomFrais] {
   width: 60%;
 }
-body #container #details li input[name=nomPersonne] {
+#listeFrais li input[name=nomFraisPersonne],
+#listePersonnes li input[name=nomFraisPersonne],
+#liste_frais li input[name=nomFraisPersonne] {
+  width: 80%;
+}
+#listeFrais li input[name=nomPersonne],
+#listePersonnes li input[name=nomPersonne],
+#liste_frais li input[name=nomPersonne] {
   width: 100%;
 }
-body #container #details li input[name=quantiteFrais] {
+#listeFrais li input[name=quantiteFrais],
+#listePersonnes li input[name=quantiteFrais],
+#liste_frais li input[name=quantiteFrais] {
   text-align: right;
   width: 20%;
 }
-body #container #details li input[name=prixFrais] {
+#listeFrais li input[name=prixFrais],
+#listePersonnes li input[name=prixFrais],
+#liste_frais li input[name=prixFrais] {
   text-align: right;
   width: 20%;
 }
-body #container #details li input:focus {
+#listeFrais li input:focus,
+#listePersonnes li input:focus,
+#liste_frais li input:focus {
   border-bottom: 2px solid #55626f;
 }
-body #container #details li.fantome {
+#listeFrais li.fantome,
+#listePersonnes li.fantome,
+#liste_frais li.fantome {
   margin-bottom: 15px;
 }
-body #container #details li.fantome input {
+#listeFrais li.fantome input,
+#listePersonnes li.fantome input,
+#liste_frais li.fantome input {
   border-bottom: 1px dashed #55626f;
 }
-body #container .colored {
+.colored {
   color: #d97d02;
 }
-body #container .red {
+.red {
   color: #cc1b16;
 }
-body .ui-input-text {
+.ui-input-text {
   display: inline-block;
   width: 19%;
 }
-body .ui-input-text:first-child {
+.ui-input-text:first-child {
   width: 60%;
 }
 .hidden {
   display: none !important;
 }
-.detailsPersonne {
-  width: auto;
-}
-.active {
-  background-color: red;
+div.active {
+  background-color: #d97d02 !important;
+  color: white !important;
 }
 .right {
   float: right;

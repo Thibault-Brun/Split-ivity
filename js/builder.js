@@ -54,6 +54,9 @@
 		container.up = function(){
 			Animation.upTo(container, header.coordDown);
 		};
+		container.farUp = function(){
+			Animation.upTo(container, 0);
+		};
 		container.down = function(){
 			Animation.downTo(container,container.coordDown);
 		};
@@ -152,28 +155,32 @@
 	listeConsommation : function(el){
 		if(activiteDefaut.listFrais.length==0)
 			return;
-		var idPers=personnes.liste.getIdByElement(el.parent()[0]);
+		Animation.upTo(container, 0);
+		personnes.bouton.slideUp();
+		personnes.liste.fantome.slideUp();
+		Animation.upTo(el, 10);
+		console.log(el);
+		var idPers=personnes.liste.getIdByElement(el[0]);
 
 		$.get("./fraisParPersonne.html", function(data){
-		container.html(data);
-		container.append(activiteDefaut.listPersonne[idPers].nom);
 		var fraisJson=JSON.parse(JSON.stringify(activiteDefaut.listFrais));
 			console.log(fraisJson);
-		$('#liste_frais').html(Mustache.render(data, {lesFrais : fraisJson}));
+		container.append(Mustache.render(data, {lesFrais : fraisJson}));
+		$('#liste_frais').css('top',2*header.coordDown+"px");
 		conso = {
 			liste : $('#liste_frais'),
 			ajoutOuSupp : function(el){
-			if(! el.parent().parent().hasClass("active")){
-			Interface.ajoutPersAuFrais(el.parent().parent().attr('id'),idPers);
-			el.parent().parent().addClass("active");
+			if(! el.hasClass("active")){
+			Interface.ajoutPersAuFrais(el.parent().attr('id'),idPers);
+			el.addClass("active");
 			}
 			else{
-			Interface.suppPersAuFrais(el.parent().parent().attr('id'),idPers);
-			el.parent().parent().removeClass("active");
+			Interface.suppPersAuFrais(el.parent().attr('id'),idPers);
+			el.removeClass("active");
 			}
 			}
 		};
-			tabs.down();
+		Touch.tapFrais();
 		});	
  	},
  	listePersonnes : function(){
