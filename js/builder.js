@@ -17,7 +17,7 @@
  		header.moveTo = function(pos){
  			Animation.dropTo(header, pos, 0);
  		};
- 		header.addClass('ombre');
+ 		header.addClass('ombreombre');
  		setTimeout(function(){header.rollTo(header.coordDown-header.height(), 1000);
 	 		setTimeout(function(){header.removeClass('ombre');}, 800);
  		},800);
@@ -194,8 +194,13 @@
 		personnes.liste.getIdByElement = function(el){
 			return personnes.liste.personnes.indexOf(el);
 		}
+<<<<<<< HEAD
+		personnes.liste.getElementById = function(id){
+			return personnes.liste.personnes[id];
+=======
 		personnes.liste.getIconeById = function(id){
 			return personnes.liste.icones[id];
+>>>>>>> 2c50dc2e0329e9f21fff318599ef55e3b4b9e071
 		}
 		personnes.liste.hide();
  	},

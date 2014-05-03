@@ -113,10 +113,14 @@ Interface = {
 	},
 	ajoutPersAuFrais : function(id,idPers){
 		activiteDefaut.affecterPersonne(idPers, id);
-		if(activiteDefaut.listConsommation[id][1].length>1){
+		
+		var totalPersonne = activiteDefaut.calculeMontantPersonne(idPers);
+		$(personnes.liste.getElementById(idPers)).find("div[name='totalPersonne']").html(totalPersonne);
+		
+		/*if(activiteDefaut.listConsommation[id][1].length>1){
 		console.log("plusierur personnes");
 			$("#plusieursPersonnes").addClass("activeLogoPersonnes");
-		}
+		}*/
 	},
 	suppPersAuFrais : function(id,idPers){
 		activiteDefaut.desaffecterPersonne(idPers, id);
