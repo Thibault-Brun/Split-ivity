@@ -289,6 +289,9 @@ body #container #details h3#bouton-frais.active {
   box-shadow: 0px 3px 0px #33404d inset;
   margin: 0px;
 }
+body #container #details h3#bouton-frais #total-frais {
+  padding: 3px;
+}
 body #container #details h3#bouton-personnes {
   background-color: #78bd9b;
   -webkit-box-shadow: 0px -3px 0px #569b79 inset;
@@ -299,6 +302,11 @@ body #container #details h3#bouton-personnes.active {
   margin: 0;
   -webkit-box-shadow: 0px 3px 0px #569b79 inset;
   box-shadow: 0px 3px 0px #569b79 inset;
+}
+body #container #details h3#bouton-personnes #compteur-personnes {
+  position: absolute;
+  top: 0px;
+  right: 5px;
 }
 body #container #details #listeFrais,
 body #container #details #listePersonnes {
@@ -438,4 +446,13 @@ body .ui-input-text:first-child {
 }
 .active {
   background-color: red;
+}
+.right {
+  float: right;
+}
+#nombre-personne {
+  left: 21px;
+  position: relative;
+  top: 4px;
+  color: lightblue;
 }

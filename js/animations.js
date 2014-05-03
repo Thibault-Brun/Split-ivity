@@ -48,6 +48,20 @@ function animation_iconeNbPersonnesShrink(){
 	setTimeout(function(){animation_raphaelObjectShrink(iconeNbPersonnes.droite)},100);
 }
 
+function animation_iconeCompteurPersonnesBounce(){
+	animation_raphaelTextBounce(personnes.bouton.compteur.label);
+	animation_raphaelObjectBounce(personnes.bouton.compteur.icone.milieu);
+	setTimeout(function(){animation_raphaelObjectBounce(personnes.bouton.compteur.icone.gauche)},100);
+	setTimeout(function(){animation_raphaelObjectBounce(personnes.bouton.compteur.icone.droite)},100);
+	
+}
+function animation_iconeCompteurPersonnesShrink(){
+	animation_raphaelTextShrink(personnes.bouton.compteur.label);
+	animation_raphaelObjectShrink(personnes.bouton.compteur.icone.milieu);
+	setTimeout(function(){animation_raphaelObjectShrink(personnes.bouton.compteur.icone.gauche)},100);
+	setTimeout(function(){animation_raphaelObjectShrink(personnes.bouton.compteur.icone.droite)},100);
+}
+
 function animation_raphaelTextBounce(el){
 	el.animate({'font-size':30}, 200, "<>", function(){
 		el.animate({'font-size':20}, 200, "<>");

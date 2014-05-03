@@ -9,7 +9,7 @@ $( document ).ready(function(){
 Interface = {
 	splitivityColor : '#D97D02',
 	renderIconeNbPersonne : function(){
-		paper = Raphael(iconeNbPersonnes[0],100, 100);
+		var paper = Raphael(iconeNbPersonnes[0],100, 100);
 		iconeNbPersonnes.milieu 	= 	paper.path(RAPHAEL_bonhommes.centre).attr({fill: Interface.splitivityColor, stroke: "none"}).scale(3.3,3.3,0,0);
 		iconeNbPersonnes.gauche 	= 	paper.path(RAPHAEL_bonhommes.gauche).attr({fill: Interface.splitivityColor, stroke: "none"}).scale(3.3,3.3,0,0);
 		iconeNbPersonnes.droite 	= 	paper.path(RAPHAEL_bonhommes.droite).attr({fill: Interface.splitivityColor, stroke: "none"}).scale(3.3,3.3,0,0);
@@ -20,10 +20,37 @@ Interface = {
 	        $(el).blur();
 	    }
 	},
+	renderFraisPhoto :function(el){
+		var paper = Raphael(el,35,35);
+		paper.path(RAPHAEL_appareil_photo).attr({fill : "#FFF", stroke : "none"}).click(function(e){
+			this.animate({transform:"s1.5,1.5,17,17"},300,'elastic', function(){
+				this.animate({transform:"s1,1,17,17"},300,'elastic');
+			});
+			e.preventDefault();
+			e.stopPropagation();
+		});
+	},
+	renderPersonnesCompteur :function(el){
+		var paper = Raphael(el,50,50);
+		personnes.bouton.compteur.icone = {
+			milieu 	: paper.path(RAPHAEL_bonhommes.centre).attr({fill: "#FFF", stroke: "none"}).scale(1.5,1.5,0,0),
+			gauche 	: paper.path(RAPHAEL_bonhommes.gauche).attr({fill: "#FFF", stroke: "none"}).scale(1.5,1.5,0,0),
+			droite 	: paper.path(RAPHAEL_bonhommes.droite).attr({fill: "#FFF", stroke: "none"}).scale(1.5,1.5,0,0)
+		};
+		personnes.bouton.compteur.label = paper.text(23,27, '').attr({fill: "#78BD9B", "font-size" : 15});
+		personnes.bouton.compteur.label.setText = function(text){
+			//var valeurPrec = personnes.bouton.compteur.label.attr('text');
+			if(text>9)
+				personnes.bouton.compteur.label.attr({"font-size" : 13});
+			else
+				personnes.bouton.compteur.label.attr({"font-size" : 15});
+			personnes.bouton.compteur.label.attr({'text':text});
+		}
+	},
 	renderIconeDetailsPersonne : function(el){
 		var paper = Raphael(el,35, 35);
 		personnes.liste.fantome.icone = {
-		top : paper.path(RAPHAEL_hamburger_button.top).attr({fill: Interface.splitivityColor, stroke: "none"}).click(function(){console.log(this);}),
+		top : paper.path(RAPHAEL_hamburger_button.top).attr({fill: Interface.splitivityColor, stroke: "none"}),
 		middle : paper.path(RAPHAEL_hamburger_button.middle).attr({fill: Interface.splitivityColor, stroke: "none"}),
 		bottom : paper.path(RAPHAEL_hamburger_button.bottom).attr({fill: Interface.splitivityColor, stroke: "none"}),
 		open : false
@@ -110,6 +137,30 @@ Interface = {
 		// Sélection de la valeur actuelle de la roulette
 		for(i=nbrSliders-1; i>=0; i--)
 			SpinningWheel.scrollToValue(i,digits[i]);
+	},
+	ajoutPersonne : function(id){
+		
+		nom = personnes.liste.fantome.nom.val();
+
+		if ( $.trim(nom) != "") {
+			personnes.liste.fantome.nom.attr('onblur', 'modifierNomPersonne(this);');
+			personnes.liste.fantome.removeClass('fantome');
+			personnes.liste.fantome.total.removeClass("hidden");
+			personnes.liste.fantome.details.removeClass("hidden");
+
+			personnes.liste.ajouter(personnes.liste.fantome[0],id);
+			personnes.liste.fantome.disabled = true;
+			$.get("./formulairePersonnes.html", function(data){
+				personnes.liste.prepend(data);
+				Builder.personneFantome();
+				personnes.liste.fantome.nom.focus();
+			});
+
+			activiteDefaut.ajouterPersonne(nom);
+
+			var nombrePersonne=activiteDefaut.listPersonne.length;
+			personnes.bouton.compteur.label.setText(nombrePersonne);
+		}
 	},
 	ajoutPersAuFrais : function(id,idPers){
 		activiteDefaut.affecterPersonne(idPers, id);

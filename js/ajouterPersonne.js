@@ -13,7 +13,7 @@ function ajoutPersonne(){
 		personnes.liste.ajouter(personnes.liste.fantome[0],Personne.nextId);
 		personnes.liste.fantome.disabled = true;
 		$.get("./formulairePersonnes.html", function(data){
-			$('#listePersonnes').prepend(data);
+			personnes.liste.prepend(data);
 			Builder.personneFantome();
 			personnes.liste.fantome.nom.focus();
 		});
@@ -21,7 +21,7 @@ function ajoutPersonne(){
 		activiteDefaut.ajouterPersonne(nom);
 		
 		var nombrePersonne=activiteDefaut.listPersonne.length;
-		$("#nombre-personne").html(nombrePersonne);
+		personnes.bouton.compteur.label.setText(nombrePersonne);
 	}
 }
 

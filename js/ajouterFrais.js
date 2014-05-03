@@ -18,7 +18,7 @@ function ajoutFrais(){
 		$.get("./formulaireFrais.html", function(data){
 			$('#listeFrais').prepend(data);
 			Builder.fraisFantome();
-			frais.liste.fantome.nom.focus();
+			frais.liste.fantome.quantite.focus();
 		});
 		var prixTotalFrais=activiteDefaut.calculeMontantGlobal();
 	$("#total-frais").html(prixTotalFrais+" €");

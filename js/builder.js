@@ -158,7 +158,7 @@
 		container.html(data);
 		container.append(activiteDefaut.listPersonne[idPers].nom);
 		var fraisJson=JSON.parse(JSON.stringify(activiteDefaut.listFrais));
-			//console.log(fraisJson);
+			console.log(fraisJson);
 		$('#liste_frais').html(Mustache.render(data, {lesFrais : fraisJson}));
 		conso = {
 			liste : $('#liste_frais'),
@@ -181,11 +181,13 @@
 		personnes.liste.active = false;
 
 		$.get("./formulairePersonnes.html", function(data){
-					personnes.liste.html(data);
+					personnes.liste.append(data);
 					Builder.personneFantome();
 		});	
-		personnes.liste.icones = new Array;
+
 		personnes.liste.personnes = new Array;
+		personnes.liste.icones = new Array;
+
 		personnes.liste.ajouter = function(el, id){
 			Touch.listElement($(el).find('.list-container'));
 			personnes.liste.personnes[id] = el;
@@ -194,17 +196,14 @@
 		personnes.liste.getIdByElement = function(el){
 			return personnes.liste.personnes.indexOf(el);
 		}
-<<<<<<< HEAD
 		personnes.liste.getElementById = function(id){
 			return personnes.liste.personnes[id];
-=======
+		}
 		personnes.liste.getIconeById = function(id){
 			return personnes.liste.icones[id];
->>>>>>> 2c50dc2e0329e9f21fff318599ef55e3b4b9e071
 		}
 		personnes.liste.hide();
  	},
-	
 	startPersonnes : function(){
 		$.get("./lesPersonnesEnMemoire.html", function(data){
 		/*
@@ -225,11 +224,11 @@
 			}
 		*/
 	},
-	
-	
  	boutonPersonnes : function(){
  		personnes.bouton = $('#bouton-personnes');
 		personnes.bouton.active = false;
+		personnes.bouton.compteur = personnes.bouton.find("#compteur-personnes");
+		Interface.renderPersonnesCompteur(personnes.bouton.compteur[0]);
 		personnes.bouton.click(function(){
 			if(personnes.bouton.active){
 				Interface.fermerListe(personnes);
@@ -244,6 +243,8 @@
  	boutonFrais : function(){
  		frais.bouton = $('#bouton-frais');
 		frais.bouton.active = false;
+		frais.bouton.ocr = frais.bouton.find("#ocr-frais");
+		Interface.renderFraisPhoto(frais.bouton.ocr[0]);
 		frais.bouton.click(function(){
 			if(frais.bouton.active){
 				Interface.fermerListe(frais);
@@ -261,6 +262,7 @@
  		personnes.liste.fantome.total = personnes.liste.fantome.find("div[name='totalPersonne']");
 		personnes.liste.fantome.details = personnes.liste.fantome.find("#detailsPersonne");
 		personnes.liste.fantome.details.click(function(){
+			Builder.listeConsommation( $(this).parent().parent() );
 			Interface.openIconeDetailsPersonne(personnes.liste.icones[personnes.liste.getIdByElement($(this).parent().parent()[0])]);
 		});
 		Interface.renderIconeDetailsPersonne(personnes.liste.fantome.details[0]);
