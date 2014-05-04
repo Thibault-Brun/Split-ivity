@@ -167,11 +167,14 @@
 		$.get("./fraisParPersonne.html", function(data){
 		var fraisJson=JSON.parse(JSON.stringify(activiteDefaut.listFrais));
 		container.append(Mustache.render(data, {lesFrais : fraisJson}));
-		$('#liste_frais').css('top',2*header.coordDown+"px");
+		Animation.rollTo($('#liste_frais'),$(document).height()*-1,0);
 		$.each(activiteDefaut.listConsommation, function(key,value){
 			if(value[1].indexOf(idPers)>=0)
 				$(".fraisPersonne#"+value[0].identifiant+" > .list-container").addClass("active");
 		});
+		setTimeout(function(){
+			Animation.rollTo($('#liste_frais'),2*header.coordDown+"px",500);
+		},200)
 		conso = {
 			liste : $('#liste_frais'),
 			ajoutOuSupp : function(el){
@@ -286,8 +289,8 @@
 				$("#liste_frais").remove();
 			}
 			else{
-			Builder.listeConsommation( $(this).parent().parent() );
 			Interface.openIconeDetailsPersonne(icone);
+			Builder.listeConsommation( $(this).parent().parent() );
 			}
 		});
 		Interface.renderIconeDetailsPersonne(personnes.liste.fantome.details[0]);
