@@ -485,9 +485,12 @@ header h2 .noms {
 .hidden {
   display: none !important;
 }
-div.active {
+div.active input {
   background-color: #d97d02 !important;
   color: white !important;
+}
+input[disabled] {
+  color: black !important;
 }
 .right {
   float: right;

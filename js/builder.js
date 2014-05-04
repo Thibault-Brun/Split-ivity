@@ -159,12 +159,13 @@
 		personnes.bouton.slideUp();
 		personnes.liste.fantome.slideUp();
 		Animation.upTo(el, 10);
-		console.log(el);
 		var idPers=personnes.liste.getIdByElement(el[0]);
-
+		$.each(personnes.liste.personnes,function(key,value){
+				$(value).slideUp(0);
+		});
+		$(el).slideDown(0);
 		$.get("./fraisParPersonne.html", function(data){
 		var fraisJson=JSON.parse(JSON.stringify(activiteDefaut.listFrais));
-			console.log(fraisJson);
 		container.append(Mustache.render(data, {lesFrais : fraisJson}));
 		$('#liste_frais').css('top',2*header.coordDown+"px");
 		conso = {
@@ -269,8 +270,22 @@
  		personnes.liste.fantome.total = personnes.liste.fantome.find("div[name='totalPersonne']");
 		personnes.liste.fantome.details = personnes.liste.fantome.find("#detailsPersonne");
 		personnes.liste.fantome.details.click(function(){
+			icone  = personnes.liste.icones[personnes.liste.getIdByElement($(this).parent().parent()[0])];
+			if(icone.open){
+				console.log(this);
+				Interface.openIconeDetailsPersonne(icone);
+				Animation.upTo(container, header.coordDown);
+				personnes.bouton.slideDown();
+				personnes.liste.fantome.slideDown();
+				$.each(personnes.liste.personnes,function(key,value){
+					$(value).slideDown(200).css('top','0px');
+				});
+				$("#liste_frais").remove();
+			}
+			else{
 			Builder.listeConsommation( $(this).parent().parent() );
-			Interface.openIconeDetailsPersonne(personnes.liste.icones[personnes.liste.getIdByElement($(this).parent().parent()[0])]);
+			Interface.openIconeDetailsPersonne(icone);
+			}
 		});
 		Interface.renderIconeDetailsPersonne(personnes.liste.fantome.details[0]);
 		personnes.liste.fantome.supprimerGauche = personnes.liste.fantome.find(".supprimer.left");

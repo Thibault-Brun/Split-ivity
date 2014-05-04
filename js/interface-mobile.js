@@ -7,6 +7,7 @@ $( document ).ready(function(){
 });
 
 Interface = {
+	listeFraisPersonnesOpen : false,
 	splitivityColor : '#D97D02',
 	renderIconeNbPersonne : function(){
 		var paper = Raphael(iconeNbPersonnes[0],100, 100);
@@ -165,9 +166,13 @@ Interface = {
 	ajoutPersAuFrais : function(id,idPers){
 		activiteDefaut.affecterPersonne(idPers, id);
 		
-		var totalPersonne = activiteDefaut.calculeMontantPersonne(idPers);
-		$(personnes.liste.getElementById(idPers)).find("div[name='totalPersonne']").html(totalPersonne);
+		//var totalPersonne = activiteDefaut.calculeMontantPersonne(idPers);
+		//$(personnes.liste.getElementById(idPers)).find("div[name='totalPersonne']").html(totalPersonne+"€");
 		
+		$.each(activiteDefaut.listPersonne, function(key, value){
+			var totalPersonne = activiteDefaut.calculeMontantPersonne(value.identifiant);
+			$(personnes.liste.getElementById(value.identifiant)).find("div[name='totalPersonne']").html(totalPersonne+"€");
+		});
 		/*if(activiteDefaut.listConsommation[id][1].length>1){
 		console.log("plusierur personnes");
 			$("#plusieursPersonnes").addClass("activeLogoPersonnes");
@@ -175,6 +180,10 @@ Interface = {
 	},
 	suppPersAuFrais : function(id,idPers){
 		activiteDefaut.desaffecterPersonne(idPers, id);
+		$.each(activiteDefaut.listPersonne, function(key, value){
+			var totalPersonne = activiteDefaut.calculeMontantPersonne(value.identifiant);
+			$(personnes.liste.getElementById(value.identifiant)).find("div[name='totalPersonne']").html(totalPersonne+"€");
+		});
 	}
 
 };

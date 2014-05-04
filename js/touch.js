@@ -103,6 +103,7 @@ Touch = {
 		},
 	tapFrais : function(){
 		$('.list-container').hammer().on('tap',function(e){
+			if(!$(this).parent().hasClass("personne"))
 			conso.ajoutOuSupp($(this));
 		});
 	}
