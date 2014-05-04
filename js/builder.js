@@ -168,6 +168,10 @@
 		var fraisJson=JSON.parse(JSON.stringify(activiteDefaut.listFrais));
 		container.append(Mustache.render(data, {lesFrais : fraisJson}));
 		$('#liste_frais').css('top',2*header.coordDown+"px");
+		$.each(activiteDefaut.listConsommation, function(key,value){
+			if(value[1].indexOf(idPers)>=0)
+				$(".fraisPersonne#"+value[0].identifiant+" > .list-container").addClass("active");
+		});
 		conso = {
 			liste : $('#liste_frais'),
 			ajoutOuSupp : function(el){
@@ -272,7 +276,6 @@
 		personnes.liste.fantome.details.click(function(){
 			icone  = personnes.liste.icones[personnes.liste.getIdByElement($(this).parent().parent()[0])];
 			if(icone.open){
-				console.log(this);
 				Interface.openIconeDetailsPersonne(icone);
 				Animation.upTo(container, header.coordDown);
 				personnes.bouton.slideDown();

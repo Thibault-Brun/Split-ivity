@@ -308,6 +308,14 @@ header h2 .noms {
   top: 0px;
   right: 5px;
 }
+#details h3#bouton-personnes #nombre-personne {
+  position: absolute;
+  padding: 12px;
+  top: 0px;
+  right: 55px;
+  left: auto;
+  color: white;
+}
 #details #icone-frais,
 #details #icone-personne-liste {
   margin-right: 10px;

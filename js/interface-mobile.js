@@ -168,11 +168,14 @@ Interface = {
 		
 		//var totalPersonne = activiteDefaut.calculeMontantPersonne(idPers);
 		//$(personnes.liste.getElementById(idPers)).find("div[name='totalPersonne']").html(totalPersonne+"€");
-		
+		var fraisRepartis = 0;
 		$.each(activiteDefaut.listPersonne, function(key, value){
 			var totalPersonne = activiteDefaut.calculeMontantPersonne(value.identifiant);
+			fraisRepartis += totalPersonne;
 			$(personnes.liste.getElementById(value.identifiant)).find("div[name='totalPersonne']").html(totalPersonne+"€");
 		});
+
+		$("#nombre-personne").html("Reste : "+(activiteDefaut.calculeMontantGlobal()-fraisRepartis)+"€");
 		/*if(activiteDefaut.listConsommation[id][1].length>1){
 		console.log("plusierur personnes");
 			$("#plusieursPersonnes").addClass("activeLogoPersonnes");
